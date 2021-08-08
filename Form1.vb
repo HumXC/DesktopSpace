@@ -1,6 +1,4 @@
-﻿Imports System.IO
-
-Public Class Form1
+﻿Public Class Form1
 
     '这行不知道什么哪里复制的，也不知道是拿来干什么的，好像是拿来刷新？不过程序里没有用上
     'Private Declare Auto Function SendMessage Lib "user32" Alias "SendMessageW" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As String) As Integer
@@ -19,9 +17,7 @@ Public Class Form1
             '什么都不会发生
         End Try
 
-
-
-        '控制底下的绿线
+        '控制文字底下的绿线
         If Space_Name = "Default" Then
             Default_line.Visible = True
             Defau_Button.Checked = True
@@ -70,81 +66,90 @@ Public Class Form1
         Code_line.Visible = True
     End Sub
 
-    Private Sub Defau_Button_KeyDown(sender As Object, e As KeyEventArgs) Handles Defau_Button.KeyDown
-        If e.KeyCode = Keys.Space Then Set_Desktop(change_Desktop_Path & "Default")
+    '如果在选中的桌面上按下空格、Enter和Esc，做出相应的动作，设置桌面
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Defau_Button.KeyDown, Game_Button.KeyDown, Music_Button.KeyDown, Code_Button.KeyDown
+
+        If e.KeyCode = Keys.Space Or e.KeyCode = Keys.Enter Then
+
+            If Defau_Button.Checked = True Then Set_Desktop(Defau_Button)
+            If Game_Button.Checked = True Then Set_Desktop(Game_Button)
+            If Music_Button.Checked = True Then Set_Desktop(Music_Button)
+            If Code_Button.Checked = True Then Set_Desktop(Code_Button)
+
+        ElseIf e.KeyCode = Keys.Escape Then
+            End
+
+        End If
     End Sub
 
-    Private Sub Game_Button_KeyDown(sender As Object, e As KeyEventArgs) Handles Game_Button.KeyDown
-        If e.KeyCode = Keys.Space Then Set_Desktop(change_Desktop_Path & "Game")
-    End Sub
 
-    Private Sub Music_Button_KeyDown(sender As Object, e As KeyEventArgs) Handles Music_Button.KeyDown
-        If e.KeyCode = Keys.Space Then Set_Desktop(change_Desktop_Path & "Music")
-    End Sub
-
-    Private Sub Code_Button_KeyDown(sender As Object, e As KeyEventArgs) Handles Code_Button.KeyDown
-        If e.KeyCode = Keys.Space Then Set_Desktop(change_Desktop_Path & "Code")
-    End Sub
-
-    Private Sub SetDesktop_Defaulet(sender As Object, e As EventArgs) Handles Default_ico.Click
-        'Default文件夹设置为桌面
-        Set_Desktop(change_Desktop_Path & "Default")
-        'SendMessage(HWND_BROADCAST, WM_SETTINGCHANGE, NULL, NULL)
-    End Sub
-
-    Private Sub SetDesktop_Game(sender As Object, e As EventArgs) Handles Game_ico.Click
-        'Game文件夹设置为桌面
-        Set_Desktop(change_Desktop_Path & "Game")
-    End Sub
-
-    Private Sub SetDesktop_Music(sender As Object, e As EventArgs) Handles Music_ioc.Click， Music_text.Click
-        'Music文件夹设置为桌面
-        Set_Desktop(change_Desktop_Path & "Music")
-    End Sub
-
-    Private Sub SetDesktop_Code(sender As Object, e As EventArgs) Handles Code_ico.Click, Code_text.Click
-        'Code文件夹设置为桌面
-        Set_Desktop(change_Desktop_Path & "Code")
-    End Sub
+    '鼠标点击交互
+    '  Private Sub SetDesktop_Defaulet(sender As Object, e As EventArgs) Handles Default_ico.Click， Defau_text.Click
+    '      'Default文件夹设置为桌面
+    '      Set_Desktop(change_Desktop_Path & "Default")
+    '  End Sub
+    '
+    '  Private Sub SetDesktop_Game(sender As Object, e As EventArgs) Handles Game_ico.Click, Game_text.Click
+    '      'Game文件夹设置为桌面
+    '      Set_Desktop(change_Desktop_Path & "Game")
+    '  End Sub
+    '
+    '  Private Sub SetDesktop_Music(sender As Object, e As EventArgs) Handles Music_ioc.Click, Music_text.Click
+    '      'Music文件夹设置为桌面
+    '      Set_Desktop(change_Desktop_Path & "Music")
+    '  End Sub
+    '
+    '  Private Sub SetDesktop_Code(sender As Object, e As EventArgs) Handles Code_ico.Click, Code_text.Click
+    '      'Code文件夹设置为桌面
+    '      Set_Desktop(change_Desktop_Path & "Code")
+    '  End Sub
 
     Private Sub Title_Click(sender As Object, e As EventArgs) Handles Title.Click
         End
     End Sub
 
-    Private Sub Set_Desktop(desktopPath As String)
-        If String.Compare(Me.Now_Desktop_Path, desktopPath) = 0 Then
+    Private Sub Set_Desktop(sender As RadioButton)
+
+        If String.Compare(Me.Now_Desktop_Path, change_Desktop_Path & sender.Text) = 0 Then
             End
+
         End If
-        Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & desktopPath & " /t REG_EXPAND_SZ /f")
+
+        Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & change_Desktop_Path & sender.Text & " /t REG_EXPAND_SZ /f")
         Shell("cmd.exe /c taskkill /f /im explorer.exe & start explorer.exe")
         End
     End Sub
 
-    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-        Esc.Text = Me.Now_Desktop_Path
-    End Sub
-
     Private Sub Esc_Click(sender As Object, e As EventArgs) Handles Esc.Click
         End
+
     End Sub
 
-    Private Sub Enter_Click(sender As Object, e As EventArgs) Handles Enter.Click
-        If Defau_Button.Checked = True Then
-            Set_Desktop(change_Desktop_Path & "Default")
-        End If
 
-        If Game_Button.Checked = True Then
-            Set_Desktop(change_Desktop_Path & "Game")
-        End If
+    'Esc和Enter的交互会影响方向键使用的体验，故移除按钮，选择用窗体事件代替实现该功能
+    '
+    '    Private Sub Esc_Click(sender As Object, e As EventArgs) Handles Esc.Click
+    '        End
+    '    End Sub
+    '
+    '    Private Sub Enter_Click(sender As Object, e As EventArgs)
+    '        If Defau_Button.Checked = True Then
+    '            Set_Desktop(change_Desktop_Path & "Default")
+    '        End If
+    '
+    '        If Game_Button.Checked = True Then
+    '            Set_Desktop(change_Desktop_Path & "Game")
+    '        End If
+    '
+    '        If Music_Button.Checked = True Then
+    '            Set_Desktop(change_Desktop_Path & "Music")
+    '        End If
+    '
+    '        If Code_Button.Checked = True Then
+    '            Set_Desktop(change_Desktop_Path & "Code")
+    '        End If
+    '    End Sub
 
-        If Music_Button.Checked = True Then
-            Set_Desktop(change_Desktop_Path & "Music")
-        End If
-
-        If Code_Button.Checked = True Then
-            Set_Desktop(change_Desktop_Path & "Code")
-        End If
-    End Sub
 
 
 End Class
