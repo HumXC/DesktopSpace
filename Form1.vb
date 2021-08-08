@@ -14,7 +14,7 @@ Public Class Form1
         Now_Desktop_Path = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 
         Try
-            Space_Name = My.Computer.FileSystem.ReadAllText(Now_Desktop_Path & "\Space_Namge.txt") '读取名称文件，识别当前桌面
+            Space_Name = My.Computer.FileSystem.ReadAllText(Now_Desktop_Path & "\Space_Name.txt") '读取名称文件，识别当前桌面
         Catch ex As System.IO.FileNotFoundException
             '什么都不会发生
         End Try
