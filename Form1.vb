@@ -111,9 +111,40 @@ Public Class Form1
         End
     End Sub
 
-    Public Shared Sub Set_Desktop(desktopPath As String)
+    Private Sub Set_Desktop(desktopPath As String)
+        If String.Compare(Me.Now_Desktop_Path, desktopPath) = 0 Then
+            End
+        End If
         Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & desktopPath & " /t REG_EXPAND_SZ /f")
         Shell("cmd.exe /c taskkill /f /im explorer.exe & start explorer.exe")
         End
     End Sub
+
+    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        Esc.Text = Me.Now_Desktop_Path
+    End Sub
+
+    Private Sub Esc_Click(sender As Object, e As EventArgs) Handles Esc.Click
+        End
+    End Sub
+
+    Private Sub Enter_Click(sender As Object, e As EventArgs) Handles Enter.Click
+        If Defau_Button.Checked = True Then
+            Set_Desktop(change_Desktop_Path & "Default")
+        End If
+
+        If Game_Button.Checked = True Then
+            Set_Desktop(change_Desktop_Path & "Game")
+        End If
+
+        If Music_Button.Checked = True Then
+            Set_Desktop(change_Desktop_Path & "Music")
+        End If
+
+        If Code_Button.Checked = True Then
+            Set_Desktop(change_Desktop_Path & "Code")
+        End If
+    End Sub
+
+
 End Class

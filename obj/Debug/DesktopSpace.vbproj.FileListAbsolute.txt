@@ -1,7 +1,6 @@
 D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.exe
 D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.pdb
 D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.xml
-D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.vbproj.AssemblyReference.cache
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Form1.resources
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Resources.resources
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.vbproj.GenerateResource.cache
@@ -9,3 +8,4 @@ D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.vbproj.CoreCompile
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.exe
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.xml
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.pdb
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.vbproj.AssemblyReference.cache
