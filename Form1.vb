@@ -1,4 +1,4 @@
-﻿Imports Microsoft.Win32
+﻿'Imports Microsoft.Win32
 
 Public Class Form1
 
@@ -101,12 +101,6 @@ Public Class Form1
         End If
     End Sub
 
-
-    '鼠标点击交互
-    'Private Sub SetDesktop_Defaulet(sender As Object, e As EventArgs) Handles Default_ico.Click， Defau_text.Click, Game_ico.Click, Game_text.Click, Music_ico.Click, Music_text.Click, Code_ico.Click, Code_text.Click
-    '    Set_Desktop(Select_Desktop)
-    ' End Sub
-
     '通过修改注册表修改桌面路径
 
 
@@ -114,19 +108,13 @@ Public Class Form1
         '如果选中的桌面已经是当前桌面，则不做任何处理，退出
         If String.Compare(Me.Now_Desktop_Path, change_Desktop_Path & select_Desktop.Tag) = 0 Then
             End
-
         End If
 
         Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & change_Desktop_Path & select_Desktop.Tag & " /t REG_EXPAND_SZ /f")
         Shell("cmd.exe /c taskkill /f /im explorer.exe & start explorer.exe")
         End
-    End Sub
-
-    Private Sub Esc_Click(sender As Object, e As EventArgs)
-        End
 
     End Sub
-
 
     '鼠标交互
 
@@ -201,28 +189,4 @@ Public Class Form1
     End Sub
 
 
-
-    '   '按键控制时的图标动画
-    '   Dim a = 5
-    '   Private Sub Anima_up(sender As Object, e As EventArgs) Handles Animation_up.Tick
-    '
-    '       Select_Desktop.Location = New Point(Select_Desktop.Location.X, Select_Desktop.Location.Y - Me.a)
-    '       Me.a -= 1
-    '       If Me.a = -6 Then
-    '           Me.a = 5
-    '
-    '           Animation_up.Enabled = False
-    '
-    '
-    '       End If
-    '   End Sub
-    '   '图标下降动画
-    '   Private Sub Anima_down(sender As Object, e As EventArgs) Handles Animation_down.Tick
-    '       Select_Desktop.Location = New Point(Select_Desktop.Location.X, Select_Desktop.Location.Y + Me.a)
-    '       Me.a -= 1
-    '       If Me.a = 0 Then
-    '           Me.a = 5
-    '           Animation_down.Enabled = False
-    '       End If
-    '   End Sub
 End Class
