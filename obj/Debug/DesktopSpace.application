@@ -4,14 +4,14 @@
   <description asmv2:publisher="DesktopSpace" asmv2:product="DesktopSpace" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="DesktopSpace.exe.manifest" size="5055">
+    <dependentAssembly dependencyType="install" codebase="DesktopSpace.exe.manifest" size="5056">
       <assemblyIdentity name="DesktopSpace.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>BkziZImAc9kIrBnMO1W2a0Gc0Ug=</dsig:DigestValue>
+        <dsig:DigestValue>NaCpOkAzPE/X1ONPqn5c/JYP5Xs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

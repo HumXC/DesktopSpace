@@ -63,49 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property code() As System.Drawing.Bitmap
+        Friend ReadOnly Property _79482258() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("code", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property 云桌面() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("云桌面", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property 感叹号1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("感叹号1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property 手柄2() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("手柄2", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property 音乐_音符() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("音乐,音符", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("79482258", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

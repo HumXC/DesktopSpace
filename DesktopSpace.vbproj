@@ -107,6 +107,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Box.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Box_Control.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -114,16 +118,24 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Box_Icon.vb" />
     <Compile Include="Info.Designer.vb">
       <DependentUpon>Info.vb</DependentUpon>
     </Compile>
     <Compile Include="Info.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -135,10 +147,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Box_Line.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Box_Titel.vb">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -162,10 +183,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\code.png" />
-    <None Include="Resources\音乐,音符.png" />
-    <None Include="Resources\云桌面.png" />
-    <None Include="Resources\手柄2.png" />
-    <None Include="Resources\感叹号1.png" />
+    <None Include="Resources\Music.png" />
+    <None Include="Resources\Default.png" />
+    <None Include="Resources\Game.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\79482258.jpg" />
     <Content Include="桌面.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -188,7 +188,6 @@ Partial Class Form1
         '
         Me.Info_B.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
         Me.Info_B.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Info_B.Image = Global.DesktopSpace.My.Resources.Resources.感叹号1
         Me.Info_B.Location = New System.Drawing.Point(655, 0)
         Me.Info_B.Name = "Info_B"
         Me.Info_B.Size = New System.Drawing.Size(42, 42)
@@ -235,7 +234,6 @@ Partial Class Form1
         'Code_ico
         '
         Me.Code_ico.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Code_ico.Image = Global.DesktopSpace.My.Resources.Resources.code
         Me.Code_ico.Location = New System.Drawing.Point(503, 40)
         Me.Code_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Code_ico.Name = "Code_ico"
@@ -248,7 +246,6 @@ Partial Class Form1
         'Music_ico
         '
         Me.Music_ico.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Music_ico.Image = Global.DesktopSpace.My.Resources.Resources.音乐_音符
         Me.Music_ico.Location = New System.Drawing.Point(363, 54)
         Me.Music_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Music_ico.Name = "Music_ico"
@@ -261,7 +258,6 @@ Partial Class Form1
         'Game_ico
         '
         Me.Game_ico.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Game_ico.Image = Global.DesktopSpace.My.Resources.Resources.手柄2
         Me.Game_ico.Location = New System.Drawing.Point(218, 54)
         Me.Game_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Game_ico.Name = "Game_ico"
@@ -274,7 +270,6 @@ Partial Class Form1
         'Default_ico
         '
         Me.Default_ico.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Default_ico.Image = Global.DesktopSpace.My.Resources.Resources.云桌面
         Me.Default_ico.Location = New System.Drawing.Point(55, 46)
         Me.Default_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Default_ico.Name = "Default_ico"

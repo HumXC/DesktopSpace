@@ -22,27 +22,7 @@ DesktopSpace
   使用此强类型资源类的所有资源查找执行重写。
 </summary>
 </member>
-<member name="P:DesktopSpace.My.Resources.Resources.code">
-<summary>
-  查找 System.Drawing.Bitmap 类型的本地化资源。
-</summary>
-</member>
-<member name="P:DesktopSpace.My.Resources.Resources.云桌面">
-<summary>
-  查找 System.Drawing.Bitmap 类型的本地化资源。
-</summary>
-</member>
-<member name="P:DesktopSpace.My.Resources.Resources.感叹号1">
-<summary>
-  查找 System.Drawing.Bitmap 类型的本地化资源。
-</summary>
-</member>
-<member name="P:DesktopSpace.My.Resources.Resources.手柄2">
-<summary>
-  查找 System.Drawing.Bitmap 类型的本地化资源。
-</summary>
-</member>
-<member name="P:DesktopSpace.My.Resources.Resources.音乐_音符">
+<member name="P:DesktopSpace.My.Resources.Resources._79482258">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>

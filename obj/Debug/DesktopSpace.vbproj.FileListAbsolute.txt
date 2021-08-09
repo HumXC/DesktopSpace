@@ -14,3 +14,4 @@ D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.application
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.TrustInfo.xml
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.exe.manifest
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.application
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Main.resources
