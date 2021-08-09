@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports Microsoft.Win32
+
+Public Class Form1
 
     '这行不知道什么哪里复制的，也不知道是拿来干什么的，好像是拿来刷新？不过程序里没有用上
     'Private Declare Auto Function SendMessage Lib "user32" Alias "SendMessageW" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As String) As Integer
@@ -41,6 +43,7 @@
 
 
     '这4个按钮在窗体下面，把窗口拉长才能看到，可以用键盘控制
+    '4个单选按钮被选中时
     Private Sub Defau_Button_CheckedChanged(sender As Object, e As EventArgs) Handles Defau_Button.CheckedChanged
 
 
@@ -75,7 +78,7 @@
         Select_Desktop_Name = "Code"
     End Sub
 
-    '如果在选中的桌面上按下空格、Enter和Esc，做出相应的动作，设置桌面
+    '如果在选中的桌面上按下Enter和Esc，做出相应的动作，设置桌面或者退出
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Defau_Button.KeyDown, Game_Button.KeyDown, Music_Button.KeyDown, Code_Button.KeyDown
 
         If e.KeyCode = Keys.Enter Then
@@ -90,32 +93,15 @@
 
 
     '鼠标点击交互
-    '  Private Sub SetDesktop_Defaulet(sender As Object, e As EventArgs) Handles Default_ico.Click， Defau_text.Click
-    '      'Default文件夹设置为桌面
-    '      Set_Desktop(change_Desktop_Path & "Default")
-    '  End Sub
-    '
-    '  Private Sub SetDesktop_Game(sender As Object, e As EventArgs) Handles Game_ico.Click, Game_text.Click
-    '      'Game文件夹设置为桌面
-    '      Set_Desktop(change_Desktop_Path & "Game")
-    '  End Sub
-    '
-    '  Private Sub SetDesktop_Music(sender As Object, e As EventArgs) Handles Music_ioc.Click, Music_text.Click
-    '      'Music文件夹设置为桌面
-    '      Set_Desktop(change_Desktop_Path & "Music")
-    '  End Sub
-    '
-    '  Private Sub SetDesktop_Code(sender As Object, e As EventArgs) Handles Code_ico.Click, Code_text.Click
-    '      'Code文件夹设置为桌面
-    '      Set_Desktop(change_Desktop_Path & "Code")
-    '  End Sub
-
-    Private Sub Title_Click(sender As Object, e As EventArgs) Handles Title.Click
-        End
+    Private Sub SetDesktop_Defaulet(sender As Object, e As EventArgs) Handles Default_ico.Click， Defau_text.Click, Game_ico.Click, Game_text.Click, Music_ioc.Click, Music_text.Click, Code_ico.Click, Code_text.Click
+        Set_Desktop(Select_Desktop_Name)
     End Sub
 
-    Private Sub Set_Desktop(select_Desktop_Name As String)
+    '通过修改注册表修改桌面路径
 
+
+    Private Sub Set_Desktop(select_Desktop_Name As String)
+        '如果选中的桌面已经是当前桌面，则不做任何处理，退出
         If String.Compare(Me.Now_Desktop_Path, change_Desktop_Path & select_Desktop_Name) = 0 Then
             End
 
@@ -126,7 +112,7 @@
         End
     End Sub
 
-    Private Sub Esc_Click(sender As Object, e As EventArgs) Handles Esc.Click
+    Private Sub Esc_Click(sender As Object, e As EventArgs)
         End
 
     End Sub

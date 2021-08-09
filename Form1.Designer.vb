@@ -36,7 +36,6 @@ Partial Class Form1
         Me.Music_ioc = New System.Windows.Forms.PictureBox()
         Me.Game_ico = New System.Windows.Forms.PictureBox()
         Me.Default_ico = New System.Windows.Forms.PictureBox()
-        Me.Esc = New System.Windows.Forms.Button()
         Me.Default_line = New System.Windows.Forms.PictureBox()
         Me.Game_line = New System.Windows.Forms.PictureBox()
         Me.Music_line = New System.Windows.Forms.PictureBox()
@@ -71,7 +70,7 @@ Partial Class Form1
         Me.Code_text.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Code_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold)
         Me.Code_text.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Code_text.Location = New System.Drawing.Point(466, 15)
+        Me.Code_text.Location = New System.Drawing.Point(465, 15)
         Me.Code_text.Name = "Code_text"
         Me.Code_text.Size = New System.Drawing.Size(119, 160)
         Me.Code_text.TabIndex = 9
@@ -84,7 +83,7 @@ Partial Class Form1
         Me.Music_text.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Music_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold)
         Me.Music_text.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Music_text.Location = New System.Drawing.Point(329, 15)
+        Me.Music_text.Location = New System.Drawing.Point(328, 15)
         Me.Music_text.Name = "Music_text"
         Me.Music_text.Size = New System.Drawing.Size(118, 160)
         Me.Music_text.TabIndex = 11
@@ -97,7 +96,7 @@ Partial Class Form1
         Me.Game_text.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Game_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold)
         Me.Game_text.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Game_text.Location = New System.Drawing.Point(194, 15)
+        Me.Game_text.Location = New System.Drawing.Point(193, 15)
         Me.Game_text.Name = "Game_text"
         Me.Game_text.Size = New System.Drawing.Size(128, 160)
         Me.Game_text.TabIndex = 12
@@ -108,13 +107,13 @@ Partial Class Form1
         Me.Defau_text.AutoSize = True
         Me.Defau_text.BackColor = System.Drawing.Color.Transparent
         Me.Defau_text.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Defau_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold)
+        Me.Defau_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold)
         Me.Defau_text.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Defau_text.Location = New System.Drawing.Point(53, 1)
+        Me.Defau_text.Location = New System.Drawing.Point(52, 15)
         Me.Defau_text.Name = "Defau_text"
-        Me.Defau_text.Size = New System.Drawing.Size(116, 174)
+        Me.Defau_text.Size = New System.Drawing.Size(129, 160)
         Me.Defau_text.TabIndex = 13
-        Me.Defau_text.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " Default "
+        Me.Defau_text.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " Default "
         '
         'Defau_Button
         '
@@ -168,7 +167,7 @@ Partial Class Form1
         '
         Me.Code_ico.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Code_ico.Image = Global.DesktopSpace.My.Resources.Resources.code
-        Me.Code_ico.Location = New System.Drawing.Point(463, 25)
+        Me.Code_ico.Location = New System.Drawing.Point(462, 25)
         Me.Code_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Code_ico.Name = "Code_ico"
         Me.Code_ico.Size = New System.Drawing.Size(124, 115)
@@ -180,7 +179,7 @@ Partial Class Form1
         '
         Me.Music_ioc.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Music_ioc.Image = Global.DesktopSpace.My.Resources.Resources.音乐_音符
-        Me.Music_ioc.Location = New System.Drawing.Point(331, 39)
+        Me.Music_ioc.Location = New System.Drawing.Point(332, 39)
         Me.Music_ioc.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Music_ioc.Name = "Music_ioc"
         Me.Music_ioc.Size = New System.Drawing.Size(112, 93)
@@ -192,7 +191,7 @@ Partial Class Form1
         '
         Me.Game_ico.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Game_ico.Image = Global.DesktopSpace.My.Resources.Resources.手柄2
-        Me.Game_ico.Location = New System.Drawing.Point(198, 39)
+        Me.Game_ico.Location = New System.Drawing.Point(197, 39)
         Me.Game_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Game_ico.Name = "Game_ico"
         Me.Game_ico.Size = New System.Drawing.Size(118, 93)
@@ -204,7 +203,7 @@ Partial Class Form1
         '
         Me.Default_ico.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Default_ico.Image = Global.DesktopSpace.My.Resources.Resources.云桌面
-        Me.Default_ico.Location = New System.Drawing.Point(41, 28)
+        Me.Default_ico.Location = New System.Drawing.Point(45, 31)
         Me.Default_ico.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Default_ico.Name = "Default_ico"
         Me.Default_ico.Size = New System.Drawing.Size(138, 117)
@@ -212,21 +211,10 @@ Partial Class Form1
         Me.Default_ico.TabIndex = 18
         Me.Default_ico.TabStop = False
         '
-        'Esc
-        '
-        Me.Esc.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Esc.Location = New System.Drawing.Point(121, 223)
-        Me.Esc.Name = "Esc"
-        Me.Esc.Size = New System.Drawing.Size(403, 42)
-        Me.Esc.TabIndex = 22
-        Me.Esc.TabStop = False
-        Me.Esc.Text = "Esc"
-        Me.Esc.UseVisualStyleBackColor = True
-        '
         'Default_line
         '
         Me.Default_line.BackColor = System.Drawing.Color.Lime
-        Me.Default_line.Location = New System.Drawing.Point(41, 181)
+        Me.Default_line.Location = New System.Drawing.Point(45, 181)
         Me.Default_line.Name = "Default_line"
         Me.Default_line.Size = New System.Drawing.Size(138, 9)
         Me.Default_line.TabIndex = 24
@@ -235,7 +223,7 @@ Partial Class Form1
         'Game_line
         '
         Me.Game_line.BackColor = System.Drawing.Color.Lime
-        Me.Game_line.Location = New System.Drawing.Point(205, 181)
+        Me.Game_line.Location = New System.Drawing.Point(204, 181)
         Me.Game_line.Name = "Game_line"
         Me.Game_line.Size = New System.Drawing.Size(104, 9)
         Me.Game_line.TabIndex = 25
@@ -244,7 +232,7 @@ Partial Class Form1
         'Music_line
         '
         Me.Music_line.BackColor = System.Drawing.Color.Lime
-        Me.Music_line.Location = New System.Drawing.Point(339, 181)
+        Me.Music_line.Location = New System.Drawing.Point(338, 181)
         Me.Music_line.Name = "Music_line"
         Me.Music_line.Size = New System.Drawing.Size(104, 9)
         Me.Music_line.TabIndex = 26
@@ -253,7 +241,7 @@ Partial Class Form1
         'Code_line
         '
         Me.Code_line.BackColor = System.Drawing.Color.Lime
-        Me.Code_line.Location = New System.Drawing.Point(474, 181)
+        Me.Code_line.Location = New System.Drawing.Point(470, 181)
         Me.Code_line.Name = "Code_line"
         Me.Code_line.Size = New System.Drawing.Size(104, 9)
         Me.Code_line.TabIndex = 27
@@ -266,13 +254,12 @@ Partial Class Form1
         Me.AutoValidate = System.Windows.Forms.AutoValidate.Disable
         Me.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(635, 577)
+        Me.ClientSize = New System.Drawing.Size(635, 206)
         Me.ControlBox = False
         Me.Controls.Add(Me.Code_line)
         Me.Controls.Add(Me.Music_line)
         Me.Controls.Add(Me.Game_line)
         Me.Controls.Add(Me.Default_line)
-        Me.Controls.Add(Me.Esc)
         Me.Controls.Add(Me.Code_ico)
         Me.Controls.Add(Me.Music_ioc)
         Me.Controls.Add(Me.Game_ico)
@@ -293,7 +280,6 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "桌面空间"
-        Me.TopMost = True
         CType(Me.Code_ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Music_ioc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Game_ico, System.ComponentModel.ISupportInitialize).EndInit()
@@ -319,7 +305,6 @@ Partial Class Form1
     Friend WithEvents Music_ioc As PictureBox
     Friend WithEvents Code_ico As PictureBox
     Friend WithEvents Code_Button As RadioButton
-    Friend WithEvents Esc As Button
     Friend WithEvents Default_line As PictureBox
     Friend WithEvents Game_line As PictureBox
     Friend WithEvents Music_line As PictureBox
