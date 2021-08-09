@@ -22,25 +22,35 @@ Partial Class Main
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.Testp = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.Testp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Testp
         '
-        Me.Testp.Location = New System.Drawing.Point(13, 474)
+        Me.Testp.Location = New System.Drawing.Point(12, 591)
         Me.Testp.Name = "Testp"
         Me.Testp.Size = New System.Drawing.Size(100, 50)
         Me.Testp.TabIndex = 0
         Me.Testp.TabStop = False
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("宋体", 20.0!)
+        Me.Button1.Location = New System.Drawing.Point(77, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(486, 74)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(775, 653)
+        Me.ClientSize = New System.Drawing.Size(1103, 653)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Testp)
         Me.DoubleBuffered = True
         Me.Name = "Main"
@@ -51,4 +61,5 @@ Partial Class Main
     End Sub
 
     Friend WithEvents Testp As PictureBox
+    Public WithEvents Button1 As Button
 End Class

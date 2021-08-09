@@ -27,5 +27,10 @@ DesktopSpace
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:DesktopSpace.My.Resources.Resources.透明测试">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 </members>
 </doc>
