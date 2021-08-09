@@ -146,10 +146,16 @@ Public Class Form1
         Code_line_back.Visible = True
     End Sub
 
+    '提示信息按钮的显示
+    Private Sub Info_MouseMove(sender As Object, e As MouseEventArgs) Handles Info_B.MouseMove
+        Info_B.BackColor = Color.White
+    End Sub
+
 
     '检测鼠标，如果鼠标移出图标范围，则关闭所有背景线(_line_back)
     Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, Default_line_back.MouseMove, Game_line_back.MouseMove, Music_line_back.MouseMove, Code_line_back.MouseMove
         TurnOff_AllBackLine()
+        Info_B.BackColor = Me.BackColor '恢复提示按钮的颜色
 
     End Sub
 
@@ -171,6 +177,11 @@ Public Class Form1
         Code_Button.Checked = True
     End Sub
 
+    Private Sub Info_MouseDown(sender As Object, e As MouseEventArgs) Handles Info_B.MouseDown
+        Info.Show()
+
+    End Sub
+
     '鼠标松开
     Private Sub Default_MouseUp(sender As Object, e As MouseEventArgs) Handles Default_ico.MouseUp, Defau_text.MouseUp
         Set_Desktop(Select_Desktop)
@@ -188,5 +199,7 @@ Public Class Form1
         Set_Desktop(Select_Desktop)
     End Sub
 
+    Private Sub Info_B_Click(sender As Object, e As EventArgs) Handles Info_B.Click
 
+    End Sub
 End Class

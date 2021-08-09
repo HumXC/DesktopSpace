@@ -33,28 +33,30 @@ Partial Class Form1
         Me.Game_Button = New System.Windows.Forms.RadioButton()
         Me.Music_Button = New System.Windows.Forms.RadioButton()
         Me.Code_Button = New System.Windows.Forms.RadioButton()
+        Me.Animation_up = New System.Windows.Forms.Timer(Me.components)
+        Me.Animation_down = New System.Windows.Forms.Timer(Me.components)
+        Me.Info_B = New System.Windows.Forms.PictureBox()
+        Me.Code_line = New System.Windows.Forms.PictureBox()
+        Me.Music_line = New System.Windows.Forms.PictureBox()
+        Me.Game_line = New System.Windows.Forms.PictureBox()
+        Me.Default_line = New System.Windows.Forms.PictureBox()
         Me.Code_ico = New System.Windows.Forms.PictureBox()
         Me.Music_ico = New System.Windows.Forms.PictureBox()
         Me.Game_ico = New System.Windows.Forms.PictureBox()
         Me.Default_ico = New System.Windows.Forms.PictureBox()
-        Me.Default_line = New System.Windows.Forms.PictureBox()
-        Me.Game_line = New System.Windows.Forms.PictureBox()
-        Me.Music_line = New System.Windows.Forms.PictureBox()
-        Me.Code_line = New System.Windows.Forms.PictureBox()
-        Me.Animation_up = New System.Windows.Forms.Timer(Me.components)
-        Me.Animation_down = New System.Windows.Forms.Timer(Me.components)
         Me.Code_line_back = New System.Windows.Forms.PictureBox()
         Me.Music_line_back = New System.Windows.Forms.PictureBox()
         Me.Game_line_back = New System.Windows.Forms.PictureBox()
         Me.Default_line_back = New System.Windows.Forms.PictureBox()
+        CType(Me.Info_B, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Code_line, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Music_line, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Game_line, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Default_line, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Code_ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Music_ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Game_ico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Default_ico, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Default_line, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Game_line, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Music_line, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Code_line, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Code_line_back, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Music_line_back, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Game_line_back, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,6 +176,62 @@ Partial Class Form1
         Me.Code_Button.Text = "Code"
         Me.Code_Button.UseVisualStyleBackColor = True
         '
+        'Animation_up
+        '
+        Me.Animation_up.Interval = 10
+        '
+        'Animation_down
+        '
+        Me.Animation_down.Interval = 10
+        '
+        'Info_B
+        '
+        Me.Info_B.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
+        Me.Info_B.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Info_B.Image = Global.DesktopSpace.My.Resources.Resources.感叹号1
+        Me.Info_B.Location = New System.Drawing.Point(655, 0)
+        Me.Info_B.Name = "Info_B"
+        Me.Info_B.Size = New System.Drawing.Size(42, 42)
+        Me.Info_B.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Info_B.TabIndex = 32
+        Me.Info_B.TabStop = False
+        '
+        'Code_line
+        '
+        Me.Code_line.BackColor = System.Drawing.Color.Lime
+        Me.Code_line.Location = New System.Drawing.Point(511, 196)
+        Me.Code_line.Name = "Code_line"
+        Me.Code_line.Size = New System.Drawing.Size(104, 9)
+        Me.Code_line.TabIndex = 27
+        Me.Code_line.TabStop = False
+        '
+        'Music_line
+        '
+        Me.Music_line.BackColor = System.Drawing.Color.Lime
+        Me.Music_line.Location = New System.Drawing.Point(369, 196)
+        Me.Music_line.Name = "Music_line"
+        Me.Music_line.Size = New System.Drawing.Size(104, 9)
+        Me.Music_line.TabIndex = 26
+        Me.Music_line.TabStop = False
+        '
+        'Game_line
+        '
+        Me.Game_line.BackColor = System.Drawing.Color.Lime
+        Me.Game_line.Location = New System.Drawing.Point(225, 196)
+        Me.Game_line.Name = "Game_line"
+        Me.Game_line.Size = New System.Drawing.Size(104, 9)
+        Me.Game_line.TabIndex = 25
+        Me.Game_line.TabStop = False
+        '
+        'Default_line
+        '
+        Me.Default_line.BackColor = System.Drawing.Color.Lime
+        Me.Default_line.Location = New System.Drawing.Point(55, 196)
+        Me.Default_line.Name = "Default_line"
+        Me.Default_line.Size = New System.Drawing.Size(138, 9)
+        Me.Default_line.TabIndex = 24
+        Me.Default_line.TabStop = False
+        '
         'Code_ico
         '
         Me.Code_ico.Cursor = System.Windows.Forms.Cursors.Hand
@@ -226,50 +284,6 @@ Partial Class Form1
         Me.Default_ico.TabStop = False
         Me.Default_ico.Tag = "Default"
         '
-        'Default_line
-        '
-        Me.Default_line.BackColor = System.Drawing.Color.Lime
-        Me.Default_line.Location = New System.Drawing.Point(55, 196)
-        Me.Default_line.Name = "Default_line"
-        Me.Default_line.Size = New System.Drawing.Size(138, 9)
-        Me.Default_line.TabIndex = 24
-        Me.Default_line.TabStop = False
-        '
-        'Game_line
-        '
-        Me.Game_line.BackColor = System.Drawing.Color.Lime
-        Me.Game_line.Location = New System.Drawing.Point(225, 196)
-        Me.Game_line.Name = "Game_line"
-        Me.Game_line.Size = New System.Drawing.Size(104, 9)
-        Me.Game_line.TabIndex = 25
-        Me.Game_line.TabStop = False
-        '
-        'Music_line
-        '
-        Me.Music_line.BackColor = System.Drawing.Color.Lime
-        Me.Music_line.Location = New System.Drawing.Point(369, 196)
-        Me.Music_line.Name = "Music_line"
-        Me.Music_line.Size = New System.Drawing.Size(104, 9)
-        Me.Music_line.TabIndex = 26
-        Me.Music_line.TabStop = False
-        '
-        'Code_line
-        '
-        Me.Code_line.BackColor = System.Drawing.Color.Lime
-        Me.Code_line.Location = New System.Drawing.Point(511, 196)
-        Me.Code_line.Name = "Code_line"
-        Me.Code_line.Size = New System.Drawing.Size(104, 9)
-        Me.Code_line.TabIndex = 27
-        Me.Code_line.TabStop = False
-        '
-        'Animation_up
-        '
-        Me.Animation_up.Interval = 10
-        '
-        'Animation_down
-        '
-        Me.Animation_down.Interval = 10
-        '
         'Code_line_back
         '
         Me.Code_line_back.BackColor = System.Drawing.Color.Gold
@@ -319,6 +333,7 @@ Partial Class Form1
         Me.CausesValidation = False
         Me.ClientSize = New System.Drawing.Size(698, 237)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Info_B)
         Me.Controls.Add(Me.Code_line)
         Me.Controls.Add(Me.Music_line)
         Me.Controls.Add(Me.Game_line)
@@ -347,14 +362,15 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "桌面空间"
+        CType(Me.Info_B, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Code_line, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Music_line, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Game_line, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Default_line, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Code_ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Music_ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Game_ico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Default_ico, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Default_line, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Game_line, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Music_line, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Code_line, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Code_line_back, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Music_line_back, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Game_line_back, System.ComponentModel.ISupportInitialize).EndInit()
@@ -386,4 +402,5 @@ Partial Class Form1
     Friend WithEvents Music_line_back As PictureBox
     Friend WithEvents Game_line_back As PictureBox
     Friend WithEvents Default_line_back As PictureBox
+    Friend WithEvents Info_B As PictureBox
 End Class

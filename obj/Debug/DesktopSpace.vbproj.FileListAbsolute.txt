@@ -9,3 +9,8 @@ D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.exe
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.xml
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.pdb
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.vbproj.AssemblyReference.cache
+D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.exe.manifest
+D:\Desktop-Space\Code\DEV\DesktopSpace\bin\Debug\DesktopSpace.application
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.TrustInfo.xml
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.exe.manifest
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.application
