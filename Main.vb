@@ -9,8 +9,17 @@ Public Class Main
     'Titel的字体设置
     Public Titel_Font_Name As String
     Public Titel_Font_Size As Integer
+    'Titel的字体颜色
+    Public Titel_Color_S As String
+    Public Titel_Color As Color
     'Line的高度
     Public Line_Height As Integer
+    'Line默认的颜色
+    Public Line_Color_S As String
+    Public Line_Color As Color
+    'Line被选中时的颜色
+    Public Line_Select_Color_S As String
+    Public Line_Select_Color As Color
 
 
 
@@ -32,22 +41,23 @@ Public Class Main
                 Key_Code = Reader.ReadLine
             Loop Until Key_Code = "Config_Start"
 
+            Set_Main_Color(Reader.ReadLine)
             Box_Size = Reader.ReadLine
-
             M_Padding = Reader.ReadLine
-
+            Dim M_Padding_Old = M_Padding
             Spacing = Reader.ReadLine
-
             Titel_Font_Name = Reader.ReadLine
             Titel_Font_Size = Reader.ReadLine
-
+            Titel_Color_S = Reader.ReadLine
             Line_Height = Reader.ReadLine
-
-
-
-
-
-            Set_Main_Color(Reader.ReadLine)
+            Line_Color_S = Reader.ReadLine
+            Line_Select_Color_S = Reader.ReadLine
+            Dim Rgb_Value() As String = Line_Color_S.Split(",")
+            Line_Color = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
+            Dim Rgb_Value2() As String = Line_Select_Color_S.Split(",")
+            Line_Select_Color = Color.FromArgb(Rgb_Value2(0), Rgb_Value2(1), Rgb_Value2(2))
+            Dim Rgb_Value3() As String = Titel_Color_S.Split(",")
+            Titel_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
 
 
             For i = 0 To 9
@@ -58,27 +68,18 @@ Public Class Main
 
                 Box(i) = New Box
 
-                Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
-
+                Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
+                'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
 
                 M_Padding += Box(i).Size.Width + Spacing
             Next
+
+
+            '绘制主窗体右边界、下边界
+            Me.Size = New Size(M_Padding + M_Padding_Old, Box(0).Location.Y + Box(0).Size.Height + 110)
         End Using
 
-        '绘制主窗体右边界
-        Me.Size = New Size(M_Padding + 8, Me.Size.Height)
-
-
-        '   Dim M_Color = "64,64,64"
-        '   Dim B_Name = "Default"
-        '   Dim Text_Color = "0,255,0"
-        '   Dim Line_Color = "0,255,255"
-        '   Dim Icon_Path = "D:/test.jpg"
-        '   Dim Icon_Location = "12,20"
-        '   Dim Icon_Size = "100,100"
-        '   Box(0) = New Box
-        ' Box(0).Box_Load(B_Name, Text_Color, Line_Color, Icon_Path, Icon_Location, Icon_Size)
-
+        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
 
     End Sub
 
@@ -90,6 +91,6 @@ Public Class Main
 
     Private Sub Main_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         ' Testp.BackColor = Color.Red
-        Button1.Text = e.X
+        'Button1.Text = e.X
     End Sub
 End Class
