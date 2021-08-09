@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 Public Class Main
     'Box的大小
     Public Box_Size As String
@@ -30,7 +31,8 @@ Public Class Main
     'Line：标题文字下方的线
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
-
+        '记录有多少个Box
+        Dim Box_Index As Integer = 0
 
         '打开配置文件
         Using Reader As New StreamReader("D:/test.txt")
@@ -70,16 +72,32 @@ Public Class Main
 
                 Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
                 'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
-
+                Box_Index = i
                 M_Padding += Box(i).Size.Width + Spacing
             Next
 
 
             '绘制主窗体右边界、下边界
-            Me.Size = New Size(M_Padding + M_Padding_Old, Box(0).Location.Y + Box(0).Size.Height + 110)
+            ' Me.Size = New Size(M_Padding + M_Padding_Old, Box(0).Location.Y + Box(0).Size.Height + 110)
         End Using
 
         Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
+
+        '正则表达式检查桌面路径
+        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+        Dim m As Match
+        Dim path_Name As String = "UnknowPath"
+        For Each m In mc
+            path_Name = m.ToString
+        Next m
+
+        For i = 0 To Box_Index
+            If Box(i).Titel.Text = path_Name Then
+                Box(i).Ctrl.Checked = True
+                Exit For
+            End If
+        Next
+
 
     End Sub
 

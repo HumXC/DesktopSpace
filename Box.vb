@@ -45,19 +45,32 @@
 
     '鼠标悬停
     Private Sub Box_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, Icon.MouseMove, Titel.MouseMove
+        If Me.Ctrl.Checked = False Then
+            Me.Line.BackColor = Main.Line_Select_Color
+        End If
 
-        Me.Line.BackColor = Main.Line_Select_Color
         'BackColor = Color.Transparent
     End Sub
 
     '鼠标移开
     Private Sub Box_MouseLeeve(sender As Object, e As EventArgs) Handles Me.MouseLeave, Icon.MouseLeave, Titel.MouseLeave
+        If Me.Ctrl.Checked = False Then
+            Me.Line.BackColor = Color.Transparent
+        End If
 
-        Me.Line.BackColor = Color.Transparent
         'BackColor = Color.Transparent
     End Sub
 
     '按键控制
+    Private Sub Box_KeyChange(sender As Object, e As EventArgs) Handles Ctrl.CheckedChanged
+        If Ctrl.Checked = False Then
+            Me.Line.BackColor = Color.Transparent
+        ElseIf Ctrl.Checked = True Then
+            Me.Line.BackColor = Main.Line_Color
+        End If
+    End Sub
+
+
 
 
 End Class
