@@ -1,9 +1,7 @@
-﻿'Imports Microsoft.Win32
+﻿Imports System.IO
+Imports System.Text.RegularExpressions
 
 Public Class Form1
-
-    '这行不知道什么哪里复制的，也不知道是拿来干什么的，好像是拿来刷新？不过程序里没有用上
-    'Private Declare Auto Function SendMessage Lib "user32" Alias "SendMessageW" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As String) As Integer
 
     '当前桌面路径和当前桌面名称，组合成为完整的路径
     Dim Now_Desktop_Path As String
@@ -13,17 +11,29 @@ Public Class Form1
 
     ReadOnly change_Desktop_Path = "D:\Desktop-Space\"
 
+    '正则表达式匹配最后一个单词，用于检查当前路径
+    Private Sub CheckName(path As String)
+        Dim mc As MatchCollection = Regex.Matches(path, "[a-zA-Z]+$")
+        Dim m As Match
+        For Each m In mc
+            Me.Space_Name = m.ToString
+        Next m
+    End Sub
+
+    '当桌面文件夹不存在时创建文件夹
+    Private Sub Create_Path()
+        Directory.CreateDirectory(change_Desktop_Path & "Default/这里是Default桌面")
+        Directory.CreateDirectory(change_Desktop_Path & "Game/这里是Game桌面")
+        Directory.CreateDirectory(change_Desktop_Path & "Music/这里是Music桌面")
+        Directory.CreateDirectory(change_Desktop_Path & "Code/这里是Code桌面")
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        '获取当前桌面路径
         Now_Desktop_Path = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+        '检查路径
+        CheckName(Now_Desktop_Path)
 
-        '这里要改成使用正则表达式，但是现在还不会
-        Try
-            Space_Name = My.Computer.FileSystem.ReadAllText(Now_Desktop_Path & "\Space_Name.txt") '读取名称文件，识别当前桌面
-        Catch ex As System.IO.FileNotFoundException
-            '什么都不会发生
-        End Try
 
         '控制文字底下的绿线
         Select Case Space_Name
@@ -38,6 +48,11 @@ Public Class Form1
 
             Case "Code"
                 Code_Button.Checked = True
+
+                '如果没有匹配的文件夹，就主动创建
+            Case Else
+                Create_Path()
+
         End Select
 
         Default_line_back.Location = Default_line.Location
