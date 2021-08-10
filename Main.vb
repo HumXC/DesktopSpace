@@ -3,8 +3,10 @@ Imports System.Text.RegularExpressions
 Public Class Main
     'Box的大小
     Public Box_Size As String
-    'Box和主窗体边界的距离
-    Public M_Padding As Integer
+    'Box和主窗体左边界的距离
+    Public L_Padding As Integer
+    'Box和主窗体上边界的距离
+    Public U_Padding As Integer
     'Box之间的距离
     Public Spacing As Integer
     'Titel的字体设置
@@ -47,8 +49,9 @@ Public Class Main
 
             Set_Main_Color(Reader.ReadLine)
             Box_Size = Reader.ReadLine
-            M_Padding = Reader.ReadLine
-            Dim M_Padding_Old = M_Padding
+            L_Padding = Reader.ReadLine
+            Dim L_Padding_Old = L_Padding
+            U_Padding = Reader.ReadLine
             Spacing = Reader.ReadLine
             Titel_Font_Name = Reader.ReadLine
             Titel_Font_Size = Reader.ReadLine
@@ -75,12 +78,12 @@ Public Class Main
                 Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
                 'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
                 Box_Index = i
-                M_Padding += Box(i).Size.Width + Spacing
+                L_Padding += Box(i).Size.Width + Spacing
             Next
 
 
             '绘制主窗体右边界、下边界
-            ' Me.Size = New Size(M_Padding + M_Padding_Old, Box(0).Location.Y + Box(0).Size.Height + 110)
+            Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 20)
         End Using
 
         Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)

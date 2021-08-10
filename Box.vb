@@ -16,7 +16,7 @@ Public Class Box
     Public Sub New()
         '设置可透明
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
-        BackColor = Color.Red
+        BackColor = Color.Transparent
 
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         Size = New Size(Size_Value(0), Size_Value(1))
@@ -30,7 +30,7 @@ Public Class Box
         Me.Icon_Size = Icon_Size
         '将自己加载进主窗体
         Main.Controls.Add(Me)
-        Location = New Point(Main.M_Padding, 50)
+        Location = New Point(Main.L_Padding, Main.U_Padding)
         '初始化Ctrl,Titel、Line
         Main.Controls.Add(Ctrl)
         Ctrl.Location = New Point(Me.Location.X, Me.Location.Y + Me.Size.Height + 200)

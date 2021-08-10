@@ -10,11 +10,18 @@
     Public Sub Icon_Load(Box As Object)
         Main.Controls.Add(Me)
         Parent = Box
-        Image = Image.FromFile(Box.Icon_Path)
         Dim Size_Value() As String = Box.Icon_Size.Split(",")
         Me.Size = New Size(Size_Value(0), Size_Value(1))
         Dim Location_Value() As String = Box.Icon_Location.Split(",")
         Me.Location = New Point(Location_Value(0), Location_Value(1))
+        Try
+            Image = Image.FromFile(Box.Icon_Path)
+        Catch ex As System.IO.FileNotFoundException
+            Image = My.Resources.Resources.笑脸
+            BackColor = Color.Transparent
+            Size = New Size(100, 100)
+            Location = New Point((Parent.Size.Width - Me.Size.Width) / 2, Parent.Size.Height - Me.Size.Height - 20)
+        End Try
     End Sub
 
 

@@ -22,12 +22,7 @@ DesktopSpace
   使用此强类型资源类的所有资源查找执行重写。
 </summary>
 </member>
-<member name="P:DesktopSpace.My.Resources.Resources._79482258">
-<summary>
-  查找 System.Drawing.Bitmap 类型的本地化资源。
-</summary>
-</member>
-<member name="P:DesktopSpace.My.Resources.Resources.透明测试">
+<member name="P:DesktopSpace.My.Resources.Resources.笑脸">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
