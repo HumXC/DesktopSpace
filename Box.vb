@@ -1,4 +1,5 @@
-﻿Public Class Box
+﻿Imports System.IO
+Public Class Box
     Inherits System.Windows.Forms.PictureBox
     Public Titel_Name As String
     Public Text_Color As String
@@ -70,7 +71,33 @@
         End If
     End Sub
 
+    '按下键盘
+    Private Sub Box_KeyDown(sender As Object, e As KeyEventArgs) Handles Ctrl.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Set_Desktop()
+        ElseIf e.KeyCode = Keys.Escape Then
+            End
+        End If
+    End Sub
 
+    '按下鼠标
+    Private Sub Box_MouseClick(sender As Object, e As MouseEventArgs) Handles Icon.MouseClick, Titel.MouseClick, Me.MouseClick
+        Set_Desktop()
+    End Sub
+
+    '通过修改注册表更换桌面
+    Private Sub Set_Desktop()
+        '如果选中的桌面已经是当前桌面，则不做任何处理，退出
+        If String.Compare(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Main.change_Desktop_Path & Me.Titel_Name) = 0 Then
+            End
+        ElseIf Directory.Exists(Main.change_Desktop_Path & Titel_Name) <> True Then
+            Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Name & "/这里是" & Titel_Name & "桌面")
+        End If
+
+        Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & Main.change_Desktop_Path & Titel_Name & " /t REG_EXPAND_SZ /f")
+        Shell("cmd.exe /c taskkill /f /im explorer.exe & start explorer.exe")
+        End
+    End Sub
 
 
 End Class

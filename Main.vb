@@ -22,13 +22,15 @@ Public Class Main
     Public Line_Select_Color_S As String
     Public Line_Select_Color As Color
 
-
-
     Public Box(10) As Object
     'Box：可以交互的范围
     'Icon：图标
     'Titel：标题文字
     'Line：标题文字下方的线
+
+    '更改桌面目录的父目录
+    Public ReadOnly change_Desktop_Path As String = "D:/DesktopSpace/"
+
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         '记录有多少个Box
