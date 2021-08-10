@@ -38,14 +38,26 @@ Public Class Main
         '记录有多少个Box
         Dim Box_Index As Integer = 0
 
+        '主题文件路径
+        Dim Theme_Path As String = "UnknowPath"
+
         '打开配置文件
-        Using Reader As New StreamReader("D:/test.txt")
+        Try
+            Using Reader As New StreamReader(change_Desktop_Path & "DesktopSpace.conf")
+                Theme_Path = Reader.ReadLine
+            End Using
+        Catch ex As System.IO.FileNotFoundException
+            Dim conf = New New_Conf
+            Theme_Path = change_Desktop_Path & "DesktopSpace_Theme/Default_Theme.txt"
+
+        End Try
+        Using Reader As New StreamReader(Theme_Path)
             Dim Key_Code As String
 
 
             Do
                 Key_Code = Reader.ReadLine
-            Loop Until Key_Code = "Config_Start"
+            Loop Until Key_Code = "Theme_Start"
 
             Set_Main_Color(Reader.ReadLine)
             Box_Size = Reader.ReadLine
@@ -69,7 +81,7 @@ Public Class Main
 
             For i = 0 To 9
                 Dim First_Code = Reader.ReadLine
-                If First_Code = "Config_End" Then
+                If First_Code = "Theme_End" Then
                     Exit For
                 End If
 
@@ -83,7 +95,7 @@ Public Class Main
 
 
             '绘制主窗体右边界、下边界
-            Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 20)
+            Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 40)
         End Using
 
         Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
@@ -115,5 +127,10 @@ Public Class Main
     Private Sub Main_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         ' Testp.BackColor = Color.Red
         'Button1.Text = e.X
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Theme_Edit.Show()
+        Me.Visible = False
     End Sub
 End Class

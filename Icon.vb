@@ -3,7 +3,7 @@
 
     Public Sub New()
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
-        BackColor = Color.Blue
+        BackColor = Color.Transparent
         SizeMode = PictureBoxSizeMode.Zoom
 
     End Sub
@@ -16,10 +16,13 @@
         Me.Location = New Point(Location_Value(0), Location_Value(1))
         Try
             Image = Image.FromFile(Box.Icon_Path)
+        Catch ex As System.NotSupportedException
+            ImageLocation = Box.Icon_Path
         Catch ex As System.IO.FileNotFoundException
+
+            Size = New Size(100, 100)
             Image = My.Resources.Resources.笑脸
             BackColor = Color.Transparent
-            Size = New Size(100, 100)
             Location = New Point((Parent.Size.Width - Me.Size.Width) / 2, Parent.Size.Height - Me.Size.Height - 20)
         End Try
     End Sub

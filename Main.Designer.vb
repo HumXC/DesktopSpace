@@ -24,35 +24,24 @@ Partial Class Main
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Testp = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Testp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.DesktopSpace.My.Resources.Resources.笑脸
-        Me.PictureBox1.Location = New System.Drawing.Point(711, 317)
+        Me.PictureBox1.BackColor = System.Drawing.Color.LightSalmon
+        Me.PictureBox1.Location = New System.Drawing.Point(1, 1)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(127, 127)
-        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
-        '
-        'Testp
-        '
-        Me.Testp.Location = New System.Drawing.Point(12, 591)
-        Me.Testp.Name = "Testp"
-        Me.Testp.Size = New System.Drawing.Size(100, 50)
-        Me.Testp.TabIndex = 0
-        Me.Testp.TabStop = False
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(863, 493)
+        Me.ClientSize = New System.Drawing.Size(863, 566)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Testp)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -60,13 +49,9 @@ Partial Class Main
         Me.MinimizeBox = False
         Me.Name = "Main"
         Me.Text = "Main"
-        Me.TopMost = True
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Testp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Testp As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
 End Class

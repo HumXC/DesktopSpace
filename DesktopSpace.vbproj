@@ -126,6 +126,12 @@
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main_Edit.Designer.vb">
+      <DependentUpon>Main_Edit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main_Edit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -145,6 +151,13 @@
     <Compile Include="Line.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="New_Conf.vb" />
+    <Compile Include="Theme_Edit.Designer.vb">
+      <DependentUpon>Theme_Edit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Theme_Edit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Titel.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -153,15 +166,22 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main_Edit.resx">
+      <DependentUpon>Main_Edit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Theme_Edit.resx">
+      <DependentUpon>Theme_Edit.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="DesktopSpace_TemporaryKey.pfx" />
+    <None Include="Main.Designer.edit" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
