@@ -33,16 +33,38 @@ Partial Class Guider
         Me.changePath = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.RedBar = New System.Windows.Forms.TrackBar()
-        Me.GreenBar = New System.Windows.Forms.TrackBar()
-        Me.BlueBar = New System.Windows.Forms.TrackBar()
         Me.Set_Img = New System.Windows.Forms.Button()
-        Me.RedValue = New System.Windows.Forms.TextBox()
-        Me.GreenValue = New System.Windows.Forms.TextBox()
-        Me.BlueValue = New System.Windows.Forms.TextBox()
-        CType(Me.RedBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GreenBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BlueBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BoxGroup = New System.Windows.Forms.GroupBox()
+        Me.BoxInfo = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.CreateBox = New System.Windows.Forms.Button()
+        Me.AllBoxValue = New System.Windows.Forms.GroupBox()
+        Me.L_Spacing_TextBox = New System.Windows.Forms.TextBox()
+        Me.B_Spacing_TextBox = New System.Windows.Forms.TextBox()
+        Me.Top_Spacing_TextBox = New System.Windows.Forms.TextBox()
+        Me.Select_Font = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Inde_BoxValue = New System.Windows.Forms.GroupBox()
+        Me.SelectColor = New System.Windows.Forms.Button()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.BoxInfo.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.AllBoxValue.SuspendLayout()
         Me.SuspendLayout()
         '
         'Lab1
@@ -61,9 +83,9 @@ Partial Class Guider
         Me.Lab2.Font = New System.Drawing.Font("宋体", 20.0!)
         Me.Lab2.Location = New System.Drawing.Point(20, 73)
         Me.Lab2.Name = "Lab2"
-        Me.Lab2.Size = New System.Drawing.Size(525, 34)
+        Me.Lab2.Size = New System.Drawing.Size(525, 102)
         Me.Lab2.TabIndex = 1
-        Me.Lab2.Text = "让我来帮助你进行一些简单的设置"
+        Me.Lab2.Text = "让我来帮助你进行一些简单的设置" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "第二行" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "第三行" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Button1
         '
@@ -106,9 +128,9 @@ Partial Class Guider
         'changePath
         '
         Me.changePath.Font = New System.Drawing.Font("宋体", 12.0!)
-        Me.changePath.Location = New System.Drawing.Point(13, 296)
+        Me.changePath.Location = New System.Drawing.Point(13, 396)
         Me.changePath.Name = "changePath"
-        Me.changePath.Size = New System.Drawing.Size(135, 42)
+        Me.changePath.Size = New System.Drawing.Size(128, 63)
         Me.changePath.TabIndex = 6
         Me.changePath.Text = "选择路径"
         Me.changePath.UseVisualStyleBackColor = True
@@ -118,88 +140,274 @@ Partial Class Guider
         '
         Me.Timer1.Interval = 1
         '
-        'RedBar
-        '
-        Me.RedBar.Cursor = System.Windows.Forms.Cursors.SizeWE
-        Me.RedBar.LargeChange = 1
-        Me.RedBar.Location = New System.Drawing.Point(26, 210)
-        Me.RedBar.Maximum = 255
-        Me.RedBar.Name = "RedBar"
-        Me.RedBar.Size = New System.Drawing.Size(783, 56)
-        Me.RedBar.TabIndex = 7
-        Me.RedBar.Visible = False
-        '
-        'GreenBar
-        '
-        Me.GreenBar.Cursor = System.Windows.Forms.Cursors.SizeWE
-        Me.GreenBar.LargeChange = 1
-        Me.GreenBar.Location = New System.Drawing.Point(27, 272)
-        Me.GreenBar.Maximum = 255
-        Me.GreenBar.Name = "GreenBar"
-        Me.GreenBar.Size = New System.Drawing.Size(783, 56)
-        Me.GreenBar.TabIndex = 9
-        Me.GreenBar.Visible = False
-        '
-        'BlueBar
-        '
-        Me.BlueBar.Cursor = System.Windows.Forms.Cursors.SizeWE
-        Me.BlueBar.LargeChange = 1
-        Me.BlueBar.Location = New System.Drawing.Point(26, 334)
-        Me.BlueBar.Maximum = 255
-        Me.BlueBar.Name = "BlueBar"
-        Me.BlueBar.Size = New System.Drawing.Size(783, 56)
-        Me.BlueBar.TabIndex = 10
-        Me.BlueBar.Visible = False
-        '
         'Set_Img
         '
         Me.Set_Img.Font = New System.Drawing.Font("宋体", 12.0!)
-        Me.Set_Img.Location = New System.Drawing.Point(12, 396)
+        Me.Set_Img.Location = New System.Drawing.Point(147, 396)
         Me.Set_Img.Name = "Set_Img"
         Me.Set_Img.Size = New System.Drawing.Size(128, 63)
         Me.Set_Img.TabIndex = 13
         Me.Set_Img.Text = "选择图片"
         Me.Set_Img.UseVisualStyleBackColor = True
+        Me.Set_Img.Visible = False
         '
-        'RedValue
+        'BoxGroup
         '
-        Me.RedValue.Font = New System.Drawing.Font("宋体", 15.0!)
-        Me.RedValue.Location = New System.Drawing.Point(811, 210)
-        Me.RedValue.Name = "RedValue"
-        Me.RedValue.Size = New System.Drawing.Size(58, 36)
-        Me.RedValue.TabIndex = 14
-        Me.RedValue.Visible = False
+        Me.BoxGroup.Location = New System.Drawing.Point(224, 66)
+        Me.BoxGroup.Name = "BoxGroup"
+        Me.BoxGroup.Size = New System.Drawing.Size(458, 137)
+        Me.BoxGroup.TabIndex = 17
+        Me.BoxGroup.TabStop = False
+        Me.BoxGroup.Text = "桌面一览"
+        Me.BoxGroup.Visible = False
         '
-        'GreenValue
+        'BoxInfo
         '
-        Me.GreenValue.Font = New System.Drawing.Font("宋体", 15.0!)
-        Me.GreenValue.Location = New System.Drawing.Point(811, 272)
-        Me.GreenValue.Name = "GreenValue"
-        Me.GreenValue.Size = New System.Drawing.Size(58, 36)
-        Me.GreenValue.TabIndex = 15
-        Me.GreenValue.Visible = False
+        Me.BoxInfo.Controls.Add(Me.Label4)
+        Me.BoxInfo.Controls.Add(Me.Label3)
+        Me.BoxInfo.Controls.Add(Me.Label2)
+        Me.BoxInfo.Controls.Add(Me.Label1)
+        Me.BoxInfo.Controls.Add(Me.PictureBox4)
+        Me.BoxInfo.Controls.Add(Me.PictureBox3)
+        Me.BoxInfo.Controls.Add(Me.PictureBox2)
+        Me.BoxInfo.Controls.Add(Me.PictureBox1)
+        Me.BoxInfo.Location = New System.Drawing.Point(688, 66)
+        Me.BoxInfo.Name = "BoxInfo"
+        Me.BoxInfo.Size = New System.Drawing.Size(181, 306)
+        Me.BoxInfo.TabIndex = 18
+        Me.BoxInfo.TabStop = False
+        Me.BoxInfo.Text = "Box元素说明"
+        Me.BoxInfo.Visible = False
         '
-        'BlueValue
+        'Label4
         '
-        Me.BlueValue.Font = New System.Drawing.Font("宋体", 15.0!)
-        Me.BlueValue.Location = New System.Drawing.Point(811, 334)
-        Me.BlueValue.Name = "BlueValue"
-        Me.BlueValue.Size = New System.Drawing.Size(58, 36)
-        Me.BlueValue.TabIndex = 16
-        Me.BlueValue.Visible = False
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(53, 281)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(82, 15)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "底部标识线"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(72, 233)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(37, 15)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "标题"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(72, 133)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(37, 15)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "图标"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(20, 38)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(142, 15)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "鼠标可以交互的范围"
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackColor = System.Drawing.Color.LightSkyBlue
+        Me.PictureBox4.Location = New System.Drawing.Point(14, 264)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(154, 11)
+        Me.PictureBox4.TabIndex = 3
+        Me.PictureBox4.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.Color.YellowGreen
+        Me.PictureBox3.Location = New System.Drawing.Point(14, 222)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(154, 36)
+        Me.PictureBox3.TabIndex = 2
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Gold
+        Me.PictureBox2.Location = New System.Drawing.Point(38, 86)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(109, 110)
+        Me.PictureBox2.TabIndex = 1
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.DarkSalmon
+        Me.PictureBox1.Location = New System.Drawing.Point(14, 23)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(154, 193)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'CreateBox
+        '
+        Me.CreateBox.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.CreateBox.Location = New System.Drawing.Point(13, 396)
+        Me.CreateBox.Name = "CreateBox"
+        Me.CreateBox.Size = New System.Drawing.Size(128, 63)
+        Me.CreateBox.TabIndex = 19
+        Me.CreateBox.Text = "添加桌面"
+        Me.CreateBox.UseVisualStyleBackColor = True
+        Me.CreateBox.Visible = False
+        '
+        'AllBoxValue
+        '
+        Me.AllBoxValue.Controls.Add(Me.Button4)
+        Me.AllBoxValue.Controls.Add(Me.L_Spacing_TextBox)
+        Me.AllBoxValue.Controls.Add(Me.B_Spacing_TextBox)
+        Me.AllBoxValue.Controls.Add(Me.Top_Spacing_TextBox)
+        Me.AllBoxValue.Controls.Add(Me.Select_Font)
+        Me.AllBoxValue.Controls.Add(Me.Label9)
+        Me.AllBoxValue.Controls.Add(Me.Label8)
+        Me.AllBoxValue.Controls.Add(Me.Label7)
+        Me.AllBoxValue.Controls.Add(Me.Label6)
+        Me.AllBoxValue.Controls.Add(Me.Label5)
+        Me.AllBoxValue.Location = New System.Drawing.Point(13, 66)
+        Me.AllBoxValue.Name = "AllBoxValue"
+        Me.AllBoxValue.Size = New System.Drawing.Size(205, 316)
+        Me.AllBoxValue.TabIndex = 20
+        Me.AllBoxValue.TabStop = False
+        Me.AllBoxValue.Text = "共同参数"
+        Me.AllBoxValue.Visible = False
+        '
+        'L_Spacing_TextBox
+        '
+        Me.L_Spacing_TextBox.Location = New System.Drawing.Point(95, 86)
+        Me.L_Spacing_TextBox.Name = "L_Spacing_TextBox"
+        Me.L_Spacing_TextBox.Size = New System.Drawing.Size(100, 25)
+        Me.L_Spacing_TextBox.TabIndex = 26
+        '
+        'B_Spacing_TextBox
+        '
+        Me.B_Spacing_TextBox.Location = New System.Drawing.Point(95, 22)
+        Me.B_Spacing_TextBox.Name = "B_Spacing_TextBox"
+        Me.B_Spacing_TextBox.Size = New System.Drawing.Size(100, 25)
+        Me.B_Spacing_TextBox.TabIndex = 25
+        '
+        'Top_Spacing_TextBox
+        '
+        Me.Top_Spacing_TextBox.Location = New System.Drawing.Point(95, 54)
+        Me.Top_Spacing_TextBox.Name = "Top_Spacing_TextBox"
+        Me.Top_Spacing_TextBox.Size = New System.Drawing.Size(100, 25)
+        Me.Top_Spacing_TextBox.TabIndex = 24
+        '
+        'Select_Font
+        '
+        Me.Select_Font.Font = New System.Drawing.Font("宋体", 10.0!)
+        Me.Select_Font.Location = New System.Drawing.Point(95, 149)
+        Me.Select_Font.Name = "Select_Font"
+        Me.Select_Font.Size = New System.Drawing.Size(98, 25)
+        Me.Select_Font.TabIndex = 23
+        Me.Select_Font.Text = "选择字体"
+        Me.Select_Font.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.Label9.Location = New System.Drawing.Point(6, 117)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(89, 20)
+        Me.Label9.TabIndex = 4
+        Me.Label9.Text = "标题颜色"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.Label8.Location = New System.Drawing.Point(6, 149)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(89, 20)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "标题字体"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.Label7.Location = New System.Drawing.Point(6, 85)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(89, 20)
+        Me.Label7.TabIndex = 2
+        Me.Label7.Text = "左右空间"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.Label6.Location = New System.Drawing.Point(6, 53)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(89, 20)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "顶部空间"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.Label5.Location = New System.Drawing.Point(46, 21)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(49, 20)
+        Me.Label5.TabIndex = 0
+        Me.Label5.Text = "间距"
+        '
+        'Inde_BoxValue
+        '
+        Me.Inde_BoxValue.Location = New System.Drawing.Point(224, 210)
+        Me.Inde_BoxValue.Name = "Inde_BoxValue"
+        Me.Inde_BoxValue.Size = New System.Drawing.Size(458, 172)
+        Me.Inde_BoxValue.TabIndex = 21
+        Me.Inde_BoxValue.TabStop = False
+        Me.Inde_BoxValue.Text = "独立参数"
+        Me.Inde_BoxValue.Visible = False
+        '
+        'SelectColor
+        '
+        Me.SelectColor.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.SelectColor.Location = New System.Drawing.Point(13, 396)
+        Me.SelectColor.Name = "SelectColor"
+        Me.SelectColor.Size = New System.Drawing.Size(128, 63)
+        Me.SelectColor.TabIndex = 22
+        Me.SelectColor.Text = "选择颜色"
+        Me.SelectColor.UseVisualStyleBackColor = True
+        Me.SelectColor.Visible = False
+        '
+        'FontDialog1
+        '
+        Me.FontDialog1.ShowEffects = False
+        '
+        'Button4
+        '
+        Me.Button4.Font = New System.Drawing.Font("宋体", 10.0!)
+        Me.Button4.Location = New System.Drawing.Point(95, 115)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(98, 25)
+        Me.Button4.TabIndex = 27
+        Me.Button4.Text = "选择颜色"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Guider
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(881, 471)
-        Me.Controls.Add(Me.BlueValue)
-        Me.Controls.Add(Me.GreenValue)
-        Me.Controls.Add(Me.RedValue)
+        Me.Controls.Add(Me.AllBoxValue)
+        Me.Controls.Add(Me.Inde_BoxValue)
+        Me.Controls.Add(Me.CreateBox)
+        Me.Controls.Add(Me.BoxGroup)
         Me.Controls.Add(Me.Set_Img)
-        Me.Controls.Add(Me.BlueBar)
-        Me.Controls.Add(Me.GreenBar)
-        Me.Controls.Add(Me.RedBar)
         Me.Controls.Add(Me.changePath)
         Me.Controls.Add(Me.PathBox)
         Me.Controls.Add(Me.Button3)
@@ -207,15 +415,22 @@ Partial Class Guider
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Lab2)
         Me.Controls.Add(Me.Lab1)
+        Me.Controls.Add(Me.BoxInfo)
+        Me.Controls.Add(Me.SelectColor)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(899, 518)
         Me.MinimumSize = New System.Drawing.Size(899, 518)
         Me.Name = "Guider"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "设置向导"
-        CType(Me.RedBar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GreenBar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BlueBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BoxInfo.ResumeLayout(False)
+        Me.BoxInfo.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.AllBoxValue.ResumeLayout(False)
+        Me.AllBoxValue.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -230,11 +445,30 @@ Partial Class Guider
     Friend WithEvents changePath As Button
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents RedBar As TrackBar
-    Friend WithEvents GreenBar As TrackBar
-    Friend WithEvents BlueBar As TrackBar
     Friend WithEvents Set_Img As Button
-    Friend WithEvents RedValue As TextBox
-    Friend WithEvents GreenValue As TextBox
-    Friend WithEvents BlueValue As TextBox
+    Friend WithEvents BoxGroup As GroupBox
+    Friend WithEvents BoxInfo As GroupBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents CreateBox As Button
+    Friend WithEvents AllBoxValue As GroupBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Inde_BoxValue As GroupBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents SelectColor As Button
+    Friend WithEvents L_Spacing_TextBox As TextBox
+    Friend WithEvents B_Spacing_TextBox As TextBox
+    Friend WithEvents Top_Spacing_TextBox As TextBox
+    Friend WithEvents Select_Font As Button
+    Friend WithEvents FontDialog1 As FontDialog
+    Friend WithEvents Button4 As Button
 End Class

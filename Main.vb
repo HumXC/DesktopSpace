@@ -1,30 +1,35 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Public Class Main
-    'Box的大小
-    Public Box_Size As String
-    'Box和主窗体左边界的距离
+    '是否在使用主题编辑器 
+    Public Theme_Editing As Boolean = False
+    'Box和主窗体左右边界的距离
     Public L_Padding As Integer
     'Box和主窗体上边界的距离
     Public U_Padding As Integer
     'Box之间的距离
-    Public Spacing As Integer
-    'Titel的字体设置
-    Public Titel_Font_Name As String
-    Public Titel_Font_Size As Integer
+    Public B_Spacing As Integer
+    'Box的大小
+    Public Box_Size As String
+
     'Titel的字体颜色
-    Public Titel_Color_S As String
     Public Titel_Color As Color
+    'Titel的字体名称 
+    Public Titel_Font As String
+    'Titel的字体大小
+    Public Titel_Size As Integer
+
+
     'Line的高度
     Public Line_Height As Integer
     'Line默认的颜色
-    Public Line_Color_S As String
     Public Line_Color As Color
-    'Line被选中时的颜色
-    Public Line_Select_Color_S As String
+    '鼠标悬停在Line上的颜色
     Public Line_Select_Color As Color
 
-    Public Box(10) As Object
+    '记录有多少个Box
+    Private ReadOnly Box(10) As Object
+    Public Box_Index As Integer = 0
     'Box：可以交互的范围
     'Icon：图标
     'Titel：标题文字
@@ -35,13 +40,12 @@ Public Class Main
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
-        '记录有多少个Box
-        Dim Box_Index As Integer = 0
 
-        '主题文件路径
-        Dim Theme_Path As String = "UnknowPath"
+
         '运行前桌面路径
         Dim Default_Path As String = "UnknowPath"
+        '主题文件路径
+        Dim Theme_Path As String = "UnknowPath"
         '是否存在配置文件
         Dim Conffile As Boolean = True
         '打开配置文件
@@ -63,7 +67,6 @@ Public Class Main
             Using Reader As New StreamReader(Theme_Path)
                 Dim Key_Code As String
 
-
                 Do
                     Key_Code = Reader.ReadLine
                 Loop Until Key_Code = "Theme_Start"
@@ -71,20 +74,22 @@ Public Class Main
                 Set_Main_Color(Reader.ReadLine)
                 Box_Size = Reader.ReadLine
                 L_Padding = Reader.ReadLine
-                Dim L_Padding_Old = L_Padding
                 U_Padding = Reader.ReadLine
-                Spacing = Reader.ReadLine
-                Titel_Font_Name = Reader.ReadLine
-                Titel_Font_Size = Reader.ReadLine
-                Titel_Color_S = Reader.ReadLine
+                B_Spacing = Reader.ReadLine
+                Titel_Font = Reader.ReadLine
+                Titel_Size = Reader.ReadLine
+                Dim Titel_Color_S = Reader.ReadLine
                 Line_Height = Reader.ReadLine
-                Line_Color_S = Reader.ReadLine
-                Line_Select_Color_S = Reader.ReadLine
+                Dim Line_Color_S = Reader.ReadLine
+                Dim Line_Select_Color_S = Reader.ReadLine
+
                 Dim Rgb_Value() As String = Line_Color_S.Split(",")
                 Line_Color = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
                 Dim Rgb_Value2() As String = Line_Select_Color_S.Split(",")
+
                 Line_Select_Color = Color.FromArgb(Rgb_Value2(0), Rgb_Value2(1), Rgb_Value2(2))
                 Dim Rgb_Value3() As String = Titel_Color_S.Split(",")
+
                 Titel_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
 
 
@@ -96,15 +101,17 @@ Public Class Main
 
                     Box(i) = New Box
 
-                    Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
+                    Box(i).Box_Set(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
                     'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
                     Box_Index = i
-                    L_Padding += Box(i).Size.Width + Spacing
+                    Box(i).Box_Load()
+
+
                 Next
 
 
                 '绘制主窗体右边界、下边界
-                Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 40)
+                Me.Size = New Size(Box(Box_Index).location.X + Box(Box_Index).Size.Width + L_Padding, Box(0).Line.Location.Y + 40)
             End Using
 
             Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)

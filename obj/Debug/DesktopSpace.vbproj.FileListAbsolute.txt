@@ -14,6 +14,5 @@ D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.TrustInfo.xml
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.exe.manifest
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.application
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Main.resources
-D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Theme_Edit.resources
-D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Main_Edit.resources
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Guider.resources
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.CreateColor.resources

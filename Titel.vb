@@ -1,22 +1,22 @@
 ﻿Public Class Titel
     Inherits System.Windows.Forms.Label
     Public Sub New()
-        ' SetStyle(ControlStyles.SupportsTransparentBackColor, True)
-        Font = New Font(" & Main.Titel_Font_Name & ", Main.Titel_Font_Size, System.Drawing.FontStyle.Bold)
+        SetStyle(ControlStyles.SupportsTransparentBackColor, True)
         TextAlign = ContentAlignment.MiddleCenter
-        ' BackColor = Color.Transparent
+        BackColor = Color.Transparent
         AutoSize = True
+        Cursor = Cursors.Hand
 
     End Sub
 
     Public Sub Titel_Load(Box As Object)
         Main.Controls.Add(Me)
-        Text = Box.Titel_Name
+        Text = Box.Titel_Text
+        Font = New Font(" & Main.Titel_Font & ", Main.Titel_Size, System.Drawing.FontStyle.Bold)
+        Location = New Point(Box.Location.X + (Box.Size.Width - Me.Size.Width) / 2, Box.Location.Y + Box.Size.Height + 5)
         ForeColor = Main.Titel_Color
-        Location = New Point(Box.Location.x + (Box.Size.Width - Me.Size.Width) / 2, Box.Location.Y + Box.Size.Height + 5)
+
 
     End Sub
-
-
 
 End Class
