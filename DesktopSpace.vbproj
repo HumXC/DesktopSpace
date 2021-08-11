@@ -111,6 +111,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Box_Control.vb" />
+    <Compile Include="Guider.Designer.vb">
+      <DependentUpon>Guider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Guider.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Icon.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -151,7 +157,6 @@
     <Compile Include="Line.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="New_Conf.vb" />
     <Compile Include="Theme_Edit.Designer.vb">
       <DependentUpon>Theme_Edit.vb</DependentUpon>
     </Compile>
@@ -163,6 +168,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Guider.resx">
+      <DependentUpon>Guider.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +203,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\笑脸.png" />
+    <None Include="Resources\code.png" />
+    <None Include="Resources\_Default.png" />
+    <None Include="Resources\Game.png" />
+    <None Include="Resources\Music.png" />
+    <None Include="Resources\Default_Theme.txt" />
     <Content Include="桌面.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -204,5 +217,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

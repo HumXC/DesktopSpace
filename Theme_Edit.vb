@@ -32,8 +32,9 @@ Public Class Theme_Edit
 
         Main_editt.MdiParent = Me
         Main_editt.Show()
-        Dim Editt As New Main_Edit
-        Editt.MdiParent = Me
+        Dim Editt As New Main_Edit With {
+            .MdiParent = Me
+        }
         Editt.Show()
         Editt.Dock = DockStyle.Bottom
     End Sub

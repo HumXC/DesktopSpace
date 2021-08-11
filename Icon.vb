@@ -21,7 +21,7 @@
         Catch ex As System.IO.FileNotFoundException
 
             Size = New Size(100, 100)
-            Image = My.Resources.Resources.笑脸
+            Image = My.Resources.Resources._Default
             BackColor = Color.Transparent
             Location = New Point((Parent.Size.Width - Me.Size.Width) / 2, Parent.Size.Height - Me.Size.Height - 20)
         End Try

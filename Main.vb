@@ -31,7 +31,7 @@ Public Class Main
     'Line：标题文字下方的线
 
     '更改桌面目录的父目录
-    Public ReadOnly change_Desktop_Path As String = "D:/DesktopSpace/"
+    Public change_Desktop_Path As String = "D:/DesktopSpace/"
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -40,82 +40,91 @@ Public Class Main
 
         '主题文件路径
         Dim Theme_Path As String = "UnknowPath"
-
+        '运行前桌面路径
+        Dim Default_Path As String = "UnknowPath"
+        '是否存在配置文件
+        Dim Conffile As Boolean = True
         '打开配置文件
         Try
-            Using Reader As New StreamReader(change_Desktop_Path & "DesktopSpace.conf")
+            Using Reader As New StreamReader(Application.StartupPath & "/DesktopSpace.conf")
+                Default_Path = Reader.ReadLine
                 Theme_Path = Reader.ReadLine
+                change_Desktop_Path = Reader.ReadLine
             End Using
+
+            '如果没有找到配置文件则打开配置向导
         Catch ex As System.IO.FileNotFoundException
-            Dim conf = New New_Conf
-            Theme_Path = change_Desktop_Path & "DesktopSpace_Theme/Default_Theme.txt"
-
+            Conffile = False
+            Guider.Show()
         End Try
-        Using Reader As New StreamReader(Theme_Path)
-            Dim Key_Code As String
+
+        '配置文件存在则读取配置文件并生成Box
+        If Conffile = True Then
+            Using Reader As New StreamReader(Theme_Path)
+                Dim Key_Code As String
 
 
-            Do
-                Key_Code = Reader.ReadLine
-            Loop Until Key_Code = "Theme_Start"
+                Do
+                    Key_Code = Reader.ReadLine
+                Loop Until Key_Code = "Theme_Start"
 
-            Set_Main_Color(Reader.ReadLine)
-            Box_Size = Reader.ReadLine
-            L_Padding = Reader.ReadLine
-            Dim L_Padding_Old = L_Padding
-            U_Padding = Reader.ReadLine
-            Spacing = Reader.ReadLine
-            Titel_Font_Name = Reader.ReadLine
-            Titel_Font_Size = Reader.ReadLine
-            Titel_Color_S = Reader.ReadLine
-            Line_Height = Reader.ReadLine
-            Line_Color_S = Reader.ReadLine
-            Line_Select_Color_S = Reader.ReadLine
-            Dim Rgb_Value() As String = Line_Color_S.Split(",")
-            Line_Color = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
-            Dim Rgb_Value2() As String = Line_Select_Color_S.Split(",")
-            Line_Select_Color = Color.FromArgb(Rgb_Value2(0), Rgb_Value2(1), Rgb_Value2(2))
-            Dim Rgb_Value3() As String = Titel_Color_S.Split(",")
-            Titel_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
+                Set_Main_Color(Reader.ReadLine)
+                Box_Size = Reader.ReadLine
+                L_Padding = Reader.ReadLine
+                Dim L_Padding_Old = L_Padding
+                U_Padding = Reader.ReadLine
+                Spacing = Reader.ReadLine
+                Titel_Font_Name = Reader.ReadLine
+                Titel_Font_Size = Reader.ReadLine
+                Titel_Color_S = Reader.ReadLine
+                Line_Height = Reader.ReadLine
+                Line_Color_S = Reader.ReadLine
+                Line_Select_Color_S = Reader.ReadLine
+                Dim Rgb_Value() As String = Line_Color_S.Split(",")
+                Line_Color = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
+                Dim Rgb_Value2() As String = Line_Select_Color_S.Split(",")
+                Line_Select_Color = Color.FromArgb(Rgb_Value2(0), Rgb_Value2(1), Rgb_Value2(2))
+                Dim Rgb_Value3() As String = Titel_Color_S.Split(",")
+                Titel_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
 
 
-            For i = 0 To 9
-                Dim First_Code = Reader.ReadLine
-                If First_Code = "Theme_End" Then
+                For i = 0 To 9
+                    Dim First_Code = Reader.ReadLine
+                    If First_Code = "Theme_End" Then
+                        Exit For
+                    End If
+
+                    Box(i) = New Box
+
+                    Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
+                    'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
+                    Box_Index = i
+                    L_Padding += Box(i).Size.Width + Spacing
+                Next
+
+
+                '绘制主窗体右边界、下边界
+                Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 40)
+            End Using
+
+            Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
+
+            '正则表达式检查桌面路径
+            Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+            Dim m As Match
+            Dim path_Name As String = "UnknowPath"
+            For Each m In mc
+                path_Name = m.ToString
+            Next m
+
+            For i = 0 To Box_Index
+                If Box(i).Titel.Text = path_Name Then
+                    Box(i).Ctrl.Checked = True
                     Exit For
                 End If
-
-                Box(i) = New Box
-
-                Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
-                'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
-                Box_Index = i
-                L_Padding += Box(i).Size.Width + Spacing
             Next
 
-
-            '绘制主窗体右边界、下边界
-            Me.Size = New Size(L_Padding + L_Padding_Old, Box(0).Line.Location.Y + 40)
-        End Using
-
-        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
-
-        '正则表达式检查桌面路径
-        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
-        Dim m As Match
-        Dim path_Name As String = "UnknowPath"
-        For Each m In mc
-            path_Name = m.ToString
-        Next m
-
-        For i = 0 To Box_Index
-            If Box(i).Titel.Text = path_Name Then
-                Box(i).Ctrl.Checked = True
-                Exit For
-            End If
-        Next
-
-
+        End If
     End Sub
 
     Public Sub Set_Main_Color(M_Color As String)
@@ -124,13 +133,8 @@ Public Class Main
 
     End Sub
 
-    Private Sub Main_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-        ' Testp.BackColor = Color.Red
-        'Button1.Text = e.X
-    End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        Theme_Edit.Show()
+    Private Sub Label1_Click(sender As Object, e As EventArgs)
         Me.Visible = False
     End Sub
+
 End Class
