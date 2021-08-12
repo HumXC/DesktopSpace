@@ -32,7 +32,7 @@ Public Class Set_Font
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Main.Titel_Font = CStr(ListBox1.SelectedItem)
         Main.Titel_Size = Me.Text_Size
-        Guider.Ser_All_Box()
+        Guider.Set_All_Box()
         Me.Close()
     End Sub
 End Class

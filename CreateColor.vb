@@ -56,17 +56,17 @@
             Case 2
                 Main.Titel_Color_S = My_Color
                 Main.Color_S_To_Color()
-                Guider.Ser_All_Box()
+                Guider.Set_All_Box()
             Case 3
                 '线的颜色
                 Main.Line_Color_S = My_Color
                 Main.Color_S_To_Color()
-                Guider.Ser_All_Box()
+                Guider.Set_All_Box()
             Case 4
                 '线被选中的颜色
                 Main.Line_Select_Color_S = My_Color
                 Main.Color_S_To_Color()
-                Guider.Ser_All_Box()
+                Guider.Set_All_Box()
         End Select
 
     End Function

@@ -148,20 +148,20 @@ Public Class Guider
     End Sub
 
     '重新设置Box参数的值
-    Public Sub Ser_All_Box()
+    Public Sub Set_All_Box()
         For i = 0 To Main.Box_Index - 1
             If Main.Box_Index <> 0 Then
                 Main.Box(i).Box_Load()
             End If
         Next
-        If Main.Box_Index <> 0 Then
-            Main.Size = New Size(Main.Box(Main.Box_Index - 1).Size.Width + Main.Box(Main.Box_Index - 1).Location.X + Main.L_Padding, Main.Box(0).Line.Location.Y + 40)
-        End If
+        '     If Main.Box_Index <> 0 Then
+        '         Main.Size = New Size(Main.Box(Main.Box_Index - 1).Size.Width + Main.Box(Main.Box_Index - 1).Location.X + Main.L_Padding, Main.Box(0).Line.Location.Y + 40)
+        '     End If
     End Sub
     Private Sub B_Spacing_TextBox_TextChanged(sender As Object, e As EventArgs) Handles B_Spacing_TextBox.TextChanged
         If B_Spacing_TextBox.Text <> "" Then
             Main.B_Spacing = B_Spacing_TextBox.Text
-            Ser_All_Box()
+            Set_All_Box()
 
         End If
     End Sub
@@ -169,14 +169,14 @@ Public Class Guider
     Private Sub U_Padding_TextBox_TextChanged(sender As Object, e As EventArgs) Handles U_Padding_TextBox.TextChanged
         If U_Padding_TextBox.Text <> "" Then
             Main.U_Padding = U_Padding_TextBox.Text
-            Ser_All_Box()
+            Set_All_Box()
         End If
     End Sub
 
     Private Sub L_Padding_TextBox_TextChanged(sender As Object, e As EventArgs) Handles L_Padding_TextBox.TextChanged
         If L_Padding_TextBox.Text <> "" Then
             Main.L_Padding = L_Padding_TextBox.Text
-            Ser_All_Box()
+            Set_All_Box()
         End If
     End Sub
 
@@ -232,17 +232,15 @@ Public Class Guider
         Next
     End Sub
     '标题文本更改
-    Private Sub Titel_Text_TextChanged(sender As Object, e As EventArgs) Handles Titel_Text.TextChanged
-        For i = 0 To Main.Box_Index
-            If Main.Box(i).Ctrl.Checked = True Then
-                Main.Box(i).Titel_Text = Titel_Text.Text
-                Main.Box(i).Box_Load()
-                Exit For
-            End If
-        Next
-    End Sub
+    ' Private Sub Titel_Text_TextChanged(sender As Object, e As EventArgs) Handles Titel_Text.TextChanged
+    '    For i = 0 To Main.Box_Index
+    '    If Main.Box(i).Ctrl.Checked = True Then
+    '            Main.Box(i).Titel_Text = Titel_Text.Text
+    '            Main.Box(i).Box_Load()
+    '    Exit For
+    '  End If
+    '     Next
+    '  End Sub
 
-    Private Sub TrackBa_Scroll(sender As Object, e As EventArgs)
 
-    End Sub
 End Class

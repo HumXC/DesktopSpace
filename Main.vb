@@ -168,4 +168,11 @@ Public Class Main
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Guider.Show()
     End Sub
+
+    '删除一个Box
+    Public Sub Delete_Box(i As Integer)
+
+    End Sub
+
+
 End Class
