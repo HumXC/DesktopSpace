@@ -52,14 +52,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DesktopSpace.exe" size="747968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DesktopSpace.exe" size="381376">
       <assemblyIdentity name="DesktopSpace" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>mGZQoXJNPcQlZBUKJsp702hz+2s=</dsig:DigestValue>
+        <dsig:DigestValue>C+YtMU4glk364NgsrjsK+KpY+E4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

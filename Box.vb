@@ -4,9 +4,9 @@ Public Class Box
     '标记自己是第几个窗口
     Public Box_Index As Integer
 
-    Public Titel_Text As String = "桌面" & Main.Box_Index + 1
+    Public Titel_Text As String = "桌面" & Main.Box_Num
 
-    Public Icon_Path As String = "UnknowPath"
+    Public Icon_Name As String = "UnknowPath"
     Public Icon_Size As String
     Public Icon_Location As String
 
@@ -26,11 +26,12 @@ Public Class Box
 
     End Sub
 
-    Public Sub Box_Set(Titel_Text As String, Icon_Path As String, Icon_Location As String, Icon_Size As String)
-        Me.Box_Index = Main.Box_Index
+    Public Sub Box_Load(Titel_Text As String, Icon_Name As String, Icon_Location As String, Icon_Size As String， Index As Integer)
+
+        Me.Box_Index = Index
         Me.Titel_Text = Titel_Text
 
-        Me.Icon_Path = Icon_Path
+        Me.Icon_Name = Icon_Name
         Me.Icon_Location = Icon_Location
         Me.Icon_Size = Icon_Size
 
@@ -38,13 +39,6 @@ Public Class Box
         Main.Controls.Add(Me)
         '加载控制按钮进主窗体
         Main.Controls.Add(Ctrl)
-
-
-
-    End Sub
-
-    Public Sub Box_Load()
-
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         Size = New Size(Size_Value(0), Size_Value(1))
 
@@ -55,8 +49,9 @@ Public Class Box
         Titel.Titel_Load(Me)
         Icon.Icon_Load(Me)
         Line.Line_Load(Me)
-    End Sub
 
+
+    End Sub
 
 
     '鼠标悬停
@@ -98,40 +93,28 @@ Public Class Box
     '按下鼠标
     Private Sub Box_MouseClick(sender As Object, e As MouseEventArgs) Handles Icon.MouseClick, Titel.MouseClick, Me.MouseClick
         Set_Desktop()
-        '如果正在使用主题编辑器，则打开主题编辑器的选择功能
-        If Main.Theme_Editing = True Then
-            Guider.Titel_Text.Text = Titel_Text
-            Ctrl.Checked = True
-            Guider.ImgPath.Text = Icon_Path
-            Guider.OpenFileDialog1.FileName = "OpenFileDialog1"
 
-            Dim Size_Value() As String = Icon_Size.Split(",")
-            Guider.ImgSize_X.Text = Size_Value(0)
-            Guider.ImgSize_Y.Text = Size_Value(1)
-
-            Dim Loca_Value() As String = Icon_Location.Split(",")
-            Guider.ImgLoca_X.Text = Loca_Value(0)
-            Guider.ImgLoca_Y.Text = Loca_Value(1)
-        End If
     End Sub
 
     '通过修改注册表更换桌面
     Private Sub Set_Desktop()
-        '如果正在使用主题编辑器，则不做如任何操作
-        If Main.Theme_Editing = False Then
-            '如果选中的桌面已经是当前桌面，则不做任何处理，退出
-            If String.Compare(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Main.change_Desktop_Path & Me.Titel_Text) = 0 Then
-                End
-            ElseIf Directory.Exists(Main.change_Desktop_Path & Titel_Text) <> True Then
-                Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Text & "/这里是" & Titel_Text & "桌面")
-            End If
 
-            Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Main.change_Desktop_Path & Main.Now_Path & ".reg /y & reg import " & Main.change_Desktop_Path & Titel_Text & ".reg")
-
-            Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & Main.change_Desktop_Path & Titel_Text & " /t REG_EXPAND_SZ /f")
-            Shell("cmd.exe /c taskkill /im explorer.exe & taskkill /f /im explorer.exe & start explorer.exe")
+        '如果选中的桌面已经是当前桌面，则不做任何处理，退出
+        If String.Compare(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Main.change_Desktop_Path & Me.Titel_Text) = 0 Then
             End
+        ElseIf Directory.Exists(Main.change_Desktop_Path & Titel_Text) <> True Then
+            Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Text & "/这里是" & Titel_Text & "桌面")
         End If
+
+
+        Shell("cmd.exe /c taskkill /im explorer.exe & taskkill /f /im explorer.exe & start explorer.exe")
+        '恢复目标桌面的图标位置信息
+        Shell("cmd.exe /c reg import " & Main.change_Desktop_Path & Titel_Text & ".reg")
+        Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & Main.change_Desktop_Path & Titel_Text & " /t REG_EXPAND_SZ /f ")
+
+        ' Shell("cmd.exe /c start explorer.exe")
+        End
+
     End Sub
 
 

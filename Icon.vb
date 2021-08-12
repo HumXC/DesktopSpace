@@ -18,12 +18,11 @@
         Me.Location = New Point(Location_Value(0), Location_Value(1))
 
         Try
-            Image = Image.FromFile(Box.Icon_Path)
+            Image = Image.FromFile(Application.StartupPath & "/Theme/" & Main.Theme_Name & "/image/" & Box.Icon_Name)
         Catch ex As System.ArgumentException
-            ImageLocation = Box.Icon_Path
+            ImageLocation = Box.Icon_Icon_Name
         Catch ex As System.NotSupportedException
-
-            ImageLocation = Box.Icon_Path
+            ImageLocation = Box.Icon_Icon_Name
         Catch ex As System.IO.FileNotFoundException
 
             Size = New Size(100, 100)

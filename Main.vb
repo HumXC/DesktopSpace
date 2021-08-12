@@ -1,8 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Public Class Main
-    '是否在使用主题编辑器 
-    Public Theme_Editing As Boolean = False
     'Box和主窗体左右边界的距离
     Public L_Padding As Integer = 50
     'Box和主窗体上边界的距离
@@ -32,7 +30,7 @@ Public Class Main
 
     '记录有多少个Box
     Public ReadOnly Box(10) As Object
-    Public Box_Index As Integer = 0
+    Public Box_Num As Integer = 0
     'Box：可以交互的范围
     'Icon：图标
     'Titel：标题文字
@@ -44,39 +42,38 @@ Public Class Main
     '运行时桌面路径
     Public Now_Path As String = "UnknowPath"
 
+    '主题文件路径
+    Public Theme_Name As String = "Default"
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
 
-        '运行前桌面路径
-        Dim Default_Path As String = "UnknowPath"
-
-        '主题文件路径
-        Dim Theme_Path As String = "UnknowPath"
-        '是否存在配置文件
-        Dim Conffile As Boolean = True
         '打开配置文件
         Try
             Using Reader As New StreamReader(Application.StartupPath & "/DesktopSpace.conf")
-                Default_Path = Reader.ReadLine
-                Theme_Path = Reader.ReadLine
-                '  change_Desktop_Path = Reader.ReadLine
+                change_Desktop_Path = Reader.ReadLine
+                Theme_Name = Reader.ReadLine
+                If Theme_Name = "" Then
+                    Theme_Name = "Default"
+                End If
             End Using
 
             '如果没有找到配置文件则打开配置向导
         Catch ex As System.IO.FileNotFoundException
-            Conffile = False
-            Guider.Show()
+            MsgBox("无法读取配置文件，请先运行目录下的DesktopSetting.exe", 0)
+            End
         End Try
 
-        '配置文件存在则读取配置文件并生成Box
-        If Conffile = True Then
-            Using Reader As New StreamReader(Theme_Path)
+        '配置文件存在则读取主题文件并生成Box
+        Try
+            Using Reader As New StreamReader(Application.StartupPath & "/Theme/" & Theme_Name& & "/" & Theme_Name)
                 Dim Key_Code As String
 
                 Do
                     Key_Code = Reader.ReadLine
                 Loop Until Key_Code = "Theme_Start"
 
+                '开始读取配置文件的共同参数
                 Set_Main_Color(Reader.ReadLine)
                 Box_Size = Reader.ReadLine
                 L_Padding = Reader.ReadLine
@@ -90,58 +87,67 @@ Public Class Main
                 Line_Select_Color_S = Reader.ReadLine
                 Color_S_To_Color()
 
+                '读取每个box的不同参数
                 For i = 0 To 9
+
+                    '检测是否读取到结束关键词
                     Dim First_Code = Reader.ReadLine
                     If First_Code = "Theme_End" Then
                         Exit For
                     End If
-                    Box_Index = i
                     Box(i) = New Box
-
-                    Box(i).Box_Set(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine)
+                    Box(i).Box_Load(First_Code, Reader.ReadLine, Reader.ReadLine, Reader.ReadLine, i)
                     'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
-
-                    Box(i).Box_Load()
-
+                    Box_Num += 1
 
                 Next
 
-
                 '绘制主窗体右边界、下边界
-                Set_Main_Size()
+                '    获取box宽度
+                Dim Size_Value() As String = Box_Size.Split(",")
+                Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 40)
+
             End Using
+        Catch ex As System.IO.FileNotFoundException
+            MsgBox("无法读取主题文件，请先运行目录下的DesktopSetting.exe", 0)
+            End
+        End Try
+        '窗口的初始位置
+        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
 
-            Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
+        '正则表达式读取并检查桌面路径
+        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+        Dim m As Match
+        For Each m In mc
+            Me.Now_Path = m.ToString
+        Next m
 
-            '正则表达式检查桌面路径
-            Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
-            Dim m As Match
-            For Each m In mc
-                Me.Now_Path = m.ToString
-            Next m
+        For i = 0 To Box_Num - 1
+            If Box(i).Titel.Text = Me.Now_Path Then
+                Box(i).Ctrl.Checked = True
+                Exit For
+            End If
+        Next
 
-            For i = 0 To Box_Index
-                If Box(i).Titel.Text = Me.Now_Path Then
-                    Box(i).Ctrl.Checked = True
-                    Exit For
-                End If
-            Next
-
-        End If
-    End Sub
-
-    Public Sub Set_Main_Size()
-        Me.Size = New Size(Box(Box_Index).Size.Width + Box(Box_Index).Location.X + L_Padding, Box(0).Line.Location.Y + 40)
+        '导出桌面图标信息
+        Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
     End Sub
 
     Public Sub Set_Main_Color(M_Color As String)
-        Dim Rgb_Value() As String = M_Color.Split(",")
-        BackColor = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
+        If M_Color = "Background" Then
+            BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
+        Else
+            Try
+                Dim Rgb_Value() As String = M_Color.Split(",")
+                BackColor = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
 
-    End Sub
+            Catch ex As System.InvalidCastException
+                MsgBox("无法设置背景颜色或图片", 0)
+                End
+            End Try
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-        Me.Visible = False
+        End If
+
     End Sub
 
     '将颜色的字符串格式转为color格式
@@ -156,23 +162,6 @@ Public Class Main
         Line_Select_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
     End Sub
 
-    '下面三行是设置按钮
-    Private Sub PictureBox1_Move(sender As Object, e As EventArgs) Handles PictureBox1.MouseMove
-        PictureBox1.BackColor = Color.Red
-    End Sub
-
-    Private Sub PictureBox1_Leave(sender As Object, e As EventArgs) Handles PictureBox1.MouseLeave
-        PictureBox1.BackColor = Me.BackColor
-    End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        Guider.Show()
-    End Sub
-
-    '删除一个Box
-    Public Sub Delete_Box(i As Integer)
-
-    End Sub
 
 
 End Class

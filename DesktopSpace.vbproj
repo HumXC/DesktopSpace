@@ -110,26 +110,8 @@
     <Compile Include="Box.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CreateColor.Designer.vb">
-      <DependentUpon>CreateColor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CreateColor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Guider.Designer.vb">
-      <DependentUpon>Guider.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Guider.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Icon.vb">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Info.Designer.vb">
-      <DependentUpon>Info.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Info.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.vb">
       <DependentUpon>Main.vb</DependentUpon>
@@ -156,23 +138,11 @@
     <Compile Include="Line.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Set_Font.Designer.vb">
-      <DependentUpon>Set_Font.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Set_Font.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Titel.vb">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CreateColor.resx">
-      <DependentUpon>CreateColor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Guider.resx">
-      <DependentUpon>Guider.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
@@ -181,9 +151,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Set_Font.resx">
-      <DependentUpon>Set_Font.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
