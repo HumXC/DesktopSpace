@@ -41,7 +41,7 @@ https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.p
 0,0
 200,200
 Game
-D:/test.jpg
+D:/test.jpgg
 0,0
 200,200
 Music
@@ -51,5 +51,5 @@ D:/test.jpg
 Code
 D:/test.jpg
 0,0
-200,200
+100,200
 Theme_End
