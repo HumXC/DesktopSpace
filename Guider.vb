@@ -3,30 +3,14 @@ Imports System.IO
 Public Class Guider
     '页面序号
     Public page As Integer = 0
-    '主窗体的颜色
-    Public M_Color As Color
-    'Box的大小
-    Public Box_Size As String
-    'Box和主窗体左边界的距离
-    Public L_Padding As Integer
-    'Box和主窗体上边界的距离
-    Public U_Padding As Integer
-    'Box之间的距离
-    Public Spacing As Integer
-    'Titel的字体
-    Public Titel_Font As Font
-    'Line的高度
-    Public Line_Height As Integer
-    'Line默认的颜色
-    Public Line_Color As Color
-    'Line被选中时的颜色
-    Public Line_Select_Color As Color
+
 
 
     Private Sub Guider_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Main.Theme_Editing = True
         Timer1.Enabled = True
         Button2.Visible = False
+        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 300)
         '创建主题文件夹，创建配置文件，写入原始桌面路径
         Directory.CreateDirectory(Application.StartupPath & "/Theme/")
         Using Writer As New StreamWriter(Application.StartupPath & "/DesktopSpace.conf")
@@ -91,10 +75,10 @@ Public Class Guider
                 Lab1.Text = "创建桌面"
                 Lab2.Text = ""
                 BoxInfo.Visible = True
-                BoxGroup.Visible = True
                 AllBoxValue.Visible = True
                 Inde_BoxValue.Visible = True
-
+                CreateBox.Visible = True
+                DelBox.Visible = True
         End Select
     End Sub
 
@@ -106,11 +90,11 @@ Public Class Guider
         Set_Img.Visible = False
 
         AllBoxValue.Visible = False
-        BoxGroup.Visible = False
         Inde_BoxValue.Visible = False
         BoxInfo.Visible = False
 
-
+        CreateBox.Visible = False
+        DelBox.Visible = False
 
 
 
@@ -134,18 +118,99 @@ Public Class Guider
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 20)
     End Sub
-    '颜色选择
-    Private Sub SelectColor_Click(sender As Object, e As EventArgs) Handles SelectColor.Click
-        CreateColor.Show()
+
+    '选择字体
+    Private Sub Select_Font_Click(sender As Object, e As EventArgs) Handles Select_Font.Click
+        Set_Font.Show()
+
     End Sub
 
-    Private Sub Select_Font_Click(sender As Object, e As EventArgs) Handles Select_Font.Click
-
-        FontDialog1.ShowDialog()
+    '主窗口颜色选择
+    Private Sub SelectColor_Click(sender As Object, e As EventArgs) Handles SelectColor.Click
+        CreateColor.Set_Key_Code(1)
+        CreateColor.Show()
     End Sub
 
     '第四页的选择标题颜色按钮
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        CreateColor.Set_Key_Code(2)
         CreateColor.Show()
+    End Sub
+    '线的颜色选择
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        CreateColor.Set_Key_Code(3)
+        CreateColor.Show()
+    End Sub
+    '线被选中时的颜色
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        CreateColor.Set_Key_Code(4)
+        CreateColor.Show()
+    End Sub
+
+    '重新设置Box参数的值
+    Public Sub Ser_All_Box()
+        For i = 0 To Main.Box_Index - 1
+            If Main.Box_Index <> 0 Then
+                Main.Box(i).Box_Load()
+            End If
+        Next
+        If Main.Box_Index <> 0 Then
+            Main.Size = New Size(Main.Box(Main.Box_Index - 1).Size.Width + Main.Box(Main.Box_Index - 1).Location.X + Main.L_Padding, Main.Box(0).Line.Location.Y + 40)
+        End If
+    End Sub
+    Private Sub B_Spacing_TextBox_TextChanged(sender As Object, e As EventArgs) Handles B_Spacing_TextBox.TextChanged
+        If B_Spacing_TextBox.Text <> "" Then
+            Main.B_Spacing = B_Spacing_TextBox.Text
+            Ser_All_Box()
+
+        End If
+    End Sub
+
+    Private Sub U_Padding_TextBox_TextChanged(sender As Object, e As EventArgs) Handles U_Padding_TextBox.TextChanged
+        If U_Padding_TextBox.Text <> "" Then
+            Main.U_Padding = U_Padding_TextBox.Text
+            Ser_All_Box()
+        End If
+    End Sub
+
+    Private Sub L_Padding_TextBox_TextChanged(sender As Object, e As EventArgs) Handles L_Padding_TextBox.TextChanged
+        If L_Padding_TextBox.Text <> "" Then
+            Main.L_Padding = L_Padding_TextBox.Text
+            Ser_All_Box()
+        End If
+    End Sub
+
+    '添加桌面按钮
+    Private Sub CreateBox_Click(sender As Object, e As EventArgs) Handles CreateBox.Click
+        If Main.Box_Index <= 9 Then
+
+            Main.Box(Main.Box_Index) = New Box
+            Main.Box(Main.Box_Index).Box_Set("nihao", "D:/test.jpg", "2,2", "100,100")
+            'Titel_Name, Text_Color, Icon_Path, Icon_Location, Icon_Size
+            Main.Box(Main.Box_Index).Box_Load()
+            Main.Box(Main.Box_Index).Ctrl.Checked = True
+            Main.Set_Main_Size()
+            Main.Box_Index += 1
+        End If
+
+
+
+
+    End Sub
+    '删除桌面按钮
+    Private Sub DelBox_Click(sender As Object, e As EventArgs) Handles DelBox.Click
+        If Main.Box_Index > 0 Then
+            Main.Box_Index -= 1
+            Main.Controls.Remove(Main.Box(Main.Box_Index))
+            Main.Controls.Remove(Main.Box(Main.Box_Index).Titel)
+            Main.Controls.Remove(Main.Box(Main.Box_Index).Line)
+            Main.Controls.Remove(Main.Box(Main.Box_Index).Ctrl)
+            If Main.Box_Index <> 0 Then
+                Main.Size = New Size(Main.Box(Main.Box_Index - 1).Size.Width + Main.Box(Main.Box_Index - 1).Location.X + Main.L_Padding, Main.Box(0).Line.Location.Y + 40)
+
+            End If
+
+
+        End If
     End Sub
 End Class

@@ -157,6 +157,12 @@
     <Compile Include="Line.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Set_Font.Designer.vb">
+      <DependentUpon>Set_Font.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Set_Font.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Titel.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -176,6 +182,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Set_Font.resx">
+      <DependentUpon>Set_Font.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

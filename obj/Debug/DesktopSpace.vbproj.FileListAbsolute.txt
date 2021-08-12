@@ -16,3 +16,4 @@ D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.application
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Main.resources
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Guider.resources
 D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.CreateColor.resources
+D:\Desktop-Space\Code\DEV\DesktopSpace\obj\Debug\DesktopSpace.Set_Font.resources

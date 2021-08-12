@@ -27,6 +27,7 @@ Public Class Box
     End Sub
 
     Public Sub Box_Set(Titel_Text As String, Icon_Path As String, Icon_Location As String, Icon_Size As String)
+        Me.Box_Index = Main.Box_Index
         Me.Titel_Text = Titel_Text
 
         Me.Icon_Path = Icon_Path
@@ -43,14 +44,13 @@ Public Class Box
     End Sub
 
     Public Sub Box_Load()
-        Me.Box_Index = Main.Box_Index
+
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         Size = New Size(Size_Value(0), Size_Value(1))
 
         Location = New Point(Main.L_Padding + Box_Index * (Main.B_Spacing + Me.Size.Width), Main.U_Padding)
 
         '初始化Ctrl,Titel、Line
-        BackColor = Color.Red
         Ctrl.Location = New Point(Me.Location.X, Me.Location.Y + Me.Size.Height - 1000)
         Titel.Titel_Load(Me)
         Icon.Icon_Load(Me)
