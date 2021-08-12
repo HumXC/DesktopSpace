@@ -41,12 +41,15 @@ Public Class Main
     '更改桌面目录的父目录
     Public change_Desktop_Path As String = "D:/DesktopSpace/"
 
+    '运行时桌面路径
+    Public Now_Path As String = "UnknowPath"
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
 
         '运行前桌面路径
         Dim Default_Path As String = "UnknowPath"
+
         '主题文件路径
         Dim Theme_Path As String = "UnknowPath"
         '是否存在配置文件
@@ -56,7 +59,7 @@ Public Class Main
             Using Reader As New StreamReader(Application.StartupPath & "/DesktopSpace.conf")
                 Default_Path = Reader.ReadLine
                 Theme_Path = Reader.ReadLine
-                change_Desktop_Path = Reader.ReadLine
+                '  change_Desktop_Path = Reader.ReadLine
             End Using
 
             '如果没有找到配置文件则打开配置向导
@@ -113,13 +116,12 @@ Public Class Main
             '正则表达式检查桌面路径
             Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
             Dim m As Match
-            Dim path_Name As String = "UnknowPath"
             For Each m In mc
-                path_Name = m.ToString
+                Me.Now_Path = m.ToString
             Next m
 
             For i = 0 To Box_Index
-                If Box(i).Titel.Text = path_Name Then
+                If Box(i).Titel.Text = Me.Now_Path Then
                     Box(i).Ctrl.Checked = True
                     Exit For
                 End If
@@ -153,4 +155,5 @@ Public Class Main
         Dim Rgb_Value3() As String = Line_Select_Color_S.Split(",")
         Line_Select_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
     End Sub
+
 End Class
