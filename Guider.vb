@@ -13,9 +13,9 @@ Public Class Guider
         Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 300)
         '创建主题文件夹，创建配置文件，写入原始桌面路径
         Directory.CreateDirectory(Application.StartupPath & "/Theme/")
-        Using Writer As New StreamWriter(Application.StartupPath & "/DesktopSpace.conf")
-            Writer.WriteLine(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
-        End Using
+        '  Using Writer As New StreamWriter(Application.StartupPath & "/DesktopSpace.conf")
+        '   Writer.WriteLine(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
+        '   End Using
 
     End Sub
 
@@ -104,8 +104,8 @@ Public Class Guider
 
     Private Sub Guider_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         '方便测试，删除配置文件
-        File.Delete(Application.StartupPath & "/DesktopSpace.conf")
-        End
+        ' File.Delete(Application.StartupPath & "/DesktopSpace.conf")
+        Main.Close()
     End Sub
 
     '读取选择的桌面目录
@@ -213,5 +213,36 @@ Public Class Guider
 
         End If
     End Sub
+    '选择图标按钮
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        OpenFileDialog1.ShowDialog()
+        If OpenFileDialog1.FileName <> "OpenFileDialog1" Then
+            ImgPath.Text = OpenFileDialog1.FileName
+        End If
 
+    End Sub
+    '图片更改，遍历应用更改
+    Private Sub ImgPath_TextChanged(sender As Object, e As EventArgs) Handles ImgPath.TextChanged
+        For i = 0 To Main.Box_Index
+            If Main.Box(i).Ctrl.Checked = True Then
+                Main.Box(i).Icon_Path = ImgPath.Text
+                Main.Box(i).Box_Load()
+                Exit For
+            End If
+        Next
+    End Sub
+    '标题文本更改
+    Private Sub Titel_Text_TextChanged(sender As Object, e As EventArgs) Handles Titel_Text.TextChanged
+        For i = 0 To Main.Box_Index
+            If Main.Box(i).Ctrl.Checked = True Then
+                Main.Box(i).Titel_Text = Titel_Text.Text
+                Main.Box(i).Box_Load()
+                Exit For
+            End If
+        Next
+    End Sub
+
+    Private Sub TrackBa_Scroll(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

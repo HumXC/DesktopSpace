@@ -67,7 +67,7 @@ Partial Class CreateColor
         '
         'BlueBar
         '
-        Me.BlueBar.Cursor = System.Windows.Forms.Cursors.SizeWE
+        Me.BlueBar.Cursor = System.Windows.Forms.Cursors.Default
         Me.BlueBar.LargeChange = 1
         Me.BlueBar.Location = New System.Drawing.Point(88, 136)
         Me.BlueBar.Maximum = 255
@@ -77,7 +77,7 @@ Partial Class CreateColor
         '
         'GreenBar
         '
-        Me.GreenBar.Cursor = System.Windows.Forms.Cursors.SizeWE
+        Me.GreenBar.Cursor = System.Windows.Forms.Cursors.Default
         Me.GreenBar.LargeChange = 1
         Me.GreenBar.Location = New System.Drawing.Point(88, 74)
         Me.GreenBar.Maximum = 255
@@ -87,7 +87,7 @@ Partial Class CreateColor
         '
         'RedBar
         '
-        Me.RedBar.Cursor = System.Windows.Forms.Cursors.SizeWE
+        Me.RedBar.Cursor = System.Windows.Forms.Cursors.Default
         Me.RedBar.LargeChange = 1
         Me.RedBar.Location = New System.Drawing.Point(88, 12)
         Me.RedBar.Maximum = 255

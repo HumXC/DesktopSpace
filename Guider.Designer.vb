@@ -62,21 +62,21 @@ Partial Class Guider
         Me.Inde_BoxValue = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.TrackBar4 = New System.Windows.Forms.TrackBar()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Titel_Text = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ImgPath = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.TrackBar3 = New System.Windows.Forms.TrackBar()
-        Me.TrackBar2 = New System.Windows.Forms.TrackBar()
-        Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.SelectColor = New System.Windows.Forms.Button()
         Me.DelBox = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.ImgSize_X = New System.Windows.Forms.TextBox()
+        Me.ImgSize_Y = New System.Windows.Forms.TextBox()
+        Me.ImgLoca_Y = New System.Windows.Forms.TextBox()
+        Me.ImgLoca_X = New System.Windows.Forms.TextBox()
         Me.BoxInfo.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,10 +84,6 @@ Partial Class Guider
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AllBoxValue.SuspendLayout()
         Me.Inde_BoxValue.SuspendLayout()
-        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Lab1
@@ -432,20 +428,20 @@ Partial Class Guider
         '
         'Inde_BoxValue
         '
+        Me.Inde_BoxValue.Controls.Add(Me.ImgLoca_Y)
+        Me.Inde_BoxValue.Controls.Add(Me.ImgLoca_X)
+        Me.Inde_BoxValue.Controls.Add(Me.ImgSize_Y)
+        Me.Inde_BoxValue.Controls.Add(Me.ImgSize_X)
         Me.Inde_BoxValue.Controls.Add(Me.Label18)
         Me.Inde_BoxValue.Controls.Add(Me.Label15)
-        Me.Inde_BoxValue.Controls.Add(Me.TrackBar4)
         Me.Inde_BoxValue.Controls.Add(Me.Label17)
-        Me.Inde_BoxValue.Controls.Add(Me.TextBox2)
+        Me.Inde_BoxValue.Controls.Add(Me.Titel_Text)
         Me.Inde_BoxValue.Controls.Add(Me.Label16)
-        Me.Inde_BoxValue.Controls.Add(Me.TextBox1)
+        Me.Inde_BoxValue.Controls.Add(Me.ImgPath)
         Me.Inde_BoxValue.Controls.Add(Me.Label14)
         Me.Inde_BoxValue.Controls.Add(Me.Label13)
         Me.Inde_BoxValue.Controls.Add(Me.Label12)
         Me.Inde_BoxValue.Controls.Add(Me.Button7)
-        Me.Inde_BoxValue.Controls.Add(Me.TrackBar3)
-        Me.Inde_BoxValue.Controls.Add(Me.TrackBar2)
-        Me.Inde_BoxValue.Controls.Add(Me.TrackBar1)
         Me.Inde_BoxValue.Location = New System.Drawing.Point(268, 66)
         Me.Inde_BoxValue.Name = "Inde_BoxValue"
         Me.Inde_BoxValue.Size = New System.Drawing.Size(414, 316)
@@ -473,13 +469,6 @@ Partial Class Guider
         Me.Label15.TabIndex = 36
         Me.Label15.Text = "图标也可以是一个网络位置，可以选择在这输入图片URL"
         '
-        'TrackBar4
-        '
-        Me.TrackBar4.Location = New System.Drawing.Point(188, 134)
-        Me.TrackBar4.Name = "TrackBar4"
-        Me.TrackBar4.Size = New System.Drawing.Size(226, 56)
-        Me.TrackBar4.TabIndex = 39
-        '
         'Label17
         '
         Me.Label17.AutoSize = True
@@ -489,13 +478,13 @@ Partial Class Guider
         Me.Label17.TabIndex = 38
         Me.Label17.Text = "不允许存在无法创建文件夹的特殊符号"
         '
-        'TextBox2
+        'Titel_Text
         '
-        Me.TextBox2.Font = New System.Drawing.Font("宋体", 16.0!)
-        Me.TextBox2.Location = New System.Drawing.Point(10, 270)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(398, 38)
-        Me.TextBox2.TabIndex = 37
+        Me.Titel_Text.Font = New System.Drawing.Font("宋体", 16.0!)
+        Me.Titel_Text.Location = New System.Drawing.Point(10, 270)
+        Me.Titel_Text.Name = "Titel_Text"
+        Me.Titel_Text.Size = New System.Drawing.Size(398, 38)
+        Me.Titel_Text.TabIndex = 37
         '
         'Label16
         '
@@ -507,13 +496,13 @@ Partial Class Guider
         Me.Label16.TabIndex = 32
         Me.Label16.Text = "桌面标题"
         '
-        'TextBox1
+        'ImgPath
         '
-        Me.TextBox1.Font = New System.Drawing.Font("宋体", 12.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(6, 198)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(402, 30)
-        Me.TextBox1.TabIndex = 35
+        Me.ImgPath.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.ImgPath.Location = New System.Drawing.Point(6, 198)
+        Me.ImgPath.Name = "ImgPath"
+        Me.ImgPath.Size = New System.Drawing.Size(402, 30)
+        Me.ImgPath.TabIndex = 35
         '
         'Label14
         '
@@ -555,27 +544,6 @@ Partial Class Guider
         Me.Button7.Text = "选择图标"
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'TrackBar3
-        '
-        Me.TrackBar3.Location = New System.Drawing.Point(188, 102)
-        Me.TrackBar3.Name = "TrackBar3"
-        Me.TrackBar3.Size = New System.Drawing.Size(226, 56)
-        Me.TrackBar3.TabIndex = 2
-        '
-        'TrackBar2
-        '
-        Me.TrackBar2.Location = New System.Drawing.Point(188, 53)
-        Me.TrackBar2.Name = "TrackBar2"
-        Me.TrackBar2.Size = New System.Drawing.Size(226, 56)
-        Me.TrackBar2.TabIndex = 1
-        '
-        'TrackBar1
-        '
-        Me.TrackBar1.Location = New System.Drawing.Point(188, 22)
-        Me.TrackBar1.Name = "TrackBar1"
-        Me.TrackBar1.Size = New System.Drawing.Size(226, 56)
-        Me.TrackBar1.TabIndex = 0
-        '
         'SelectColor
         '
         Me.SelectColor.Font = New System.Drawing.Font("宋体", 12.0!)
@@ -602,11 +570,44 @@ Partial Class Guider
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'ImgSize_X
+        '
+        Me.ImgSize_X.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.ImgSize_X.Location = New System.Drawing.Point(199, 24)
+        Me.ImgSize_X.Name = "ImgSize_X"
+        Me.ImgSize_X.Size = New System.Drawing.Size(209, 30)
+        Me.ImgSize_X.TabIndex = 41
+        '
+        'ImgSize_Y
+        '
+        Me.ImgSize_Y.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.ImgSize_Y.Location = New System.Drawing.Point(199, 55)
+        Me.ImgSize_Y.Name = "ImgSize_Y"
+        Me.ImgSize_Y.Size = New System.Drawing.Size(209, 30)
+        Me.ImgSize_Y.TabIndex = 42
+        '
+        'ImgLoca_Y
+        '
+        Me.ImgLoca_Y.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.ImgLoca_Y.Location = New System.Drawing.Point(199, 135)
+        Me.ImgLoca_Y.Name = "ImgLoca_Y"
+        Me.ImgLoca_Y.Size = New System.Drawing.Size(209, 30)
+        Me.ImgLoca_Y.TabIndex = 44
+        '
+        'ImgLoca_X
+        '
+        Me.ImgLoca_X.Font = New System.Drawing.Font("宋体", 12.0!)
+        Me.ImgLoca_X.Location = New System.Drawing.Point(199, 104)
+        Me.ImgLoca_X.Name = "ImgLoca_X"
+        Me.ImgLoca_X.Size = New System.Drawing.Size(209, 30)
+        Me.ImgLoca_X.TabIndex = 43
+        '
         'Guider
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(881, 471)
+        Me.Controls.Add(Me.BoxInfo)
         Me.Controls.Add(Me.DelBox)
         Me.Controls.Add(Me.AllBoxValue)
         Me.Controls.Add(Me.Inde_BoxValue)
@@ -619,7 +620,6 @@ Partial Class Guider
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Lab2)
         Me.Controls.Add(Me.Lab1)
-        Me.Controls.Add(Me.BoxInfo)
         Me.Controls.Add(Me.SelectColor)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(899, 518)
@@ -637,10 +637,6 @@ Partial Class Guider
         Me.AllBoxValue.PerformLayout()
         Me.Inde_BoxValue.ResumeLayout(False)
         Me.Inde_BoxValue.PerformLayout()
-        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -685,18 +681,18 @@ Partial Class Guider
     Friend WithEvents Button6 As Button
     Friend WithEvents DelBox As Button
     Friend WithEvents Label17 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Titel_Text As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ImgPath As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Button7 As Button
-    Friend WithEvents TrackBar3 As TrackBar
-    Friend WithEvents TrackBar2 As TrackBar
-    Friend WithEvents TrackBar1 As TrackBar
     Friend WithEvents Label18 As Label
-    Friend WithEvents TrackBar4 As TrackBar
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents ImgLoca_Y As TextBox
+    Friend WithEvents ImgLoca_X As TextBox
+    Friend WithEvents ImgSize_Y As TextBox
+    Friend WithEvents ImgSize_X As TextBox
 End Class

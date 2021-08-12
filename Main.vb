@@ -156,4 +156,16 @@ Public Class Main
         Line_Select_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
     End Sub
 
+    '下面三行是设置按钮
+    Private Sub PictureBox1_Move(sender As Object, e As EventArgs) Handles PictureBox1.MouseMove
+        PictureBox1.BackColor = Color.Red
+    End Sub
+
+    Private Sub PictureBox1_Leave(sender As Object, e As EventArgs) Handles PictureBox1.MouseLeave
+        PictureBox1.BackColor = Me.BackColor
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Guider.Show()
+    End Sub
 End Class

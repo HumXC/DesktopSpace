@@ -98,6 +98,21 @@ Public Class Box
     '按下鼠标
     Private Sub Box_MouseClick(sender As Object, e As MouseEventArgs) Handles Icon.MouseClick, Titel.MouseClick, Me.MouseClick
         Set_Desktop()
+        '如果正在使用主题编辑器，则打开主题编辑器的选择功能
+        If Main.Theme_Editing = True Then
+            Guider.Titel_Text.Text = Titel_Text
+            Ctrl.Checked = True
+            Guider.ImgPath.Text = Icon_Path
+            Guider.OpenFileDialog1.FileName = "OpenFileDialog1"
+
+            Dim Size_Value() As String = Icon_Size.Split(",")
+            Guider.ImgSize_X.Text = Size_Value(0)
+            Guider.ImgSize_Y.Text = Size_Value(1)
+
+            Dim Loca_Value() As String = Icon_Location.Split(",")
+            Guider.ImgLoca_X.Text = Loca_Value(0)
+            Guider.ImgLoca_Y.Text = Loca_Value(1)
+        End If
     End Sub
 
     '通过修改注册表更换桌面

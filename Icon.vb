@@ -19,7 +19,10 @@
 
         Try
             Image = Image.FromFile(Box.Icon_Path)
+        Catch ex As System.ArgumentException
+            ImageLocation = Box.Icon_Path
         Catch ex As System.NotSupportedException
+
             ImageLocation = Box.Icon_Path
         Catch ex As System.IO.FileNotFoundException
 
