@@ -173,7 +173,7 @@ Public Class Main
                 Box(Box_Num - 1).Unload_Box()
                 Box_Num -= 1
                 Set_Main()
-                ThemeEditor.Button2.Enabled = True
+                ThemeEditor.Add_aBox.Enabled = True
             End If
         Next
 
@@ -184,11 +184,11 @@ Public Class Main
     Public Sub Add_Box()
         If Box_Num < 10 Then
             Box(Box_Num) = New Box
-            Box(Box_Num).Box_Load("桌面" & Box_Num + 1, "NuknowName", "2,2", "2,2", Box_Num)
+            Box(Box_Num).Box_Load("桌面" & Box_Num + 1, "NuknowName", "15,10", "100,100", Box_Num)
             Box_Num += 1
             Set_Main()
         Else
-            ThemeEditor.Button2.Enabled = False
+            ThemeEditor.Add_aBox.Enabled = False
         End If
 
     End Sub

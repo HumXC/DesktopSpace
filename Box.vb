@@ -70,8 +70,6 @@ Public Class Box
         Titel.Titel_Set(Me)
         Icon.Icon_Set(Me)
         Line.Line_Set(Me)
-
-
     End Sub
 
     Public Sub Unload_Box()
@@ -80,6 +78,7 @@ Public Class Box
         Main.Controls.Remove(Line)
         Main.Controls.Remove(Icon)
     End Sub
+
 
     '鼠标悬停
     Private Sub Box_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, Icon.MouseMove, Titel.MouseMove
@@ -123,6 +122,31 @@ Public Class Box
         '刷新线的颜色
         Main.Tr_All_Line()
         Line.BackColor = Main.Line_Color
+        '将图标传至图标编辑区
+        Dim Size_Value() As String = Icon_Size.Split(",")
+        Try
+            ThemeEditor.Icon_X.Value = Size_Value(0)
+            ThemeEditor.Icon_Y.Value = ThemeEditor.Icon_Y.Maximum - Size_Value(1)
+        Catch ex As System.ArgumentOutOfRangeException
+            ThemeEditor.Icon_X.Value = ThemeEditor.Icon_X.Maximum
+            ThemeEditor.Icon_Y.Value = 0
+        End Try
+
+        ThemeEditor.Icon_E.Image = Me.Icon.Image
+        ThemeEditor.Box_Index = Box_Index
+        ThemeEditor.Bxo_Index_T.Text = Box_Index + 1
+        '传递图标位置信息
+        Dim Size_Value2() As String = Main.Box_Size.Split(",")
+        ThemeEditor.Icon_LX.Maximum = Size_Value2(0)
+        ThemeEditor.Icon_LY.Maximum = Size_Value2(1)
+        ThemeEditor.Box_E.Size = New Size(Size_Value2(0), Size_Value2(1))
+
+        Dim Loc_Value() As String = Icon_Location.Split(",")
+        ThemeEditor.Icon_LX.Value = Loc_Value(0)
+        ThemeEditor.Icon_LY.Value = ThemeEditor.Icon_LY.Maximum - Loc_Value(1)
+
+
+
     End Sub
 
     '通过修改注册表更换桌面
