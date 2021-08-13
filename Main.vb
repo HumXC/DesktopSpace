@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Public Class Main
+    '主窗体颜色
+    Public M_Color As String = "96,96,96"
     'Box和主窗体左右边界的距离
     Public L_Padding As Integer = 50
     'Box和主窗体上边界的距离
@@ -45,6 +47,9 @@ Public Class Main
     '主题文件路径
     Public Theme_Name As String = "Default"
 
+    '初始桌面位置
+    Public Default_Path As String
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
 
@@ -52,16 +57,18 @@ Public Class Main
         Try
             Using Reader As New StreamReader(Application.StartupPath & "/DesktopSpace.conf")
                 change_Desktop_Path = Reader.ReadLine
+                ThemeEditor.桌面空间所在路径.Text = change_Desktop_Path
                 Theme_Name = Reader.ReadLine
                 If Theme_Name = "" Then
                     Theme_Name = "Default"
                 End If
+                Default_Path = Reader.ReadLine
+                ThemeEditor.初始桌面路径.Text = Default_Path
             End Using
 
             '如果没有找到配置文件则打开配置向导
         Catch ex As System.IO.FileNotFoundException
-            MsgBox("无法读取配置文件，请先运行目录下的DesktopSetting.exe", 0)
-            End
+            Dim DefaultTheme = New FirstRun
         End Try
 
         '配置文件存在则读取主题文件并生成Box
@@ -74,7 +81,7 @@ Public Class Main
                 Loop Until Key_Code = "Theme_Start"
 
                 '开始读取配置文件的共同参数
-                Set_Main_Color(Reader.ReadLine)
+                M_Color = Reader.ReadLine
                 Box_Size = Reader.ReadLine
                 L_Padding = Reader.ReadLine
                 U_Padding = Reader.ReadLine
@@ -86,6 +93,7 @@ Public Class Main
                 Line_Color_S = Reader.ReadLine
                 Line_Select_Color_S = Reader.ReadLine
                 Color_S_To_Color()
+                Set_Main_Color()
 
                 '读取每个box的不同参数
                 For i = 0 To 9
@@ -107,8 +115,7 @@ Public Class Main
 
             End Using
         Catch ex As System.IO.FileNotFoundException
-            MsgBox("无法读取主题文件，请先运行目录下的DesktopSetting.exe", 0)
-            End
+
         End Try
         '窗口的初始位置
         '   Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
@@ -131,7 +138,7 @@ Public Class Main
         'Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
     End Sub
 
-    Public Sub Set_Main_Color(M_Color As String)
+    Public Sub Set_Main_Color()
         If M_Color = "Background" Then
             Me.BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
         Else
@@ -140,8 +147,19 @@ Public Class Main
                 Me.BackColor = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
 
             Catch ex As System.InvalidCastException
-                MsgBox("无法设置背景颜色或图片", 0)
-                End
+                Try
+                    BackgroundImage = Image.FromFile(M_Color)
+                Catch ax As System.NotSupportedException
+                    MsgBox("不支持的路径格式", 0)
+
+                Catch ax As System.ArgumentException
+                    MsgBox("路径中具有非法字符", 0)
+
+                Catch ax As System.IO.FileNotFoundException
+                    MsgBox("路径中具有非法字符", 0)
+                End Try
+
+
             End Try
 
         End If

@@ -52,11 +52,18 @@ Public Class Box
 
 
     End Sub
+
+    Public Sub Set_Box_Size()
+        Dim Size_Value() As String = Main.Box_Size.Split(",")
+        Size = New Size(Size_Value(0), Size_Value(1))
+        Titel.Titel_Set(Me)
+        Icon.Icon_Set(Me)
+        Line.Line_Set(Me)
+
+    End Sub
+
     Public Sub Box_Set(Titel_Text As String, Icon_Name As String, Icon_Location As String, Icon_Size As String)
-
-        '   Me.Box_Index = Index
         Me.Titel_Text = Titel_Text
-
         Me.Icon_Name = Icon_Name
         Me.Icon_Location = Icon_Location
         Me.Icon_Size = Icon_Size
@@ -64,9 +71,14 @@ Public Class Box
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         Size = New Size(Size_Value(0), Size_Value(1))
 
-        '   Location = New Point(Main.L_Padding + Box_Index * (Main.B_Spacing + Me.Size.Width), Main.U_Padding)
-
         '初始化Ctrl,Titel、Line
+        Titel.Titel_Set(Me)
+        Icon.Icon_Set(Me)
+        Line.Line_Set(Me)
+    End Sub
+
+    Public Sub Set2()
+        Location = New Point(Main.L_Padding + Box_Index * (Main.B_Spacing + Me.Size.Width), Main.U_Padding)
         Titel.Titel_Set(Me)
         Icon.Icon_Set(Me)
         Line.Line_Set(Me)
@@ -134,7 +146,6 @@ Public Class Box
 
         ThemeEditor.Icon_E.Image = Me.Icon.Image
         ThemeEditor.Box_Index = Box_Index
-        ThemeEditor.Bxo_Index_T.Text = Box_Index + 1
         '传递图标位置信息
         Dim Size_Value2() As String = Main.Box_Size.Split(",")
         ThemeEditor.Icon_LX.Maximum = Size_Value2(0)
@@ -144,10 +155,22 @@ Public Class Box
         Dim Loc_Value() As String = Icon_Location.Split(",")
         ThemeEditor.Icon_LX.Value = Loc_Value(0)
         ThemeEditor.Icon_LY.Value = ThemeEditor.Icon_LY.Maximum - Loc_Value(1)
-
-
+        '传递标题
+        ThemeEditor.Titel_Text.Text = Titel_Text
+        '传递可交互区域大小
+        ThemeEditor.可交互范围X.Text = Size_Value2(0)
+        ThemeEditor.可交互范围Y.Text = Size_Value2(1)
 
     End Sub
+
+    Public Sub Set_Icon_Img(Path As String)
+        Icon_Name = Path
+        Icon.Set_Img(Me)
+        ThemeEditor.Icon_E.Image = Icon.Image
+
+    End Sub
+
+
 
     '通过修改注册表更换桌面
     '主题编辑器无需此代码

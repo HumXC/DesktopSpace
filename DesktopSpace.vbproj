@@ -110,6 +110,26 @@
     <Compile Include="Box.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FirstRun.vb" />
+    <Compile Include="Guider.Designer.vb">
+      <DependentUpon>Guider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Guider.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Save_Theme.vb" />
+    <Compile Include="SelectColor.Designer.vb">
+      <DependentUpon>SelectColor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelectColor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectFont.Designer.vb">
+      <DependentUpon>SelectFont.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelectFont.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ThemeEditor.Designer.vb">
       <DependentUpon>ThemeEditor.vb</DependentUpon>
     </Compile>
@@ -149,6 +169,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Guider.resx">
+      <DependentUpon>Guider.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectColor.resx">
+      <DependentUpon>SelectColor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +183,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectFont.resx">
+      <DependentUpon>SelectFont.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThemeEditor.resx">
       <DependentUpon>ThemeEditor.vb</DependentUpon>
