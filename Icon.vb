@@ -18,7 +18,7 @@
         Me.Location = New Point(Location_Value(0), Location_Value(1))
 
         Try
-            Image = Image.FromFile(Application.StartupPath & "/Theme/" & Main.Theme_Name & "/image/" & Box.Icon_Name)
+            Image = Image.FromFile(Application.StartupPath & "/Theme/" & Main.Theme_Name & "/icon" & Box.Icon_Name)
         Catch ex As System.ArgumentException
             ImageLocation = Box.Icon_Icon_Name
         Catch ex As System.NotSupportedException

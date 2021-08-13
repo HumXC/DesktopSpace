@@ -54,7 +54,7 @@ Public Class Guider
                 Main.change_Desktop_Path = PathBox.Text
                 ThemeEditor.桌面空间所在路径.Text = PathBox.Text
                 If ThemeEditor.桌面空间所在路径.Text = "" Then
-                    Main.change_Desktop_Path = "D/DesktopSpace/"
+                    Main.change_Desktop_Path = "D:\DesktopSpace\"
                 End If
                 ThemeEditor.桌面空间所在路径.Text = Main.change_Desktop_Path
 

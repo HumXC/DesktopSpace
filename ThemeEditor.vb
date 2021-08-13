@@ -1,12 +1,17 @@
-﻿Public Class ThemeEditor
+﻿Imports System.IO
+Imports System.Text.RegularExpressions
+Public Class ThemeEditor
     '当前编辑的Box序号
     Public Box_Index As Integer = 200
     Private Sub ThemeEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AutoScroll = False
+        Load_ThemeList()
         U_Padding.Text = Main.U_Padding
         L_Padding.Text = Main.L_Padding
         B_Spacing.Text = Main.B_Spacing
         当前主界面大小.Text = Main.Size.ToString
         桌面空间所在路径.Text = Main.change_Desktop_Path
+
         Main.MdiParent = Me
         Main.Show()
         Dim Size_Value() As String = Main.Box_Size.Split(",")
@@ -260,7 +265,7 @@
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-
+        Dim Theme = New Save_Theme("SaveTheme")
     End Sub
 
     Private Sub Apply2_Click(sender As Object, e As EventArgs) Handles Apply2.Click
@@ -269,6 +274,39 @@
             Main.Box(i).Set_Box_Size()
         Next
         Main.Set_Main()
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs)
+        Main.BackgroundImage.ToString()
+    End Sub
+
+    Private Sub Load_ThemeList()
+        Dim Theme_Name() = Directory.GetDirectories(Application.StartupPath & "/Theme")
+
+
+        For i = 0 To Theme_Name.Length - 1
+            Dim mc As MatchCollection = Regex.Matches(Theme_Name(i), "[a-zA-Z]+$")
+            Dim m As Match
+            For Each m In mc
+                ThemeList.Items.Add(m.ToString())
+            Next m
+        Next
+
+
+
+    End Sub
+
+    Private Sub ThemeList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ThemeList.SelectedIndexChanged
+        Try
+            预览.Image = Image.FromFile(Application.StartupPath & "\Theme\" & ThemeList.SelectedItem & "\" & ThemeList.SelectedItem & ".png")
+
+        Catch ex As System.IO.FileNotFoundException
+            预览.Image = My.Resources.Resources.笑脸
+        End Try
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
 
     End Sub
 End Class

@@ -39,7 +39,7 @@ Public Class Main
     'Line：标题文字下方的线
 
     '更改桌面目录的父目录
-    Public change_Desktop_Path As String = "D:/DesktopSpace/"
+    Public change_Desktop_Path As String = "D:\DesktopSpace\"
 
     '运行时桌面路径
     Public Now_Path As String = "UnknowPath"
@@ -118,7 +118,7 @@ Public Class Main
 
         End Try
         '窗口的初始位置
-        '   Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
+        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) / 2, 40)
 
         '正则表达式读取并检查桌面路径
         '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
