@@ -10,6 +10,7 @@
     End Sub
 
     Public Sub Titel_Load(Box As Object)
+
         Main.Controls.Add(Me)
         Text = Box.Titel_Text
         Font = New Font(" & Main.Titel_Font & ", Main.Titel_Size, System.Drawing.FontStyle.Bold)
@@ -19,4 +20,12 @@
 
     End Sub
 
+    Public Sub Titel_Set(Box As Object)
+
+        Text = Box.Titel_Text
+        Font = New Font(" & Main.Titel_Font & ", Main.Titel_Size, System.Drawing.FontStyle.Bold)
+        Location = New Point(Box.Location.X + (Box.Size.Width - Me.Size.Width) / 2, Box.Location.Y + Box.Size.Height + 5)
+        ForeColor = Main.Titel_Color
+
+    End Sub
 End Class

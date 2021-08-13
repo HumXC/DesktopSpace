@@ -102,10 +102,8 @@ Public Class Main
 
                 Next
 
-                '绘制主窗体右边界、下边界
-                '    获取box宽度
-                Dim Size_Value() As String = Box_Size.Split(",")
-                Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 40)
+                Set_Main()
+
 
             End Using
         Catch ex As System.IO.FileNotFoundException
@@ -113,33 +111,33 @@ Public Class Main
             End
         End Try
         '窗口的初始位置
-        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
+        '   Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
 
         '正则表达式读取并检查桌面路径
-        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
-        Dim m As Match
-        For Each m In mc
-            Me.Now_Path = m.ToString
-        Next m
-
-        For i = 0 To Box_Num - 1
-            If Box(i).Titel.Text = Me.Now_Path Then
-                Box(i).Ctrl.Checked = True
-                Exit For
-            End If
-        Next
-
+        '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+        '        Dim m As Match
+        '        For Each m In mc
+        '            Me.Now_Path = m.ToString
+        '        Next m
+        '
+        '        For i = 0 To Box_Num - 1
+        '            If Box(i).Titel.Text = Me.Now_Path Then
+        '                Box(i).Ctrl.Checked = True
+        '                Exit For
+        '            End If
+        '        Next
+        '
         '导出桌面图标信息
-        Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
+        'Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
     End Sub
 
     Public Sub Set_Main_Color(M_Color As String)
         If M_Color = "Background" Then
-            BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
+            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
         Else
             Try
                 Dim Rgb_Value() As String = M_Color.Split(",")
-                BackColor = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
+                Me.BackColor = Color.FromArgb(Rgb_Value(0), Rgb_Value(1), Rgb_Value(2))
 
             Catch ex As System.InvalidCastException
                 MsgBox("无法设置背景颜色或图片", 0)
@@ -162,6 +160,59 @@ Public Class Main
         Line_Select_Color = Color.FromArgb(Rgb_Value3(0), Rgb_Value3(1), Rgb_Value3(2))
     End Sub
 
+    '删除一个Box
+    Public Sub Delect_Box()
 
+
+        For i = 0 To Box_Num - 1
+            If Box(i).Ctrl.Checked = True Then
+                For j = i To Box_Num - 2
+
+                    Box(j).Box_Set(Box(j + 1).Titel_Text, Box(j + 1).Icon_Name, Box(j + 1).Icon_Location, Box(j + 1).Icon_Size)
+                Next
+                Box(Box_Num - 1).Unload_Box()
+                Box_Num -= 1
+                Set_Main()
+                ThemeEditor.Button2.Enabled = True
+            End If
+        Next
+
+        Uncheck_Ctrl()
+    End Sub
+
+    '添加一个Box
+    Public Sub Add_Box()
+        If Box_Num < 10 Then
+            Box(Box_Num) = New Box
+            Box(Box_Num).Box_Load("桌面" & Box_Num + 1, "NuknowName", "2,2", "2,2", Box_Num)
+            Box_Num += 1
+            Set_Main()
+        Else
+            ThemeEditor.Button2.Enabled = False
+        End If
+
+    End Sub
+
+    Public Sub Tr_All_Line()
+        For i = 0 To Box_Num - 1
+            Box(i).Line.BackColor = Color.Transparent
+        Next
+
+    End Sub
+
+    Public Sub Set_Main()
+        '绘制主窗体右边界、下边界
+        '    获取box宽度
+        Dim Size_Value() As String = Box_Size.Split(",")
+        Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 40)
+
+    End Sub
+
+    Public Sub Uncheck_Ctrl()
+        For i = 0 To Box_Num - 1
+            Box(i).Ctrl.Checked = False
+
+        Next
+    End Sub
 
 End Class

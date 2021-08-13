@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DEFD5EB2-91DB-432E-8410-A70C607914A7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>DesktopSpace.My.MyApplication</StartupObject>
-    <RootNamespace>DesktopSpace</RootNamespace>
-    <AssemblyName>DesktopSpace</AssemblyName>
+    <StartupObject>ThemeEditor.My.MyApplication</StartupObject>
+    <RootNamespace>ThemeEditor</RootNamespace>
+    <AssemblyName>ThemeEditor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -36,8 +36,8 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>DesktopSpace.xml</DocumentationFile>
+    <OutputPath>..\..\Debug\</OutputPath>
+    <DocumentationFile>ThemeEditor.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -47,7 +47,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>DesktopSpace.xml</DocumentationFile>
+    <DocumentationFile>ThemeEditor.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -110,6 +110,12 @@
     <Compile Include="Box.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ThemeEditor.Designer.vb">
+      <DependentUpon>ThemeEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ThemeEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Icon.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -152,8 +158,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThemeEditor.resx">
+      <DependentUpon>ThemeEditor.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="DesktopSpace_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

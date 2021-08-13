@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("DesktopSpace")>
+<Assembly: AssemblyTitle("ThemeEditor")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("DesktopSpace")>
