@@ -140,6 +140,10 @@ Public Class Main
             End Using
         Catch ex As System.IO.FileNotFoundException
             Dim DefaultTheme = New FirstRun
+            ReadTheme()
+        Catch ex As System.IO.DirectoryNotFoundException
+            Dim DefaultTheme = New FirstRun
+            ReadTheme()
         End Try
     End Sub
 

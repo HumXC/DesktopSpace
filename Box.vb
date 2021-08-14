@@ -158,6 +158,10 @@ Public Class Box
         '传递标题
         ThemeEditor.Titel_Text.Text = Titel_Text
 
+        ThemeEditor.Icon_X.Enabled = True
+        ThemeEditor.Icon_Y.Enabled = True
+        ThemeEditor.Icon_LX.Enabled = True
+        ThemeEditor.Icon_LY.Enabled = True
 
 
     End Sub

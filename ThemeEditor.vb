@@ -34,19 +34,19 @@ Public Class ThemeEditor
     End Sub
 
     '设置图片框控件为合适的图片大小
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
+    '  Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
 
-        '       Dim Size_Value() As String = Main.Box_Size.Split(",")
-        Dim Img = Image.FromFile("D:/test.gif")
-        '       If Img.Width > Size_Value(0) Or Img.Height > Size_Value(1) Then
-        '           If Img.Width > Img.Height Then
-        '               PictureBox1.Size = New Size(Size_Value(0), Img.Size.Height / (Img.Width / Size_Value(0)))
-        '           Else
-        '               PictureBox1.Size = New Size(Img.Size.Width / (Img.Height / Size_Value(1)), Size_Value(1))
-        '           End If
-        '       End If
-        Icon_E.Image = Img
-    End Sub
+    '       Dim Size_Value() As String = Main.Box_Size.Split(",")
+    ' Dim Img = Image.FromFile("D:/test.gif")
+    '       If Img.Width > Size_Value(0) Or Img.Height > Size_Value(1) Then
+    '           If Img.Width > Img.Height Then
+    '               PictureBox1.Size = New Size(Size_Value(0), Img.Size.Height / (Img.Width / Size_Value(0)))
+    '           Else
+    '               PictureBox1.Size = New Size(Img.Size.Width / (Img.Height / Size_Value(1)), Size_Value(1))
+    '           End If
+    '       End If
+    '    Icon_E.Image = Img
+    ' End Sub
 
 
     Private Sub Icon_X_ValueChanged(sender As Object, e As EventArgs) Handles Icon_X.ValueChanged
@@ -113,6 +113,8 @@ Public Class ThemeEditor
             Main.Box(Box_Index).Icon.Icon_Set(Main.Box(Box_Index))
         Catch ex As System.IndexOutOfRangeException
             '什么也不做
+        Catch ex As System.ArgumentOutOfRangeException
+            '什么也不做
         End Try
 
     End Sub
@@ -126,6 +128,7 @@ Public Class ThemeEditor
     Private Sub Apply_Img_Click(sender As Object, e As EventArgs) Handles Apply_Img.Click
         Try
             Main.Box(Box_Index).Set_Icon_Img(Img_Path.Text)
+            OpenFileDialog1.Dispose()
         Catch ex As System.IndexOutOfRangeException
             '什么也不做
         End Try
@@ -158,6 +161,7 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Change_Main_Color_Click(sender As Object, e As EventArgs) Handles Change_Main_Color.Click
+
         SelectColor.Show()
         SelectColor.Set_Key_Code(1)
     End Sub
@@ -229,6 +233,7 @@ Public Class ThemeEditor
     Private Sub 应用主界面图片_Click(sender As Object, e As EventArgs) Handles 应用主界面图片.Click
         Main.M_Color = 主界面背景路径.Text
         Main.Set_Main_Color()
+        OpenFileDialog1.Dispose()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -288,7 +293,7 @@ Public Class ThemeEditor
 
 
         For i = 0 To Theme_Name.Length - 1
-            Dim mc As MatchCollection = Regex.Matches(Theme_Name(i), "[a-zA-Z\u4e00-\u9fa5]+$")
+            Dim mc As MatchCollection = Regex.Matches(Theme_Name(i), "[a-zA-Z\d\u4e00-\u9fa5]+$")
             Dim m As Match
             For Each m In mc
                 ThemeList.Items.Add(m.ToString())
@@ -359,6 +364,7 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
+        ThemeList.Items.Clear()
         Load_ThemeList()
     End Sub
 

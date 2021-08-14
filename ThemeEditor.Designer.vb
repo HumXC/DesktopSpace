@@ -90,6 +90,7 @@ Partial Class ThemeEditor
         Me.Label5 = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.主题预览 = New System.Windows.Forms.Label()
         Me.预览 = New System.Windows.Forms.PictureBox()
@@ -99,7 +100,6 @@ Partial Class ThemeEditor
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.Button6 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,6 +151,7 @@ Partial Class ThemeEditor
         '
         'Icon_X
         '
+        Me.Icon_X.Enabled = False
         Me.Icon_X.Location = New System.Drawing.Point(112, 169)
         Me.Icon_X.Name = "Icon_X"
         Me.Icon_X.RightToLeftLayout = True
@@ -159,6 +160,7 @@ Partial Class ThemeEditor
         '
         'Icon_Y
         '
+        Me.Icon_Y.Enabled = False
         Me.Icon_Y.Location = New System.Drawing.Point(72, 208)
         Me.Icon_Y.Name = "Icon_Y"
         Me.Icon_Y.Orientation = System.Windows.Forms.Orientation.Vertical
@@ -167,6 +169,7 @@ Partial Class ThemeEditor
         '
         'Icon_LY
         '
+        Me.Icon_LY.Enabled = False
         Me.Icon_LY.Location = New System.Drawing.Point(16, 208)
         Me.Icon_LY.Name = "Icon_LY"
         Me.Icon_LY.Orientation = System.Windows.Forms.Orientation.Vertical
@@ -176,6 +179,7 @@ Partial Class ThemeEditor
         'Icon_LX
         '
         Me.Icon_LX.BackColor = System.Drawing.SystemColors.Control
+        Me.Icon_LX.Enabled = False
         Me.Icon_LX.Location = New System.Drawing.Point(112, 113)
         Me.Icon_LX.Name = "Icon_LX"
         Me.Icon_LX.RightToLeftLayout = True
@@ -765,6 +769,15 @@ Partial Class ThemeEditor
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "主题选项"
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(170, 227)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(87, 41)
+        Me.Button6.TabIndex = 48
+        Me.Button6.Text = "刷新列表"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -846,15 +859,6 @@ Partial Class ThemeEditor
         Me.PictureBox5.Size = New System.Drawing.Size(1660, 985)
         Me.PictureBox5.TabIndex = 57
         Me.PictureBox5.TabStop = False
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(170, 227)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(87, 41)
-        Me.Button6.TabIndex = 48
-        Me.Button6.Text = "刷新列表"
-        Me.Button6.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '

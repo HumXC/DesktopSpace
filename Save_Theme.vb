@@ -18,15 +18,13 @@ Public Class Save_Theme
 
         Dim Rgb_Value() As String = Main.M_Color.Split(",")
         If Rgb_Value.Length < 3 Or Rgb_Value.Length > 3 Then
-            Try
-                Main.BackgroundImage.Save(Application.StartupPath & "\Theme\" & ThemeName & "\Background")
 
-            Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
-                Dim P As Image = Main.BackgroundImage
-                Dim Img = New Bitmap(P)
-                Img.Save(Application.StartupPath & "\Theme\" & ThemeName & "\Background")
+            Main.BackgroundImage.Save("D:/ghdsuiefefefefefefe")
+            'Application.StartupPath & "\Theme\" & ThemeName & "\Background"
 
-            End Try
+            'System.IO.IOException:“文件“D:\Desktop-Space\Code\Debug\Theme\Default\Background”正由另一进程使用，因此该进程无法访问该文件。”
+
+
             M_Color = "Background"
         Else
             M_Color = Main.M_Color
@@ -60,12 +58,24 @@ Public Class Save_Theme
                 Dim s = Application.StartupPath & "\Theme\" & ThemeName & "\icon" & i
                 Try
                     Main.Box(i).Icon.Image.Save(s)
-                Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
-                    Dim P As Image = Main.Box(i).Icon.Image
-                    Dim Img = New Bitmap(P)
-                    Img.Save(s)
-
+                Catch ex As System.Runtime.InteropServices.ExternalException
+                    Main.Box(i).Icon.Dispose()
+                    Main.Box(i).Icon.Image.Save(s)
                 End Try
+
+                '              Try
+                '                  Main.Box(i).Icon.Image.Save(s)
+                '              Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
+                '                  Dim P As Image = Main.Box(i).Icon.Image
+                '
+                '                  Dim Img = New Bitmap(P.Width, P.Height) '创建一个图像文件
+                '                  Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
+                '                  Gra.DrawImage(P, 0, 0)  '把要保存的文件画到画板上，再保存
+                '                  Gra.Save()
+                '                  Img.Save(s)
+                '                  'System.Runtime.InteropServices.ExternalException:“GDI+ 中发生一般性错误。”
+
+                '             End Try
 
                 Writer.WriteLine(Main.Box(i).Box_Index)
                 Writer.WriteLine(Main.Box(i).Icon_Location)
