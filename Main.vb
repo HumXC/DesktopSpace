@@ -69,7 +69,31 @@ Public Class Main
             '如果没有找到配置文件则打开配置向导
         Catch ex As System.IO.FileNotFoundException
             Dim DefaultTheme = New FirstRun
+            Guider.Show()
         End Try
+        ReadTheme()
+        '窗口的初始位置
+        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) / 2, 40)
+
+        '正则表达式读取并检查桌面路径
+        '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+        '        Dim m As Match
+        '        For Each m In mc
+        '            Me.Now_Path = m.ToString
+        '        Next m
+        '
+        '        For i = 0 To Box_Num - 1
+        '            If Box(i).Titel.Text = Me.Now_Path Then
+        '                Box(i).Ctrl.Checked = True
+        '                Exit For
+        '            End If
+        '        Next
+        '
+        '导出桌面图标信息
+        'Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
+    End Sub
+
+    Public Sub ReadTheme()
 
         '配置文件存在则读取主题文件并生成Box
         Try
@@ -115,32 +139,15 @@ Public Class Main
 
             End Using
         Catch ex As System.IO.FileNotFoundException
-
+            Dim DefaultTheme = New FirstRun
         End Try
-        '窗口的初始位置
-        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) / 2, 40)
-
-        '正则表达式读取并检查桌面路径
-        '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
-        '        Dim m As Match
-        '        For Each m In mc
-        '            Me.Now_Path = m.ToString
-        '        Next m
-        '
-        '        For i = 0 To Box_Num - 1
-        '            If Box(i).Titel.Text = Me.Now_Path Then
-        '                Box(i).Ctrl.Checked = True
-        '                Exit For
-        '            End If
-        '        Next
-        '
-        '导出桌面图标信息
-        'Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
     End Sub
+
+
 
     Public Sub Set_Main_Color()
         If M_Color = "Background" Then
-            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
+            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/Background")
         Else
             Try
                 Dim Rgb_Value() As String = M_Color.Split(",")

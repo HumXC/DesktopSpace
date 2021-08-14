@@ -61,10 +61,5 @@ Public Class FirstRun
         End Using
 
 
-
-        Guider.Show()
-
-
-
     End Sub
 End Class

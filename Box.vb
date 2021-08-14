@@ -78,7 +78,8 @@ Public Class Box
     End Sub
 
     Public Sub Set2()
-        Location = New Point(Main.L_Padding + Box_Index * (Main.B_Spacing + Me.Size.Width), Main.U_Padding)
+        Dim Size_Value() As String = Main.Box_Size.Split(",")
+        Location = New Point(Main.L_Padding + Box_Index * (Main.B_Spacing + Size_Value(0)), Main.U_Padding)
         Titel.Titel_Set(Me)
         Icon.Icon_Set(Me)
         Line.Line_Set(Me)
@@ -135,6 +136,7 @@ Public Class Box
         Main.Tr_All_Line()
         Line.BackColor = Main.Line_Color
         '将图标传至图标编辑区
+        ThemeEditor.Icon_Set()
         Dim Size_Value() As String = Icon_Size.Split(",")
         Try
             ThemeEditor.Icon_X.Value = Size_Value(0)
@@ -144,22 +146,19 @@ Public Class Box
             ThemeEditor.Icon_Y.Value = 0
         End Try
 
+
         ThemeEditor.Icon_E.Image = Me.Icon.Image
         ThemeEditor.Box_Index = Box_Index
         '传递图标位置信息
         Dim Size_Value2() As String = Main.Box_Size.Split(",")
-        ThemeEditor.Icon_LX.Maximum = Size_Value2(0)
-        ThemeEditor.Icon_LY.Maximum = Size_Value2(1)
-        ThemeEditor.Box_E.Size = New Size(Size_Value2(0), Size_Value2(1))
 
         Dim Loc_Value() As String = Icon_Location.Split(",")
         ThemeEditor.Icon_LX.Value = Loc_Value(0)
         ThemeEditor.Icon_LY.Value = ThemeEditor.Icon_LY.Maximum - Loc_Value(1)
         '传递标题
         ThemeEditor.Titel_Text.Text = Titel_Text
-        '传递可交互区域大小
-        ThemeEditor.可交互范围X.Text = Size_Value2(0)
-        ThemeEditor.可交互范围Y.Text = Size_Value2(1)
+
+
 
     End Sub
 

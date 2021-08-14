@@ -4,6 +4,12 @@ Public Class ThemeEditor
     '当前编辑的Box序号
     Public Box_Index As Integer = 200
     Private Sub ThemeEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        Main.Show()
+        Dim Size_Value() As String = Main.Box_Size.Split(",")
+        可交互范围X.Text = Size_Value(0)
+        可交互范围Y.Text = Size_Value(1)
         AutoScroll = False
         Load_ThemeList()
         U_Padding.Text = Main.U_Padding
@@ -13,25 +19,10 @@ Public Class ThemeEditor
         桌面空间所在路径.Text = Main.change_Desktop_Path
 
         Main.MdiParent = Me
-        Main.Show()
-        Dim Size_Value() As String = Main.Box_Size.Split(",")
-        Icon_X.Width = Size_Value(0) + 34
-        Icon_X.Maximum = Size_Value(0)
-        Icon_X.Value = Size_Value(0) / 2
 
-        Icon_Y.Height = Size_Value(1) + 34
-        Icon_Y.Maximum = Size_Value(1)
-        Icon_Y.Value = Size_Value(1) / 2
-        Icon_E.Size = New Size(Size_Value(0), Size_Value(1))
 
-        Icon_LX.Width = Size_Value(0) + 34
-        Icon_LX.Maximum = Size_Value(0)
+        '  Icon_Set()
 
-        Icon_LY.Height = Size_Value(1) + 34
-        Icon_LY.Maximum = Size_Value(1)
-        Icon_LY.Value = Icon_LY.Maximum
-
-        Box_E.Size = New Size(Size_Value(0), Size_Value(1))
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Delete_aBox.Click
@@ -59,12 +50,12 @@ Public Class ThemeEditor
 
 
     Private Sub Icon_X_ValueChanged(sender As Object, e As EventArgs) Handles Icon_X.ValueChanged
-        Icon_E.Size = New Size(Icon_X.Value, Icon_E.Height)
+        Icon_E.Size = New Size(Icon_X.Value, Icon_Y.Maximum - Icon_Y.Value)
 
     End Sub
 
     Private Sub Icon_Y_ValueChanged(sender As Object, e As EventArgs) Handles Icon_Y.ValueChanged
-        Icon_E.Size = New Size(Icon_E.Width, Icon_Y.Maximum - Icon_Y.Value)
+        Icon_E.Size = New Size(Icon_X.Value, Icon_Y.Maximum - Icon_Y.Value)
     End Sub
 
     Private Sub Icon_X_Scroll(sender As Object, e As EventArgs) Handles Icon_X.Scroll
@@ -241,15 +232,15 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Shell("cmd.exe /c explorer.exe " & 初始桌面路径.Text)
+        Shell("explorer.exe " & 初始桌面路径.Text)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Shell("cmd.exe /c explorer.exe " & 桌面空间所在路径.Text)
+        Shell("explorer.exe " & 桌面空间所在路径.Text)
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        If MsgBox("无法读取配置文件，请先运行目录下的DesktopSetting.exe", 4) = 6 Then
+        If MsgBox("此操作将会把桌面设置为程序运行前的桌面路径", 4) = 6 Then
 
 
             Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & 初始桌面路径.Text & " /t REG_EXPAND_SZ /f ")
@@ -265,15 +256,26 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Dim Theme = New Save_Theme("SaveTheme")
+
+        Dim Theme = New Save_Theme(InputBox("输入主题的名称："， "保存主题", Main.Theme_Name))
     End Sub
 
     Private Sub Apply2_Click(sender As Object, e As EventArgs) Handles Apply2.Click
         Main.Box_Size = 可交互范围X.Text & "," & 可交互范围Y.Text
-        For i = 0 To Main.Box_Num - 1
-            Main.Box(i).Set_Box_Size()
-        Next
-        Main.Set_Main()
+        Icon_Set()
+
+        Try
+            For i = 0 To Main.Box_Num - 1
+                Main.Box(i).Set2()
+            Next
+            For i = 0 To Main.Box_Num - 1
+                Main.Box(i).Set_Box_Size()
+            Next
+            Main.Set_Main()
+        Catch ex As System.InvalidCastException
+            MsgBox("输入的值不正确", 0)
+        End Try
+
 
     End Sub
 
@@ -286,7 +288,7 @@ Public Class ThemeEditor
 
 
         For i = 0 To Theme_Name.Length - 1
-            Dim mc As MatchCollection = Regex.Matches(Theme_Name(i), "[a-zA-Z]+$")
+            Dim mc As MatchCollection = Regex.Matches(Theme_Name(i), "[a-zA-Z\u4e00-\u9fa5]+$")
             Dim m As Match
             For Each m In mc
                 ThemeList.Items.Add(m.ToString())
@@ -306,7 +308,59 @@ Public Class ThemeEditor
         End Try
     End Sub
 
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
 
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Main.Location = New Point(Main.Location.X, Main.Location.Y + 30)
     End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Main.Location = New Point(Main.Location.X, Main.Location.Y - 30)
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        If ThemeList.SelectedItem <> "" Then
+
+            Main.Theme_Name = ThemeList.SelectedItem
+        End If
+
+
+        For i = 0 To Main.Box_Num - 1
+
+            Main.Box(i).Unload_Box()
+        Next
+        Main.Box_Num = 0
+        ' Main.Set_Main()
+        Main.ReadTheme()
+    End Sub
+
+
+    Public Sub Icon_Set()
+
+        '设置图标编辑器的显示
+        Dim Size_Value() As String = Main.Box_Size.Split(",")
+        Icon_X.Width = Size_Value(0) + 34
+        Icon_X.Maximum = Size_Value(0)
+
+        ' Icon_X.Value = Size_Value(0) / 2
+
+        Icon_Y.Height = Size_Value(1) + 34
+        Icon_Y.Maximum = Size_Value(1)
+        '  Icon_Y.Value = Size_Value(1) / 2
+        ' Icon_E.Size = New Size(Icon_X.Value, Icon_Y.Value)
+
+        Icon_LX.Width = Size_Value(0) + 34
+        Icon_LX.Maximum = Size_Value(0)
+
+        Icon_LY.Height = Size_Value(1) + 34
+        Icon_LY.Maximum = Size_Value(1)
+        '  Icon_LY.Value = Icon_LY.Maximum
+
+        Box_E.Size = New Size(Size_Value(0), Size_Value(1))
+    End Sub
+
+    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
+        Load_ThemeList()
+    End Sub
+
+
 End Class

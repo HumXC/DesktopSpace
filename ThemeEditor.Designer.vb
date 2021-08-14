@@ -99,6 +99,7 @@ Partial Class ThemeEditor
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.Button6 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,7 +142,7 @@ Partial Class ThemeEditor
         'Icon_E
         '
         Me.Icon_E.BackColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Icon_E.Location = New System.Drawing.Point(170, 256)
+        Me.Icon_E.Location = New System.Drawing.Point(129, 225)
         Me.Icon_E.Name = "Icon_E"
         Me.Icon_E.Size = New System.Drawing.Size(66, 62)
         Me.Icon_E.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -750,6 +751,7 @@ Partial Class ThemeEditor
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Button6)
         Me.GroupBox5.Controls.Add(Me.Label15)
         Me.GroupBox5.Controls.Add(Me.主题预览)
         Me.GroupBox5.Controls.Add(Me.预览)
@@ -825,7 +827,7 @@ Partial Class ThemeEditor
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(1660, 40)
         Me.Button8.TabIndex = 54
-        Me.Button8.Text = "向上移动"
+        Me.Button8.Text = "向下移动"
         Me.Button8.UseVisualStyleBackColor = True
         '
         'Button9
@@ -834,7 +836,7 @@ Partial Class ThemeEditor
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(1643, 40)
         Me.Button9.TabIndex = 55
-        Me.Button9.Text = "向下移动"
+        Me.Button9.Text = "向上移动"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'PictureBox5
@@ -844,6 +846,15 @@ Partial Class ThemeEditor
         Me.PictureBox5.Size = New System.Drawing.Size(1660, 985)
         Me.PictureBox5.TabIndex = 57
         Me.PictureBox5.TabStop = False
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(170, 227)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(87, 41)
+        Me.Button6.TabIndex = 48
+        Me.Button6.Text = "刷新列表"
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '
@@ -979,4 +990,5 @@ Partial Class ThemeEditor
     Friend WithEvents Label13 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents Button6 As Button
 End Class
