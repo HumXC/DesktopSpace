@@ -18,7 +18,15 @@ Public Class Save_Theme
 
         Dim Rgb_Value() As String = Main.M_Color.Split(",")
         If Rgb_Value.Length < 3 Or Rgb_Value.Length > 3 Then
-            Main.BackgroundImage.Save(Application.StartupPath & "\Theme\" & ThemeName & "\Background")
+            Try
+                Main.BackgroundImage.Save(Application.StartupPath & "\Theme\" & ThemeName & "\Background")
+
+            Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
+                Dim P As Image = Main.BackgroundImage
+                Dim Img = New Bitmap(P)
+                Img.Save(Application.StartupPath & "\Theme\" & ThemeName & "\Background")
+
+            End Try
             M_Color = "Background"
         Else
             M_Color = Main.M_Color
@@ -53,12 +61,9 @@ Public Class Save_Theme
                 Try
                     Main.Box(i).Icon.Image.Save(s)
                 Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
-
-                    Bitmap B = New Bitmap(Main.Box(i).Icon.Image.Width, Main.Box(i).Icon.Image.Height) '新建一个理想大小的图像文件
-                    Graphics g = Graphics.FromImage(B) '实例一个画板的对象, 就用上面的图像的画板
-                    g.DrawImage(pictureBox_Sreen.Image, 0, 0) '把目标图像画在这个图像文件的画板上
-
-                    B.Save(sfd.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);//通过这个图像来保存
+                    Dim P As Image = Main.Box(i).Icon.Image
+                    Dim Img = New Bitmap(P)
+                    Img.Save(s)
 
                 End Try
 
