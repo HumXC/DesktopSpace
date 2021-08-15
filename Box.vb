@@ -14,7 +14,7 @@ Public Class Box
     Public WithEvents Titel As New Titel
     Public WithEvents Line As New Line
     Public WithEvents Icon As New Icon
-    '用户看不见的单选按钮，用于键盘控制
+    '用户看不见的单选按钮,用于键盘控制
     Public WithEvents Ctrl As New RadioButton
 
     Public Sub New()
@@ -174,7 +174,6 @@ Public Class Box
     Public Sub Set_Icon_Img(Path As String)
         Icon_Name = Path
         Icon.Set_Img(Me)
-        ThemeEditor.Icon_E.Image = Icon.Image
 
     End Sub
 

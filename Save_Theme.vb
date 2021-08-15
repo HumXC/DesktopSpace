@@ -37,13 +37,12 @@ Public Class Save_Theme
 
 
 
-            '保存图标
-            For i = 0 To Box_Index
+        '保存图标
+        For i = 0 To Box_Index
             Dim s = "Theme\" & ThemeName & "\icon" & i
             Main.Box(i).Icon.Image.Save("temp\icon" & i)
             Main.Box(i).Icon.Image.Dispose()
             Main.Box(i).Icon.Dispose()
-            Main.Box(i).Dispose()
             File.Copy("temp\icon" & i, "Theme\" & ThemeName & "\icon" & i, True)
         Next
         Dim Rgb_Value() As String = Main.M_Color.Split(",")

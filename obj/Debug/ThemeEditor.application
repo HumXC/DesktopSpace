@@ -4,14 +4,14 @@
   <description asmv2:publisher="ThemeEditor" asmv2:product="ThemeEditor" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ThemeEditor.exe.manifest" size="5432">
+    <dependentAssembly dependencyType="install" codebase="ThemeEditor.exe.manifest" size="5426">
       <assemblyIdentity name="ThemeEditor.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Y0CQCil1CCO5xmx87ZlCLidX0/o=</dsig:DigestValue>
+        <dsig:DigestValue>1xITof3XeMOezOxtk2bfJd42a0I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -145,9 +145,10 @@ Partial Class ThemeEditor
         'Icon_E
         '
         Me.Icon_E.BackColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Icon_E.Image = Global.ThemeEditor.My.Resources.Resources.笑脸
         Me.Icon_E.Location = New System.Drawing.Point(129, 225)
         Me.Icon_E.Name = "Icon_E"
-        Me.Icon_E.Size = New System.Drawing.Size(66, 62)
+        Me.Icon_E.Size = New System.Drawing.Size(91, 86)
         Me.Icon_E.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Icon_E.TabIndex = 3
         Me.Icon_E.TabStop = False
@@ -795,6 +796,7 @@ Partial Class ThemeEditor
         '
         '预览
         '
+        Me.预览.Image = Global.ThemeEditor.My.Resources.Resources.笑脸
         Me.预览.Location = New System.Drawing.Point(168, 54)
         Me.预览.Name = "预览"
         Me.预览.Size = New System.Drawing.Size(348, 212)

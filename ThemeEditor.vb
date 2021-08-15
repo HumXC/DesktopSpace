@@ -128,9 +128,10 @@ Public Class ThemeEditor
 
     Private Sub Apply_Img_Click(sender As Object, e As EventArgs) Handles Apply_Img.Click
         Try
-
-            Main.Box(Box_Index).Set_Icon_Img(Img_Path.Text)
+            Dim Path As String = Img_Path.Text
+            Main.Box(Box_Index).Set_Icon_Img(Path)
             OpenFileDialog1.Dispose()
+            ' Icon_E.Image = Main.Box(Box_Index).Icon.Image   会导致bug
         Catch ex As System.IndexOutOfRangeException
             '什么也不做
         End Try
@@ -284,22 +285,24 @@ Public Class ThemeEditor
         Icon_E.Image.Dispose()
         预览.Image.Dispose()
         Main.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Main.Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Main.Size.Height) / 2)
-        Dim ThemeName As String = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
-        If ThemeName <> "" Then
+
+        Dim ThemeeName As String = InputBox("输入主题的名称：", "保存主题", Main.Theme_Name)
+
+        If ThemeeName <> "" Then
             Main.TopMost = True
 
-            Dim Theme = New Save_Theme(ThemeName)
+            Dim Theme = New Save_Theme(ThemeeName)
             Try
-                MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+                MsgBox("主题" & ThemeeName & "保存成功", vbOKOnly)
             Catch ex As System.ArgumentException
                 'System.ArgumentException:“参数无效。”
-                MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+                MsgBox("主题" & ThemeeName & "保存成功", vbOKOnly)
             End Try
 
             Main.TopMost = False
         End If
-
-
+        Icon_E.Image = My.Resources.Resources.笑脸
+        预览.Image = My.Resources.Resources.笑脸
 
         Timer1.Enabled = True
     End Sub
