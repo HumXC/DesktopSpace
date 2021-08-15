@@ -77,7 +77,7 @@ Public Class Main
         End Try
         ReadTheme()
         '窗口的初始位置
-        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) \ 2, 40)
+        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) \ 2, 10)
 
         '正则表达式读取并检查桌面路径
         '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
@@ -95,6 +95,7 @@ Public Class Main
         '
         '导出桌面图标信息
         'Shell("cmd.exe \c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg \y ")
+
     End Sub
 
     Public Sub ReadTheme()
@@ -103,10 +104,15 @@ Public Class Main
         Try
             Using Reader As New StreamReader(Application.StartupPath & "\Theme\" & Theme_Name& & "\" & Theme_Name)
                 Dim Key_Code As String
-
+                Dim cycle_Num As Integer
                 Do
+                    cycle_Num += 1
                     Key_Code = Reader.ReadLine
                     Theme_Info += Key_Code & vbCr
+                    If cycle_Num > 3000 Then
+                        MsgBox("循环超过3000次，主题文件似乎损坏！请删除Theme文件夹下的" & Theme_Name & "文件夹")
+                        Me.Close()
+                    End If
                 Loop Until Key_Code = "Theme_Start"
 
                 '开始读取配置文件的共同参数

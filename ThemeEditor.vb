@@ -5,7 +5,7 @@ Public Class ThemeEditor
     Public Box_Index As Integer = 200
     Private Sub ThemeEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Main.MdiParent = Me
+
         Main.Show()
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         可交互范围X.Text = Size_Value(0)
@@ -20,8 +20,9 @@ Public Class ThemeEditor
 
 
 
-
+        Timer1.Enabled = True
         '  Icon_Set()
+        Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) \ 2, Main.Location.Y + Main.Size.Height + 10)
 
     End Sub
 
@@ -137,6 +138,9 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub BackColor_Off_Click(sender As Object, e As EventArgs) Handles BackColor_Off.Click
+        BackColor_Offf()
+    End Sub
+    Public Sub BackColor_Offf()
         For i = 0 To Main.Box_Num - 1
             Main.Box(i).Icon.BackColor = Color.Transparent
             Main.Box(i).BackColor = Color.Transparent
@@ -218,13 +222,6 @@ Public Class ThemeEditor
 
     End Sub
 
-    Private Sub 向右移动_Click(sender As Object, e As EventArgs) Handles 向右移动.Click
-        Main.Location = New Point(Main.Location.X + 80, Main.Location.Y)
-    End Sub
-
-    Private Sub 向左移动_Click(sender As Object, e As EventArgs) Handles 向左移动.Click
-        Main.Location = New Point(Main.Location.X - 80, Main.Location.Y)
-    End Sub
 
     Private Sub 更换主界面背景颜色_Click(sender As Object, e As EventArgs) Handles 更换主界面背景颜色.Click
         OpenFileDialog1.ShowDialog()
@@ -282,17 +279,17 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Dim ThemeName = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
-        Dim Theme = New Save_Theme(ThemeName)
-        '生成预览截图
+        BackColor_Offf()
+        Timer1.Enabled = False
+        Dim ThemeName As String = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
+        If ThemeName <> "" Then
+
+            Dim Theme = New Save_Theme(ThemeName)
+        End If
 
 
-        Dim Img = New Bitmap(Main.Width, Main.Height) '创建一个图像文件
-        Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
-        Gra.CopyFromScreen(Main.Location, New Point(Main.Location.X + Main.Size.Width, Main.Location.Y + Main.Size.Height), Main.Size)  '把要保存的文件画到画板上，再保存
-
-
-        MsgBox("主题""" & ThemeName & """保存成功", vbOKOnly)
+        MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+        Timer1.Enabled = True
     End Sub
 
     Private Sub Apply2_Click(sender As Object, e As EventArgs) Handles Apply2.Click
@@ -343,14 +340,6 @@ Public Class ThemeEditor
         End Try
     End Sub
 
-
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        Main.Location = New Point(Main.Location.X, Main.Location.Y + 30)
-    End Sub
-
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        Main.Location = New Point(Main.Location.X, Main.Location.Y - 30)
-    End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If ThemeList.SelectedItem <> "" Then
@@ -426,14 +415,7 @@ Public Class ThemeEditor
         MsgBox(Main.Theme_Info, 0)
     End Sub
 
-    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
-        '生成预览截图
-
-
-        Dim Img = New Bitmap(1000, 1000) '创建一个图像文件
-        Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
-        Gra.CopyFromScreen(1000, 100, 0, 0, New Size(1000, 1000))  '把要保存的文件画到画板上，再保存
-
-        Img.Save("D:/测试截图.png")
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 10)
     End Sub
 End Class

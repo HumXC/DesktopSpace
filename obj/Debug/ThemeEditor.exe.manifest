@@ -52,14 +52,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ThemeEditor.exe" size="611264">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ThemeEditor.exe" size="608704">
       <assemblyIdentity name="ThemeEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>vnmUjPK9zhch0HfI1+6x4LuzCkw=</dsig:DigestValue>
+        <dsig:DigestValue>b/MWjBjzH9d1LMk5gE8FDcaqpz8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
