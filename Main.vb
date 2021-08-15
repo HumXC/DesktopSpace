@@ -33,6 +33,9 @@ Public Class Main
     '记录有多少个Box
     Public ReadOnly Box(10) As Object
     Public Box_Num As Integer = 0
+
+    '记录主题信息
+    Public Theme_Info As String = ""
     'Box：可以交互的范围
     'Icon：图标
     'Titel：标题文字
@@ -103,6 +106,7 @@ Public Class Main
 
                 Do
                     Key_Code = Reader.ReadLine
+                    Theme_Info += Key_Code & vbCr
                 Loop Until Key_Code = "Theme_Start"
 
                 '开始读取配置文件的共同参数

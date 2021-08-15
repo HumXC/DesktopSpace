@@ -101,9 +101,10 @@ Partial Class ThemeEditor
         Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.当前加载主题 = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -760,6 +761,7 @@ Partial Class ThemeEditor
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Button11)
         Me.GroupBox5.Controls.Add(Me.Button6)
         Me.GroupBox5.Controls.Add(Me.Label15)
         Me.GroupBox5.Controls.Add(Me.主题预览)
@@ -880,14 +882,14 @@ Partial Class ThemeEditor
         Me.GroupBox3.TabIndex = 59
         Me.GroupBox3.TabStop = False
         '
-        'Button10
+        '当前加载主题
         '
-        Me.Button10.Location = New System.Drawing.Point(1549, 8)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(89, 54)
-        Me.Button10.TabIndex = 25
-        Me.Button10.Text = "应用主题"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.当前加载主题.Font = New System.Drawing.Font("宋体", 16.0!)
+        Me.当前加载主题.Location = New System.Drawing.Point(700, 18)
+        Me.当前加载主题.Name = "当前加载主题"
+        Me.当前加载主题.ReadOnly = True
+        Me.当前加载主题.Size = New System.Drawing.Size(406, 38)
+        Me.当前加载主题.TabIndex = 27
         '
         'Label16
         '
@@ -899,14 +901,23 @@ Partial Class ThemeEditor
         Me.Label16.TabIndex = 26
         Me.Label16.Text = "当前加载的主题："
         '
-        '当前加载主题
+        'Button10
         '
-        Me.当前加载主题.Font = New System.Drawing.Font("宋体", 16.0!)
-        Me.当前加载主题.Location = New System.Drawing.Point(700, 18)
-        Me.当前加载主题.Name = "当前加载主题"
-        Me.当前加载主题.ReadOnly = True
-        Me.当前加载主题.Size = New System.Drawing.Size(406, 38)
-        Me.当前加载主题.TabIndex = 27
+        Me.Button10.Location = New System.Drawing.Point(1549, 8)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(89, 54)
+        Me.Button10.TabIndex = 25
+        Me.Button10.Text = "应用主题"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(434, 19)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(87, 29)
+        Me.Button11.TabIndex = 49
+        Me.Button11.Text = "主题信息"
+        Me.Button11.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '
@@ -1046,4 +1057,5 @@ Partial Class ThemeEditor
     Friend WithEvents Button10 As Button
     Friend WithEvents 当前加载主题 As TextBox
     Friend WithEvents Label16 As Label
+    Friend WithEvents Button11 As Button
 End Class

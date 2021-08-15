@@ -146,9 +146,14 @@ Public Class Box
             ThemeEditor.Icon_Y.Value = 0
         End Try
 
+        If Icon_Name <> "UnknowPath" Then
+            ThemeEditor.Icon_E.Image = Me.Icon.Image
+            ThemeEditor.Box_Index = Box_Index
+        Else
+            ThemeEditor.Icon_E.Image = My.Resources._Default
+            ThemeEditor.Box_Index = Box_Index
+        End If
 
-        ThemeEditor.Icon_E.Image = Me.Icon.Image
-        ThemeEditor.Box_Index = Box_Index
         '传递图标位置信息
         Dim Size_Value2() As String = Main.Box_Size.Split(",")
 

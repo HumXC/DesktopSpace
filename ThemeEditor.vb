@@ -127,6 +127,7 @@ Public Class ThemeEditor
 
     Private Sub Apply_Img_Click(sender As Object, e As EventArgs) Handles Apply_Img.Click
         Try
+            '  File.Copy(Img_Path.Text, Application.StartupPath & "\temp")
             Main.Box(Box_Index).Set_Icon_Img(Img_Path.Text)
             OpenFileDialog1.Dispose()
         Catch ex As System.IndexOutOfRangeException
@@ -283,7 +284,7 @@ Public Class ThemeEditor
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim ThemeName = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
         Dim Theme = New Save_Theme(ThemeName)
-        MsgBox("主题""" & ThemeName & """保存成功", 0)
+        MsgBox("主题""" & ThemeName & """保存成功", vbOKOnly)
     End Sub
 
     Private Sub Apply2_Click(sender As Object, e As EventArgs) Handles Apply2.Click
@@ -411,5 +412,9 @@ Public Class ThemeEditor
 
         End If
 
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        MsgBox(Main.Theme_Info, 0)
     End Sub
 End Class
