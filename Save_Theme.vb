@@ -18,7 +18,9 @@ Public Class Save_Theme
         For i = 0 To Main.Box_Num - 1
             Main.Box(i).Icon.Image.Dispose()
             Dim s = Application.StartupPath & "\Theme\" & ThemeName & "\icon" & i
-            File.Copy(Application.StartupPath & "\temp\icon" & i, s, True)
+            If Main.Box(i).Icon_Name <> "UnknowPath" Then
+                File.Copy(Application.StartupPath & "\temp\icon" & i, s, True)
+            End If
         Next
         Main.BackgroundImage.Dispose()
         Dim Rgb_Value() As String = Main.M_Color.Split(",")
@@ -62,7 +64,12 @@ Public Class Save_Theme
 
             For i = 0 To Main.Box_Num - 1
                 Writer.WriteLine(Main.Box(i).Titel_Text)
-                Writer.WriteLine(Main.Box(i).Box_Index)
+                If Main.Box(i).Icon_Name <> "UnknowPath" Then
+                    Writer.WriteLine(Main.Box(i).Box_Index)
+                Else
+                    Writer.WriteLine("UnknowPath")
+                End If
+
                 Writer.WriteLine(Main.Box(i).Icon_Location)
                 Writer.WriteLine(Main.Box(i).Icon_Size)
                 '

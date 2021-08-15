@@ -1,4 +1,5 @@
-﻿Public Class Icon
+﻿Imports System.IO
+Public Class Icon
     Inherits System.Windows.Forms.PictureBox
 
     Public Sub New()
@@ -19,22 +20,32 @@
         Me.Location = New Point(Location_Value(0), Location_Value(1))
 
         Try
+
             Image = Image.FromFile(Application.StartupPath & "\Theme\" & Main.Theme_Name & "\icon" & Box.Icon_Name)
             Image.Save(Application.StartupPath & "\temp\icon" & Box.Box_Index)
         Catch ex As System.ArgumentException
             ImageLocation = Box.Icon_Icon_Name
         Catch ex As System.NotSupportedException
             ImageLocation = Box.Icon_Icon_Name
-        Catch ex As System.IO.FileNotFoundException
-
+        Catch ex As System.Runtime.InteropServices.ExternalException
             Size = New Size(100, 100)
             Image = My.Resources.Resources._Default
-            Image.Save(Application.StartupPath & "\temp\icon" & Box.Box_Index)
+            ' My.Resources._Default.Save(Application.StartupPath & "\temp\icon" & Box.Box_Index)
             BackColor = Color.FromArgb(195, 0, 255)
             Location = New Point(0, 5) 'New Point((Parent.Size.Width - Me.Size.Width) \ 2, Parent.Size.Height - Me.Size.Height - 20)
             Box.Icon_Size = "100,100"
             Box.Icon_Location = "0,5"
-            Box.Icon_Name = "UnknowImg"
+            Box.Icon_Name = "UnknowPath"
+        Catch ex As System.IO.FileNotFoundException
+
+            Size = New Size(100, 100)
+            'My.Resources.Game.Save(Application.StartupPath & "\temp\icon" & Box.Box_Index)
+            Image = My.Resources.Resources._Default
+            BackColor = Color.FromArgb(195, 0, 255)
+            Location = New Point(0, 5) 'New Point((Parent.Size.Width - Me.Size.Width) \ 2, Parent.Size.Height - Me.Size.Height - 20)
+            Box.Icon_Size = "100,100"
+            Box.Icon_Location = "0,5"
+            Box.Icon_Name = "UnknowPath"
 
 
         End Try
@@ -52,6 +63,7 @@
 
     Public Sub Set_Img(Box As Object)
         Try
+            File.Copy(Box.Icon_Name, Application.StartupPath & "\temp\icon" & Box.Box_Index, True)
             Image = Image.FromFile(Box.Icon_Name)
         Catch ex As System.ArgumentException
             ImageLocation = Box.Icon_Name
