@@ -85,7 +85,7 @@ Public Class Guider
     '读取选择的桌面目录
     Private Sub ChangePath_Click(sender As Object, e As EventArgs) Handles changePath.Click
         FolderBrowserDialog1.ShowDialog()
-        PathBox.Text = FolderBrowserDialog1.SelectedPath
+        PathBox.Text = FolderBrowserDialog1.SelectedPath & "DesktopSpace"
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
