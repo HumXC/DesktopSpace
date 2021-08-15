@@ -102,6 +102,7 @@ Partial Class ThemeEditor
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button8 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -830,6 +831,7 @@ Partial Class ThemeEditor
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Button8)
         Me.GroupBox3.Controls.Add(Me.当前加载主题)
         Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Controls.Add(Me.Button10)
@@ -864,9 +866,9 @@ Partial Class ThemeEditor
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(1538, 8)
+        Me.Button10.Location = New System.Drawing.Point(1112, 9)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(89, 54)
+        Me.Button10.Size = New System.Drawing.Size(89, 51)
         Me.Button10.TabIndex = 25
         Me.Button10.Text = "应用主题"
         Me.Button10.UseVisualStyleBackColor = True
@@ -874,6 +876,15 @@ Partial Class ThemeEditor
         'Timer1
         '
         Me.Timer1.Interval = 1
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(1581, 12)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(49, 50)
+        Me.Button8.TabIndex = 28
+        Me.Button8.Text = "关于"
+        Me.Button8.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '
@@ -1003,4 +1014,5 @@ Partial Class ThemeEditor
     Friend WithEvents Label16 As Label
     Friend WithEvents Button11 As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button8 As Button
 End Class

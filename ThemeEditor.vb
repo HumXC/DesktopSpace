@@ -420,4 +420,9 @@ Public Class ThemeEditor
         Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 10)
     End Sub
 
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Process.Start("https://gitee.com/humxc/DesktopSpace")
+        Process.Start("https://github.com/HumXC/DesktopSpace")
+        ' MsgBox("Github主页：" & vbCr & "https://github.com/HumXC/DesktopSpace" & vbCr & "Gitee主页：" & vbCr & "https://gitee.com/humxc/DesktopSpace", 0)
+    End Sub
 End Class
