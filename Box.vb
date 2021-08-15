@@ -104,6 +104,8 @@ Public Class Box
             End
         ElseIf Directory.Exists(Main.change_Desktop_Path & Titel_Text) <> True Then
             Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Text & "/这里是" & Titel_Text & "桌面")
+            Shell("cmd.exe /k mklink /j " & Main.change_Desktop_Path & Titel_Text & "\原桌面 " & Main.Default_Path)
+            Shell("cmd.exe /k mklink /j " & Main.change_Desktop_Path & Titel_Text & "\桌面空间 " & Application.StartupPath)
         End If
 
 

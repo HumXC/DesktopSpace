@@ -37,13 +37,16 @@ Public Class Main
     'Line：标题文字下方的线
 
     '更改桌面目录的父目录
-    Public change_Desktop_Path As String = "D:/DesktopSpace/"
+    Public change_Desktop_Path As String = "D:\DesktopSpace\"
 
     '运行时桌面路径
     Public Now_Path As String = "UnknowPath"
 
     '主题文件路径
     Public Theme_Name As String = "Default"
+
+    '运行前桌面路径
+    Public Default_Path As String
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -56,6 +59,7 @@ Public Class Main
                 If Theme_Name = "" Then
                     Theme_Name = "Default"
                 End If
+                Default_Path = Reader.ReadLine
             End Using
 
             '如果没有找到配置文件则打开配置向导
