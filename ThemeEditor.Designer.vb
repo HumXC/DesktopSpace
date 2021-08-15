@@ -54,7 +54,6 @@ Partial Class ThemeEditor
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Apply_UPL = New System.Windows.Forms.Button()
         Me.图标编辑 = New System.Windows.Forms.GroupBox()
-        Me.Button12 = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Apply2 = New System.Windows.Forms.Button()
@@ -382,7 +381,6 @@ Partial Class ThemeEditor
         '
         '图标编辑
         '
-        Me.图标编辑.Controls.Add(Me.Button12)
         Me.图标编辑.Controls.Add(Me.Label14)
         Me.图标编辑.Controls.Add(Me.Label13)
         Me.图标编辑.Controls.Add(Me.Apply2)
@@ -405,15 +403,6 @@ Partial Class ThemeEditor
         Me.图标编辑.TabIndex = 43
         Me.图标编辑.TabStop = False
         Me.图标编辑.Text = "图标样式"
-        '
-        'Button12
-        '
-        Me.Button12.Location = New System.Drawing.Point(420, 246)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(89, 41)
-        Me.Button12.TabIndex = 50
-        Me.Button12.Text = "保存主题"
-        Me.Button12.UseVisualStyleBackColor = True
         '
         'Label14
         '
@@ -1013,6 +1002,5 @@ Partial Class ThemeEditor
     Friend WithEvents 当前加载主题 As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Button11 As Button
-    Friend WithEvents Button12 As Button
     Friend WithEvents Timer1 As Timer
 End Class

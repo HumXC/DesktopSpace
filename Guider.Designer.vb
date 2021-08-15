@@ -23,6 +23,7 @@ Partial Class Guider
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Guider))
         Me.Lab1 = New System.Windows.Forms.Label()
         Me.Lab2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -118,6 +119,8 @@ Partial Class Guider
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Lab2)
         Me.Controls.Add(Me.Lab1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(899, 518)
         Me.MinimumSize = New System.Drawing.Size(899, 518)
         Me.Name = "Guider"

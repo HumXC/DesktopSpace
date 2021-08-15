@@ -63,6 +63,13 @@ Public Class Icon
 
     Public Sub Set_Img(Box As Object)
         Try
+            Try
+                Directory.CreateDirectory(Application.StartupPath & "\temp")
+            Catch ex As System.IO.IOException
+                'System.IO.IOException:“无法创建“D:\Desktop-Space\Code\Debug\temp”，因为同名文件或目录已存在。”
+
+            End Try
+
             File.Copy(Box.Icon_Name, Application.StartupPath & "\temp\icon" & Box.Box_Index, True)
             Image = Image.FromFile(Box.Icon_Name)
         Catch ex As System.ArgumentException

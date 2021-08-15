@@ -128,7 +128,7 @@ Public Class ThemeEditor
 
     Private Sub Apply_Img_Click(sender As Object, e As EventArgs) Handles Apply_Img.Click
         Try
-            '  File.Copy(Img_Path.Text, Application.StartupPath & "\temp")
+
             Main.Box(Box_Index).Set_Icon_Img(Img_Path.Text)
             OpenFileDialog1.Dispose()
         Catch ex As System.IndexOutOfRangeException
@@ -285,10 +285,11 @@ Public Class ThemeEditor
         If ThemeName <> "" Then
 
             Dim Theme = New Save_Theme(ThemeName)
+            MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
         End If
 
 
-        MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+
         Timer1.Enabled = True
     End Sub
 
@@ -418,4 +419,5 @@ Public Class ThemeEditor
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 10)
     End Sub
+
 End Class
