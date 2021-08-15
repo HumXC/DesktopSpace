@@ -117,6 +117,16 @@
     <Compile Include="Guider.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Save_Theme.vb" />
     <Compile Include="SelectColor.Designer.vb">
       <DependentUpon>SelectColor.vb</DependentUpon>
@@ -146,16 +156,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Application.myapp</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -212,6 +212,7 @@
     <None Include="Resources\Game.png" />
     <None Include="Resources\Music.png" />
     <None Include="Resources\Default_Theme.txt" />
+    <None Include="Resources\透明.png" />
     <Content Include="桌面.ico" />
   </ItemGroup>
   <ItemGroup>

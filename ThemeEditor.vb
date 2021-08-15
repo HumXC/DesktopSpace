@@ -5,7 +5,7 @@ Public Class ThemeEditor
     Public Box_Index As Integer = 200
     Private Sub ThemeEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+        Main.MdiParent = Me
         Main.Show()
         Dim Size_Value() As String = Main.Box_Size.Split(",")
         可交互范围X.Text = Size_Value(0)
@@ -18,7 +18,7 @@ Public Class ThemeEditor
         当前主界面大小.Text = Main.Size.ToString
         桌面空间所在路径.Text = Main.change_Desktop_Path
 
-        Main.MdiParent = Me
+
 
 
         '  Icon_Set()
@@ -37,12 +37,12 @@ Public Class ThemeEditor
     '  Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
 
     '       Dim Size_Value() As String = Main.Box_Size.Split(",")
-    ' Dim Img = Image.FromFile("D:/test.gif")
+    ' Dim Img = Image.FromFile("D:\test.gif")
     '       If Img.Width > Size_Value(0) Or Img.Height > Size_Value(1) Then
     '           If Img.Width > Img.Height Then
-    '               PictureBox1.Size = New Size(Size_Value(0), Img.Size.Height / (Img.Width / Size_Value(0)))
+    '               PictureBox1.Size = New Size(Size_Value(0), Img.Size.Height \ (Img.Width \ Size_Value(0)))
     '           Else
-    '               PictureBox1.Size = New Size(Img.Size.Width / (Img.Height / Size_Value(1)), Size_Value(1))
+    '               PictureBox1.Size = New Size(Img.Size.Width \ (Img.Height \ Size_Value(1)), Size_Value(1))
     '           End If
     '       End If
     '    Icon_E.Image = Img
@@ -107,8 +107,8 @@ Public Class ThemeEditor
     '居中按钮
     Private Sub Set_Center_Click(sender As Object, e As EventArgs) Handles Set_Center.Click
         Try
-            Icon_LX.Value = (Box_E.Size.Width - Icon_E.Size.Width) / 2
-            Icon_LY.Value = Icon_LY.Maximum - (Box_E.Size.Height - Icon_E.Size.Height) / 2
+            Icon_LX.Value = (Box_E.Size.Width - Icon_E.Size.Width) \ 2
+            Icon_LY.Value = Icon_LY.Maximum - (Box_E.Size.Height - Icon_E.Size.Height) \ 2
             Main.Box(Box_Index).Icon_Location = Icon_LX.Value & "," & Icon_LY.Maximum - Icon_LY.Value
             Main.Box(Box_Index).Icon.Icon_Set(Main.Box(Box_Index))
         Catch ex As System.IndexOutOfRangeException
@@ -248,7 +248,7 @@ Public Class ThemeEditor
         If MsgBox("此操作将会把桌面设置为程序运行前的桌面路径", 4) = 6 Then
 
 
-            Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & 初始桌面路径.Text & " /t REG_EXPAND_SZ /f ")
+            Shell("cmd.exe \c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" \v ""Desktop"" \d " & 初始桌面路径.Text & " \t REG_EXPAND_SZ \f ")
 
         End If
 
@@ -256,13 +256,34 @@ Public Class ThemeEditor
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         FolderBrowserDialog1.ShowDialog()
-        Main.change_Desktop_Path = FolderBrowserDialog1.SelectedPath & "/DesktopSpace"
-        桌面空间所在路径.Text = Main.change_Desktop_Path
+        If MsgBox("此操作将会把桌面路径设置为：" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 4) = 6 Then
+            MsgBox("已将桌面路径从" & Main.change_Desktop_Path & "修改为" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 0)
+            Main.change_Desktop_Path = FolderBrowserDialog1.SelectedPath & "\DesktopSpace"
+            桌面空间所在路径.Text = Main.change_Desktop_Path
+            Dim l1 As String
+            Dim l2 As String
+            Dim l3 As String
+            Using reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
+                l1 = reader.ReadLine
+                l2 = reader.ReadLine
+                l3 = reader.ReadLine
+            End Using
+
+            Using Writer As New StreamWriter(Application.StartupPath & "\DesktopSpace.conf")
+                Writer.WriteLine(Main.change_Desktop_Path)
+                Writer.WriteLine(l2)
+                Writer.WriteLine(l3)
+            End Using
+
+
+        End If
+
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-
-        Dim Theme = New Save_Theme(InputBox("输入主题的名称："， "保存主题", Main.Theme_Name))
+        Dim ThemeName = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
+        Dim Theme = New Save_Theme(ThemeName)
+        MsgBox("主题""" & ThemeName & """保存成功", 0)
     End Sub
 
     Private Sub Apply2_Click(sender As Object, e As EventArgs) Handles Apply2.Click
@@ -289,7 +310,7 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Load_ThemeList()
-        Dim Theme_Name() = Directory.GetDirectories(Application.StartupPath & "/Theme")
+        Dim Theme_Name() = Directory.GetDirectories(Application.StartupPath & "\Theme")
 
 
         For i = 0 To Theme_Name.Length - 1
@@ -326,16 +347,18 @@ Public Class ThemeEditor
         If ThemeList.SelectedItem <> "" Then
 
             Main.Theme_Name = ThemeList.SelectedItem
+
+            For i = 0 To Main.Box_Num - 1
+
+                Main.Box(i).Unload_Box()
+            Next
+            Main.Box_Num = 0
+            ' Main.Set_Main()
+            Main.ReadTheme()
+            当前加载主题.Text = ThemeList.SelectedItem
         End If
 
 
-        For i = 0 To Main.Box_Num - 1
-
-            Main.Box(i).Unload_Box()
-        Next
-        Main.Box_Num = 0
-        ' Main.Set_Main()
-        Main.ReadTheme()
     End Sub
 
 
@@ -346,11 +369,11 @@ Public Class ThemeEditor
         Icon_X.Width = Size_Value(0) + 34
         Icon_X.Maximum = Size_Value(0)
 
-        ' Icon_X.Value = Size_Value(0) / 2
+        ' Icon_X.Value = Size_Value(0) \ 2
 
         Icon_Y.Height = Size_Value(1) + 34
         Icon_Y.Maximum = Size_Value(1)
-        '  Icon_Y.Value = Size_Value(1) / 2
+        '  Icon_Y.Value = Size_Value(1) \ 2
         ' Icon_E.Size = New Size(Icon_X.Value, Icon_Y.Value)
 
         Icon_LX.Width = Size_Value(0) + 34
@@ -368,5 +391,25 @@ Public Class ThemeEditor
         Load_ThemeList()
     End Sub
 
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        If MsgBox("此操作将会主程序主题设置为：" & 当前加载主题.Text & vbCr & "应用前请先确认主题已保存。", 4) = 6 Then
+            Dim l1 As String
+            Dim l2 As String
+            Dim l3 As String
+            Using reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
+                l1 = reader.ReadLine
+                l2 = reader.ReadLine
+                l3 = reader.ReadLine
+            End Using
 
+            Using Writer As New StreamWriter(Application.StartupPath & "\DesktopSpace.conf")
+                Writer.WriteLine(l1)
+                Writer.WriteLine(当前加载主题.Text)
+                Writer.WriteLine(l3)
+            End Using
+            MsgBox("已切换主程序主题为：" & 当前加载主题.Text, 0)
+
+        End If
+
+    End Sub
 End Class

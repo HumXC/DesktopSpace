@@ -73,5 +73,10 @@ Box之间的距离：用一个数字表示
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:ThemeEditor.My.Resources.Resources.透明">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 </members>
 </doc>

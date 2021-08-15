@@ -183,16 +183,16 @@ Public Class Box
     '        If String.Compare(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Main.change_Desktop_Path & Me.Titel_Text) = 0 Then
     '            End
     '        ElseIf Directory.Exists(Main.change_Desktop_Path & Titel_Text) <> True Then
-    '            Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Text & "/这里是" & Titel_Text & "桌面")
+    '            Directory.CreateDirectory(Main.change_Desktop_Path & Titel_Text & "\这里是" & Titel_Text & "桌面")
     '        End If
     '
     '
-    '        Shell("cmd.exe /c taskkill /im explorer.exe & taskkill /f /im explorer.exe & start explorer.exe")
+    '        Shell("cmd.exe \c taskkill \im explorer.exe & taskkill \f \im explorer.exe & start explorer.exe")
     '        '恢复目标桌面的图标位置信息
-    '        Shell("cmd.exe /c reg import " & Main.change_Desktop_Path & Titel_Text & ".reg")
-    '        Shell("cmd.exe /c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" /v ""Desktop"" /d " & Main.change_Desktop_Path & Titel_Text & " /t REG_EXPAND_SZ /f ")
+    '        Shell("cmd.exe \c reg import " & Main.change_Desktop_Path & Titel_Text & ".reg")
+    '        Shell("cmd.exe \c reg add ""HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"" \v ""Desktop"" \d " & Main.change_Desktop_Path & Titel_Text & " \t REG_EXPAND_SZ \f ")
     '
-    '        ' Shell("cmd.exe /c start explorer.exe")
+    '        ' Shell("cmd.exe \c start explorer.exe")
     '        End
     '
     '    End Sub

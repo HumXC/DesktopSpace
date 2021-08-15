@@ -15,11 +15,16 @@ Public Class Save_Theme
         Dim Line_Select_Color As String
 
         Directory.CreateDirectory(Application.StartupPath & "\Theme\" & ThemeName)
-
+        For i = 0 To Main.Box_Num - 1
+            Main.Box(i).Icon.Image.Dispose()
+            Dim s = Application.StartupPath & "\Theme\" & ThemeName & "\icon" & i
+            File.Copy(Application.StartupPath & "\temp\icon" & i, s, True)
+        Next
+        Main.BackgroundImage.Dispose()
         Dim Rgb_Value() As String = Main.M_Color.Split(",")
         If Rgb_Value.Length < 3 Or Rgb_Value.Length > 3 Then
 
-            Main.BackgroundImage.Save("D:/ghdsuiefefefefefefe")
+            File.Copy(Application.StartupPath & "\temp\Background", Application.StartupPath & "\Theme\" & ThemeName & "\Background", True)
             'Application.StartupPath & "\Theme\" & ThemeName & "\Background"
 
             'System.IO.IOException:“文件“D:\Desktop-Space\Code\Debug\Theme\Default\Background”正由另一进程使用，因此该进程无法访问该文件。”
@@ -39,6 +44,8 @@ Public Class Save_Theme
         Line_Height = Main.Line_Height
         Line_Color = Main.Line_Color_S
         Line_Select_Color = Main.Line_Select_Color_S
+
+
         Using Writer As New StreamWriter(Application.StartupPath & "\Theme\" & ThemeName & "\" & ThemeName)
             Writer.WriteLine("Theme_Start")
             Writer.WriteLine(M_Color)
@@ -55,15 +62,11 @@ Public Class Save_Theme
 
             For i = 0 To Main.Box_Num - 1
                 Writer.WriteLine(Main.Box(i).Titel_Text)
-                Dim s = Application.StartupPath & "\Theme\" & ThemeName & "\icon" & i
-                Try
-                    Main.Box(i).Icon.Image.Save(s)
-                Catch ex As System.Runtime.InteropServices.ExternalException
-                    Main.Box(i).Icon.Dispose()
-                    Main.Box(i).Icon.Image.Save(s)
-                End Try
-
-                '              Try
+                Writer.WriteLine(Main.Box(i).Box_Index)
+                Writer.WriteLine(Main.Box(i).Icon_Location)
+                Writer.WriteLine(Main.Box(i).Icon_Size)
+                '
+                '   Try
                 '                  Main.Box(i).Icon.Image.Save(s)
                 '              Catch ex As System.Runtime.InteropServices.ExternalException ':“GDI+ 中发生一般性错误。”
                 '                  Dim P As Image = Main.Box(i).Icon.Image
@@ -77,15 +80,15 @@ Public Class Save_Theme
 
                 '             End Try
 
-                Writer.WriteLine(Main.Box(i).Box_Index)
-                Writer.WriteLine(Main.Box(i).Icon_Location)
-                Writer.WriteLine(Main.Box(i).Icon_Size)
+
 
             Next
             Writer.WriteLine("Theme_End")
 
         End Using
-        MsgBox("主题""" & ThemeName & """保存成功", 0)
+
+        Main.MdiParent = ThemeEditor
+        Main.Show()
 
     End Sub
 End Class

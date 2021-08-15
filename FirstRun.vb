@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Public Class FirstRun
     Public Sub New()
-        Directory.CreateDirectory(Application.StartupPath & "/Theme/Default")
-        Using writer As New StreamWriter(Application.StartupPath & "/Theme/Default/Default")
+        Directory.CreateDirectory(Application.StartupPath & "\Theme\Default")
+        Using writer As New StreamWriter(Application.StartupPath & "\Theme\Default\Default")
             writer.WriteLine("这是DesktopSpace的默认主题")
             writer.WriteLine("主题内容从""Theme_Start""开始,由""Theme_End""结束。从""Theme_Start""开始,前9行为")
             writer.WriteLine("主窗口颜色或者主窗口图片")

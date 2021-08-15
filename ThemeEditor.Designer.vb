@@ -100,6 +100,10 @@ Partial Class ThemeEditor
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.当前加载主题 = New System.Windows.Forms.TextBox()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,22 +123,23 @@ Partial Class ThemeEditor
         Me.GroupBox5.SuspendLayout()
         CType(Me.预览, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Delete_aBox
         '
-        Me.Delete_aBox.Location = New System.Drawing.Point(12, 335)
+        Me.Delete_aBox.Location = New System.Drawing.Point(6, 12)
         Me.Delete_aBox.Name = "Delete_aBox"
-        Me.Delete_aBox.Size = New System.Drawing.Size(94, 57)
+        Me.Delete_aBox.Size = New System.Drawing.Size(94, 51)
         Me.Delete_aBox.TabIndex = 1
         Me.Delete_aBox.Text = "删除桌面"
         Me.Delete_aBox.UseVisualStyleBackColor = True
         '
         'Add_aBox
         '
-        Me.Add_aBox.Location = New System.Drawing.Point(112, 335)
+        Me.Add_aBox.Location = New System.Drawing.Point(106, 12)
         Me.Add_aBox.Name = "Add_aBox"
-        Me.Add_aBox.Size = New System.Drawing.Size(98, 57)
+        Me.Add_aBox.Size = New System.Drawing.Size(98, 51)
         Me.Add_aBox.TabIndex = 2
         Me.Add_aBox.Text = "添加桌面"
         Me.Add_aBox.UseVisualStyleBackColor = True
@@ -227,18 +232,18 @@ Partial Class ThemeEditor
         '
         'BackColor_Off
         '
-        Me.BackColor_Off.Location = New System.Drawing.Point(234, 335)
+        Me.BackColor_Off.Location = New System.Drawing.Point(298, 9)
         Me.BackColor_Off.Name = "BackColor_Off"
-        Me.BackColor_Off.Size = New System.Drawing.Size(89, 57)
+        Me.BackColor_Off.Size = New System.Drawing.Size(89, 54)
         Me.BackColor_Off.TabIndex = 23
         Me.BackColor_Off.Text = "关闭背景"
         Me.BackColor_Off.UseVisualStyleBackColor = True
         '
         'BackColor_On
         '
-        Me.BackColor_On.Location = New System.Drawing.Point(329, 337)
+        Me.BackColor_On.Location = New System.Drawing.Point(393, 12)
         Me.BackColor_On.Name = "BackColor_On"
-        Me.BackColor_On.Size = New System.Drawing.Size(77, 52)
+        Me.BackColor_On.Size = New System.Drawing.Size(84, 50)
         Me.BackColor_On.TabIndex = 24
         Me.BackColor_On.Text = "开启背景"
         Me.BackColor_On.UseVisualStyleBackColor = True
@@ -566,9 +571,9 @@ Partial Class ThemeEditor
         Me.BoxInfo.Controls.Add(Me.PictureBox3)
         Me.BoxInfo.Controls.Add(Me.PictureBox2)
         Me.BoxInfo.Controls.Add(Me.PictureBox1)
-        Me.BoxInfo.Location = New System.Drawing.Point(1454, 397)
+        Me.BoxInfo.Location = New System.Drawing.Point(1464, 397)
         Me.BoxInfo.Name = "BoxInfo"
-        Me.BoxInfo.Size = New System.Drawing.Size(189, 251)
+        Me.BoxInfo.Size = New System.Drawing.Size(179, 251)
         Me.BoxInfo.TabIndex = 53
         Me.BoxInfo.TabStop = False
         Me.BoxInfo.Text = "桌面元素说明"
@@ -675,7 +680,7 @@ Partial Class ThemeEditor
         Me.GroupBox4.Controls.Add(Me.Label5)
         Me.GroupBox4.Location = New System.Drawing.Point(1111, 398)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(337, 250)
+        Me.GroupBox4.Size = New System.Drawing.Size(347, 250)
         Me.GroupBox4.TabIndex = 51
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "程序设置"
@@ -702,16 +707,16 @@ Partial Class ThemeEditor
         '
         Me.Button2.Location = New System.Drawing.Point(10, 158)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(158, 64)
+        Me.Button2.Size = New System.Drawing.Size(185, 64)
         Me.Button2.TabIndex = 39
-        Me.Button2.Text = "恢复到初始桌面路径"
+        Me.Button2.Text = "恢复桌面到初始桌面路径"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(174, 158)
+        Me.Button1.Location = New System.Drawing.Point(201, 158)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 64)
+        Me.Button1.Size = New System.Drawing.Size(138, 64)
         Me.Button1.TabIndex = 36
         Me.Button1.Text = "更改桌面空间路径"
         Me.Button1.UseVisualStyleBackColor = True
@@ -860,12 +865,56 @@ Partial Class ThemeEditor
         Me.PictureBox5.TabIndex = 57
         Me.PictureBox5.TabStop = False
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.当前加载主题)
+        Me.GroupBox3.Controls.Add(Me.Label16)
+        Me.GroupBox3.Controls.Add(Me.Button10)
+        Me.GroupBox3.Controls.Add(Me.BackColor_On)
+        Me.GroupBox3.Controls.Add(Me.BackColor_Off)
+        Me.GroupBox3.Controls.Add(Me.Add_aBox)
+        Me.GroupBox3.Controls.Add(Me.Delete_aBox)
+        Me.GroupBox3.Location = New System.Drawing.Point(-1, 323)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(1644, 69)
+        Me.GroupBox3.TabIndex = 59
+        Me.GroupBox3.TabStop = False
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(1549, 8)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(89, 54)
+        Me.Button10.TabIndex = 25
+        Me.Button10.Text = "应用主题"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("宋体", 16.0!)
+        Me.Label16.Location = New System.Drawing.Point(490, 21)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(228, 27)
+        Me.Label16.TabIndex = 26
+        Me.Label16.Text = "当前加载的主题："
+        '
+        '当前加载主题
+        '
+        Me.当前加载主题.Font = New System.Drawing.Font("宋体", 16.0!)
+        Me.当前加载主题.Location = New System.Drawing.Point(700, 18)
+        Me.当前加载主题.Name = "当前加载主题"
+        Me.当前加载主题.ReadOnly = True
+        Me.当前加载主题.Size = New System.Drawing.Size(406, 38)
+        Me.当前加载主题.TabIndex = 27
+        '
         'ThemeEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1642, 928)
         Me.Controls.Add(Me.Button9)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.BoxInfo)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.GroupBox5)
@@ -876,10 +925,6 @@ Partial Class ThemeEditor
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.图标编辑)
-        Me.Controls.Add(Me.BackColor_On)
-        Me.Controls.Add(Me.BackColor_Off)
-        Me.Controls.Add(Me.Add_aBox)
-        Me.Controls.Add(Me.Delete_aBox)
         Me.Controls.Add(Me.PictureBox5)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -914,6 +959,8 @@ Partial Class ThemeEditor
         Me.GroupBox5.PerformLayout()
         CType(Me.预览, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -995,4 +1042,8 @@ Partial Class ThemeEditor
     Friend WithEvents Label15 As Label
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents Button6 As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Button10 As Button
+    Friend WithEvents 当前加载主题 As TextBox
+    Friend WithEvents Label16 As Label
 End Class

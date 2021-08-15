@@ -52,10 +52,10 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-
+        Box_Num = 0
         '打开配置文件
         Try
-            Using Reader As New StreamReader(Application.StartupPath & "/DesktopSpace.conf")
+            Using Reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
                 change_Desktop_Path = Reader.ReadLine
                 ThemeEditor.桌面空间所在路径.Text = change_Desktop_Path
                 Theme_Name = Reader.ReadLine
@@ -64,6 +64,7 @@ Public Class Main
                 End If
                 Default_Path = Reader.ReadLine
                 ThemeEditor.初始桌面路径.Text = Default_Path
+                ThemeEditor.当前加载主题.Text = Theme_Name
             End Using
 
             '如果没有找到配置文件则打开配置向导
@@ -73,7 +74,7 @@ Public Class Main
         End Try
         ReadTheme()
         '窗口的初始位置
-        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) / 2, 40)
+        Me.Location = New Point((ThemeEditor.Width - Me.Size.Width) \ 2, 40)
 
         '正则表达式读取并检查桌面路径
         '        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
@@ -90,14 +91,14 @@ Public Class Main
         '        Next
         '
         '导出桌面图标信息
-        'Shell("cmd.exe /c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg /y ")
+        'Shell("cmd.exe \c reg export HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags\1\Desktop " & Me.change_Desktop_Path & Me.Now_Path & ".reg \y ")
     End Sub
 
     Public Sub ReadTheme()
 
         '配置文件存在则读取主题文件并生成Box
         Try
-            Using Reader As New StreamReader(Application.StartupPath & "/Theme/" & Theme_Name& & "/" & Theme_Name)
+            Using Reader As New StreamReader(Application.StartupPath & "\Theme\" & Theme_Name& & "\" & Theme_Name)
                 Dim Key_Code As String
 
                 Do
@@ -150,8 +151,10 @@ Public Class Main
 
 
     Public Sub Set_Main_Color()
+        Me.BackgroundImage = My.Resources.透明
         If M_Color = "Background" Then
-            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/Background")
+            File.Copy(Application.StartupPath & "\Theme\" & Theme_Name & "\Background", Application.StartupPath & "\temp\Background", True)
+            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "\Theme\" & Theme_Name & "\Background")
         Else
             Try
                 Dim Rgb_Value() As String = M_Color.Split(",")
@@ -159,7 +162,10 @@ Public Class Main
 
             Catch ex As System.InvalidCastException
                 Try
+                    Directory.CreateDirectory(Application.StartupPath & "\temp")
+                    File.Copy(M_Color, Application.StartupPath & "\temp\Background", True)
                     BackgroundImage = Image.FromFile(M_Color)
+
                 Catch ax As System.NotSupportedException
                     MsgBox("不支持的路径格式", 0)
 
@@ -233,7 +239,7 @@ Public Class Main
         '绘制主窗体右边界、下边界
         '    获取box宽度
         Dim Size_Value() As String = Box_Size.Split(",")
-        Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 40)
+        Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 30)
 
     End Sub
 
