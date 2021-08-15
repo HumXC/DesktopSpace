@@ -18,7 +18,7 @@
         Me.Location = New Point(Location_Value(0), Location_Value(1))
 
         Try
-            Image = Image.FromFile(Application.StartupPath & "/Theme/" & Main.Theme_Name & "/image/" & Box.Icon_Name)
+            Image = Image.FromFile(Application.StartupPath & "/Theme/" & Main.Theme_Name & "/icon" & Box.Icon_Name)
         Catch ex As System.ArgumentException
             ImageLocation = Box.Icon_Icon_Name
         Catch ex As System.NotSupportedException
@@ -28,7 +28,11 @@
             Size = New Size(100, 100)
             Image = My.Resources.Resources._Default
             BackColor = Color.Transparent
-            Location = New Point((Parent.Size.Width - Me.Size.Width) / 2, Parent.Size.Height - Me.Size.Height - 20)
+            Location = New Point(0, 5) 'New Point((Parent.Size.Width - Me.Size.Width) \ 2, Parent.Size.Height - Me.Size.Height - 20)
+            Box.Icon_Size = "100,100"
+            Box.Icon_Location = "0,5"
+            Box.Icon_Name = "UnknowPath"
+
         End Try
     End Sub
 

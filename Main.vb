@@ -135,7 +135,7 @@ Public Class Main
 
     Public Sub Set_Main_Color(M_Color As String)
         If M_Color = "Background" Then
-            BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/image/Background")
+            BackgroundImage = Image.FromFile(Application.StartupPath & "/Theme/" & Theme_Name & "/Background")
         Else
             Try
                 Dim Rgb_Value() As String = M_Color.Split(",")
