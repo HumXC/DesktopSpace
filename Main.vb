@@ -102,7 +102,7 @@ Public Class Main
 
         '配置文件存在则读取主题文件并生成Box
         Try
-            Using Reader As New StreamReader(Application.StartupPath & "\Theme\" & Theme_Name& & "\" & Theme_Name)
+            Using Reader As New StreamReader(Application.StartupPath & "\Theme\" & Theme_Name & "\" & Theme_Name)
                 Dim Key_Code As String
                 Dim cycle_Num As Integer
                 Do
@@ -152,9 +152,9 @@ Public Class Main
         Catch ex As System.IO.FileNotFoundException
             Dim DefaultTheme = New FirstRun
             ReadTheme()
-        Catch ex As System.IO.DirectoryNotFoundException
-            Dim DefaultTheme = New FirstRun
-            ReadTheme()
+            '  Catch ex As System.IO.DirectoryNotFoundException
+            '  Dim DefaultTheme = New FirstRun
+            '   ReadTheme()
         End Try
     End Sub
 
@@ -163,6 +163,7 @@ Public Class Main
     Public Sub Set_Main_Color()
         Me.BackgroundImage = My.Resources.透明
         If M_Color = "Background" Then
+            Directory.CreateDirectory(Application.StartupPath & "\temp")
             File.Copy(Application.StartupPath & "\Theme\" & Theme_Name & "\Background", Application.StartupPath & "\temp\Background", True)
             Me.BackgroundImage = Image.FromFile(Application.StartupPath & "\Theme\" & Theme_Name & "\Background")
         Else

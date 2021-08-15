@@ -882,6 +882,10 @@ Partial Class ThemeEditor
         Me.Button10.Text = "应用主题"
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1
+        '
         'ThemeEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
