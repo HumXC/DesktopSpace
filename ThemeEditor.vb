@@ -281,6 +281,7 @@ Public Class ThemeEditor
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         BackColor_Offf()
         Timer1.Enabled = False
+        Icon_E.Image.Dispose()
         预览.Image.Dispose()
         Main.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Main.Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Main.Size.Height) / 2)
         Dim ThemeName As String = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
