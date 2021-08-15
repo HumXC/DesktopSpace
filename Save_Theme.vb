@@ -94,8 +94,17 @@ Public Class Save_Theme
 
         End Using
 
-        Main.MdiParent = ThemeEditor
+        ' Main.MdiParent = ThemeEditor
+        Main.Dispose()
         Main.Show()
+        '生成预览截图
+
+
+        Dim Img = New Bitmap(Main.Width, Main.Height) '创建一个图像文件
+        Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
+        Gra.CopyFromScreen(Main.Location.X, Main.Location.Y, 0, 0, Img.Size)  '把要保存的文件画到画板上，再保存
+
+        Img.Save("D:/测试截图.png")
 
     End Sub
 End Class

@@ -53,6 +53,7 @@ Partial Class ThemeEditor
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Apply_UPL = New System.Windows.Forms.Button()
         Me.图标编辑 = New System.Windows.Forms.GroupBox()
+        Me.jt = New System.Windows.Forms.PictureBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Apply2 = New System.Windows.Forms.Button()
@@ -90,6 +91,7 @@ Partial Class ThemeEditor
         Me.Label5 = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.主题预览 = New System.Windows.Forms.Label()
@@ -104,7 +106,7 @@ Partial Class ThemeEditor
         Me.当前加载主题 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +114,7 @@ Partial Class ThemeEditor
         CType(Me.Icon_LX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Box_E, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.图标编辑.SuspendLayout()
+        CType(Me.jt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBoxY.SuspendLayout()
@@ -385,6 +388,8 @@ Partial Class ThemeEditor
         '
         '图标编辑
         '
+        Me.图标编辑.Controls.Add(Me.Button12)
+        Me.图标编辑.Controls.Add(Me.jt)
         Me.图标编辑.Controls.Add(Me.Label14)
         Me.图标编辑.Controls.Add(Me.Label13)
         Me.图标编辑.Controls.Add(Me.Apply2)
@@ -407,6 +412,15 @@ Partial Class ThemeEditor
         Me.图标编辑.TabIndex = 43
         Me.图标编辑.TabStop = False
         Me.图标编辑.Text = "图标样式"
+        '
+        'jt
+        '
+        Me.jt.BackColor = System.Drawing.Color.Orange
+        Me.jt.Location = New System.Drawing.Point(388, 297)
+        Me.jt.Name = "jt"
+        Me.jt.Size = New System.Drawing.Size(198, 186)
+        Me.jt.TabIndex = 50
+        Me.jt.TabStop = False
         '
         'Label14
         '
@@ -776,6 +790,15 @@ Partial Class ThemeEditor
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "主题选项"
         '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(434, 19)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(87, 29)
+        Me.Button11.TabIndex = 49
+        Me.Button11.Text = "主题信息"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         'Button6
         '
         Me.Button6.Location = New System.Drawing.Point(170, 227)
@@ -910,14 +933,14 @@ Partial Class ThemeEditor
         Me.Button10.Text = "应用主题"
         Me.Button10.UseVisualStyleBackColor = True
         '
-        'Button11
+        'Button12
         '
-        Me.Button11.Location = New System.Drawing.Point(434, 19)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(87, 29)
-        Me.Button11.TabIndex = 49
-        Me.Button11.Text = "主题信息"
-        Me.Button11.UseVisualStyleBackColor = True
+        Me.Button12.Location = New System.Drawing.Point(420, 246)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(89, 41)
+        Me.Button12.TabIndex = 50
+        Me.Button12.Text = "保存主题"
+        Me.Button12.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '
@@ -953,6 +976,7 @@ Partial Class ThemeEditor
         CType(Me.Box_E, System.ComponentModel.ISupportInitialize).EndInit()
         Me.图标编辑.ResumeLayout(False)
         Me.图标编辑.PerformLayout()
+        CType(Me.jt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1058,4 +1082,6 @@ Partial Class ThemeEditor
     Friend WithEvents 当前加载主题 As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Button11 As Button
+    Friend WithEvents jt As PictureBox
+    Friend WithEvents Button12 As Button
 End Class

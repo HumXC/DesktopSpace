@@ -284,6 +284,14 @@ Public Class ThemeEditor
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim ThemeName = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
         Dim Theme = New Save_Theme(ThemeName)
+        '生成预览截图
+
+
+        Dim Img = New Bitmap(Main.Width, Main.Height) '创建一个图像文件
+        Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
+        Gra.CopyFromScreen(Main.Location, New Point(Main.Location.X + Main.Size.Width, Main.Location.Y + Main.Size.Height), Main.Size)  '把要保存的文件画到画板上，再保存
+
+
         MsgBox("主题""" & ThemeName & """保存成功", vbOKOnly)
     End Sub
 
@@ -416,5 +424,16 @@ Public Class ThemeEditor
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
         MsgBox(Main.Theme_Info, 0)
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        '生成预览截图
+
+
+        Dim Img = New Bitmap(1000, 1000) '创建一个图像文件
+        Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
+        Gra.CopyFromScreen(1000, 100, 0, 0, New Size(1000, 1000))  '把要保存的文件画到画板上，再保存
+
+        Img.Save("D:/测试截图.png")
     End Sub
 End Class
