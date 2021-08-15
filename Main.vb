@@ -58,7 +58,7 @@ Public Class Main
         Box_Num = 0
         '打开配置文件
         Try
-            Using Reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
+            Using Reader As New StreamReader("DesktopSpace.conf")
                 change_Desktop_Path = Reader.ReadLine
                 ThemeEditor.桌面空间所在路径.Text = change_Desktop_Path
                 Theme_Name = Reader.ReadLine
@@ -102,7 +102,7 @@ Public Class Main
 
         '配置文件存在则读取主题文件并生成Box
         Try
-            Using Reader As New StreamReader(Application.StartupPath & "\Theme\" & Theme_Name & "\" & Theme_Name)
+            Using Reader As New StreamReader("Theme\" & Theme_Name & "\" & Theme_Name)
                 Dim Key_Code As String
                 Dim cycle_Num As Integer
                 Do
@@ -163,9 +163,7 @@ Public Class Main
     Public Sub Set_Main_Color()
         Me.BackgroundImage = My.Resources.透明
         If M_Color = "Background" Then
-            Directory.CreateDirectory(Application.StartupPath & "\temp")
-            File.Copy(Application.StartupPath & "\Theme\" & Theme_Name & "\Background", Application.StartupPath & "\temp\Background", True)
-            Me.BackgroundImage = Image.FromFile(Application.StartupPath & "\Theme\" & Theme_Name & "\Background")
+            Me.BackgroundImage = Image.FromFile("Theme\" & Theme_Name & "\Background")
         Else
             Try
                 Dim Rgb_Value() As String = M_Color.Split(",")
@@ -173,8 +171,6 @@ Public Class Main
 
             Catch ex As System.InvalidCastException
                 Try
-                    Directory.CreateDirectory(Application.StartupPath & "\temp")
-                    File.Copy(M_Color, Application.StartupPath & "\temp\Background", True)
                     BackgroundImage = Image.FromFile(M_Color)
 
                 Catch ax As System.NotSupportedException

@@ -267,7 +267,7 @@ Public Class ThemeEditor
                 l3 = reader.ReadLine
             End Using
 
-            Using Writer As New StreamWriter(Application.StartupPath & "\DesktopSpace.conf")
+            Using Writer As New StreamWriter("DesktopSpace.conf")
                 Writer.WriteLine(Main.change_Desktop_Path)
                 Writer.WriteLine(l2)
                 Writer.WriteLine(l3)
@@ -281,11 +281,21 @@ Public Class ThemeEditor
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         BackColor_Offf()
         Timer1.Enabled = False
+        预览.Image.Dispose()
+        Main.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Main.Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Main.Size.Height) / 2)
         Dim ThemeName As String = InputBox("输入主题的名称："， "保存主题", Main.Theme_Name)
         If ThemeName <> "" Then
+            Main.TopMost = True
 
             Dim Theme = New Save_Theme(ThemeName)
-            MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+            Try
+                MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+            Catch ex As System.ArgumentException
+                'System.ArgumentException:“参数无效。”
+                MsgBox("主题" & ThemeName & "保存成功", vbOKOnly)
+            End Try
+
+            Main.TopMost = False
         End If
 
 
@@ -333,8 +343,10 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub ThemeList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ThemeList.SelectedIndexChanged
+
         Try
-            预览.Image = Image.FromFile(Application.StartupPath & "\Theme\" & ThemeList.SelectedItem & "\" & ThemeList.SelectedItem & ".png")
+
+            预览.Image = Image.FromFile("Theme\" & ThemeList.SelectedItem & "\" & ThemeList.SelectedItem & ".png")
 
         Catch ex As System.IO.FileNotFoundException
             预览.Image = My.Resources.Resources.笑脸
@@ -425,4 +437,6 @@ Public Class ThemeEditor
         Process.Start("https://github.com/HumXC/DesktopSpace")
         ' MsgBox("Github主页：" & vbCr & "https://github.com/HumXC/DesktopSpace" & vbCr & "Gitee主页：" & vbCr & "https://gitee.com/humxc/DesktopSpace", 0)
     End Sub
+
+
 End Class

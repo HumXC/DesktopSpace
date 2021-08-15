@@ -98,11 +98,11 @@ Partial Class ThemeEditor
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.当前加载主题 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button8 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -230,9 +230,9 @@ Partial Class ThemeEditor
         '
         'BackColor_Off
         '
-        Me.BackColor_Off.Location = New System.Drawing.Point(298, 9)
+        Me.BackColor_Off.Location = New System.Drawing.Point(298, 12)
         Me.BackColor_Off.Name = "BackColor_Off"
-        Me.BackColor_Off.Size = New System.Drawing.Size(89, 54)
+        Me.BackColor_Off.Size = New System.Drawing.Size(89, 51)
         Me.BackColor_Off.TabIndex = 23
         Me.BackColor_Off.Text = "关闭背景"
         Me.BackColor_Off.UseVisualStyleBackColor = True
@@ -265,7 +265,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Text
         '
-        Me.Change_Titel_Text.Location = New System.Drawing.Point(191, 114)
+        Me.Change_Titel_Text.Location = New System.Drawing.Point(191, 130)
         Me.Change_Titel_Text.Name = "Change_Titel_Text"
         Me.Change_Titel_Text.Size = New System.Drawing.Size(77, 64)
         Me.Change_Titel_Text.TabIndex = 27
@@ -274,7 +274,7 @@ Partial Class ThemeEditor
         '
         'Change_Main_Color
         '
-        Me.Change_Main_Color.Location = New System.Drawing.Point(13, 24)
+        Me.Change_Main_Color.Location = New System.Drawing.Point(137, 189)
         Me.Change_Main_Color.Name = "Change_Main_Color"
         Me.Change_Main_Color.Size = New System.Drawing.Size(106, 56)
         Me.Change_Main_Color.TabIndex = 28
@@ -283,7 +283,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Color
         '
-        Me.Change_Titel_Color.Location = New System.Drawing.Point(13, 114)
+        Me.Change_Titel_Color.Location = New System.Drawing.Point(13, 130)
         Me.Change_Titel_Color.Name = "Change_Titel_Color"
         Me.Change_Titel_Color.Size = New System.Drawing.Size(81, 64)
         Me.Change_Titel_Color.TabIndex = 30
@@ -292,7 +292,7 @@ Partial Class ThemeEditor
         '
         'Change_Line_Color
         '
-        Me.Change_Line_Color.Location = New System.Drawing.Point(10, 44)
+        Me.Change_Line_Color.Location = New System.Drawing.Point(10, 54)
         Me.Change_Line_Color.Name = "Change_Line_Color"
         Me.Change_Line_Color.Size = New System.Drawing.Size(171, 55)
         Me.Change_Line_Color.TabIndex = 32
@@ -301,7 +301,7 @@ Partial Class ThemeEditor
         '
         'Change_Line_2Color
         '
-        Me.Change_Line_2Color.Location = New System.Drawing.Point(10, 114)
+        Me.Change_Line_2Color.Location = New System.Drawing.Point(7, 133)
         Me.Change_Line_2Color.Name = "Change_Line_2Color"
         Me.Change_Line_2Color.Size = New System.Drawing.Size(171, 58)
         Me.Change_Line_2Color.TabIndex = 33
@@ -310,7 +310,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Font
         '
-        Me.Change_Titel_Font.Location = New System.Drawing.Point(100, 114)
+        Me.Change_Titel_Font.Location = New System.Drawing.Point(100, 130)
         Me.Change_Titel_Font.Name = "Change_Titel_Font"
         Me.Change_Titel_Font.Size = New System.Drawing.Size(85, 64)
         Me.Change_Titel_Font.TabIndex = 35
@@ -321,7 +321,7 @@ Partial Class ThemeEditor
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.Label1.Location = New System.Drawing.Point(155, 24)
+        Me.Label1.Location = New System.Drawing.Point(76, 28)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(130, 24)
         Me.Label1.TabIndex = 36
@@ -331,7 +331,7 @@ Partial Class ThemeEditor
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.Label2.Location = New System.Drawing.Point(155, 64)
+        Me.Label2.Location = New System.Drawing.Point(76, 83)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(130, 24)
         Me.Label2.TabIndex = 37
@@ -340,32 +340,32 @@ Partial Class ThemeEditor
         'U_Padding
         '
         Me.U_Padding.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.U_Padding.Location = New System.Drawing.Point(267, 24)
+        Me.U_Padding.Location = New System.Drawing.Point(212, 25)
         Me.U_Padding.Name = "U_Padding"
-        Me.U_Padding.Size = New System.Drawing.Size(106, 34)
+        Me.U_Padding.Size = New System.Drawing.Size(157, 34)
         Me.U_Padding.TabIndex = 38
         '
         'L_Padding
         '
         Me.L_Padding.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.L_Padding.Location = New System.Drawing.Point(267, 64)
+        Me.L_Padding.Location = New System.Drawing.Point(212, 80)
         Me.L_Padding.Name = "L_Padding"
-        Me.L_Padding.Size = New System.Drawing.Size(106, 34)
+        Me.L_Padding.Size = New System.Drawing.Size(157, 34)
         Me.L_Padding.TabIndex = 39
         '
         'B_Spacing
         '
         Me.B_Spacing.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.B_Spacing.Location = New System.Drawing.Point(267, 104)
+        Me.B_Spacing.Location = New System.Drawing.Point(212, 135)
         Me.B_Spacing.Name = "B_Spacing"
-        Me.B_Spacing.Size = New System.Drawing.Size(106, 34)
+        Me.B_Spacing.Size = New System.Drawing.Size(157, 34)
         Me.B_Spacing.TabIndex = 41
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.Label3.Location = New System.Drawing.Point(203, 104)
+        Me.Label3.Location = New System.Drawing.Point(124, 138)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 24)
         Me.Label3.TabIndex = 40
@@ -373,9 +373,9 @@ Partial Class ThemeEditor
         '
         'Apply_UPL
         '
-        Me.Apply_UPL.Location = New System.Drawing.Point(379, 23)
+        Me.Apply_UPL.Location = New System.Drawing.Point(379, 24)
         Me.Apply_UPL.Name = "Apply_UPL"
-        Me.Apply_UPL.Size = New System.Drawing.Size(80, 115)
+        Me.Apply_UPL.Size = New System.Drawing.Size(80, 146)
         Me.Apply_UPL.TabIndex = 42
         Me.Apply_UPL.Text = "应用"
         Me.Apply_UPL.UseVisualStyleBackColor = True
@@ -400,7 +400,7 @@ Partial Class ThemeEditor
         Me.图标编辑.Controls.Add(Me.Box_E)
         Me.图标编辑.Location = New System.Drawing.Point(489, 80)
         Me.图标编辑.Name = "图标编辑"
-        Me.图标编辑.Size = New System.Drawing.Size(622, 531)
+        Me.图标编辑.Size = New System.Drawing.Size(622, 641)
         Me.图标编辑.TabIndex = 43
         Me.图标编辑.TabStop = False
         Me.图标编辑.Text = "图标样式"
@@ -464,9 +464,9 @@ Partial Class ThemeEditor
         '
         Me.GroupBox1.Controls.Add(Me.Change_Line_2Color)
         Me.GroupBox1.Controls.Add(Me.Change_Line_Color)
-        Me.GroupBox1.Location = New System.Drawing.Point(296, 406)
+        Me.GroupBox1.Location = New System.Drawing.Point(296, 478)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(187, 205)
+        Me.GroupBox1.Size = New System.Drawing.Size(187, 243)
         Me.GroupBox1.TabIndex = 44
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "标识线样式"
@@ -478,9 +478,9 @@ Partial Class ThemeEditor
         Me.GroupBox2.Controls.Add(Me.Change_Titel_Color)
         Me.GroupBox2.Controls.Add(Me.Change_Titel_Text)
         Me.GroupBox2.Controls.Add(Me.Change_Titel_Font)
-        Me.GroupBox2.Location = New System.Drawing.Point(5, 406)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 478)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(285, 205)
+        Me.GroupBox2.Size = New System.Drawing.Size(285, 243)
         Me.GroupBox2.TabIndex = 45
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "标题样式"
@@ -512,14 +512,14 @@ Partial Class ThemeEditor
         Me.GroupBoxY.Controls.Add(Me.Label3)
         Me.GroupBoxY.Location = New System.Drawing.Point(5, 80)
         Me.GroupBoxY.Name = "GroupBoxY"
-        Me.GroupBoxY.Size = New System.Drawing.Size(478, 293)
+        Me.GroupBoxY.Size = New System.Drawing.Size(478, 374)
         Me.GroupBoxY.TabIndex = 46
         Me.GroupBoxY.TabStop = False
         Me.GroupBoxY.Text = "主界面样式"
         '
         '当前主界面大小
         '
-        Me.当前主界面大小.Location = New System.Drawing.Point(132, 225)
+        Me.当前主界面大小.Location = New System.Drawing.Point(128, 332)
         Me.当前主界面大小.Name = "当前主界面大小"
         Me.当前主界面大小.Size = New System.Drawing.Size(241, 25)
         Me.当前主界面大小.TabIndex = 44
@@ -527,7 +527,7 @@ Partial Class ThemeEditor
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(10, 203)
+        Me.Label4.Location = New System.Drawing.Point(6, 310)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(247, 45)
         Me.Label4.TabIndex = 43
@@ -536,14 +536,14 @@ Partial Class ThemeEditor
         '主界面背景路径
         '
         Me.主界面背景路径.Font = New System.Drawing.Font("宋体", 12.0!)
-        Me.主界面背景路径.Location = New System.Drawing.Point(13, 158)
+        Me.主界面背景路径.Location = New System.Drawing.Point(13, 261)
         Me.主界面背景路径.Name = "主界面背景路径"
         Me.主界面背景路径.Size = New System.Drawing.Size(360, 30)
         Me.主界面背景路径.TabIndex = 27
         '
         '应用主界面图片
         '
-        Me.应用主界面图片.Location = New System.Drawing.Point(379, 153)
+        Me.应用主界面图片.Location = New System.Drawing.Point(379, 256)
         Me.应用主界面图片.Name = "应用主界面图片"
         Me.应用主界面图片.Size = New System.Drawing.Size(80, 39)
         Me.应用主界面图片.TabIndex = 28
@@ -552,7 +552,7 @@ Partial Class ThemeEditor
         '
         '更换主界面背景颜色
         '
-        Me.更换主界面背景颜色.Location = New System.Drawing.Point(13, 86)
+        Me.更换主界面背景颜色.Location = New System.Drawing.Point(13, 191)
         Me.更换主界面背景颜色.Name = "更换主界面背景颜色"
         Me.更换主界面背景颜色.Size = New System.Drawing.Size(106, 52)
         Me.更换主界面背景颜色.TabIndex = 26
@@ -571,7 +571,7 @@ Partial Class ThemeEditor
         Me.BoxInfo.Controls.Add(Me.PictureBox1)
         Me.BoxInfo.Location = New System.Drawing.Point(1470, 79)
         Me.BoxInfo.Name = "BoxInfo"
-        Me.BoxInfo.Size = New System.Drawing.Size(179, 251)
+        Me.BoxInfo.Size = New System.Drawing.Size(179, 296)
         Me.BoxInfo.TabIndex = 53
         Me.BoxInfo.TabStop = False
         Me.BoxInfo.Text = "桌面元素说明"
@@ -579,7 +579,7 @@ Partial Class ThemeEditor
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(50, 229)
+        Me.Label7.Location = New System.Drawing.Point(50, 269)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(82, 15)
         Me.Label7.TabIndex = 7
@@ -588,7 +588,7 @@ Partial Class ThemeEditor
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(69, 181)
+        Me.Label8.Location = New System.Drawing.Point(69, 221)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(37, 15)
         Me.Label8.TabIndex = 6
@@ -597,7 +597,7 @@ Partial Class ThemeEditor
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(72, 105)
+        Me.Label9.Location = New System.Drawing.Point(72, 119)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(37, 15)
         Me.Label9.TabIndex = 5
@@ -615,7 +615,7 @@ Partial Class ThemeEditor
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.LightSkyBlue
-        Me.PictureBox4.Location = New System.Drawing.Point(11, 212)
+        Me.PictureBox4.Location = New System.Drawing.Point(11, 252)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(154, 11)
         Me.PictureBox4.TabIndex = 3
@@ -624,7 +624,7 @@ Partial Class ThemeEditor
         'PictureBox3
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.YellowGreen
-        Me.PictureBox3.Location = New System.Drawing.Point(11, 170)
+        Me.PictureBox3.Location = New System.Drawing.Point(11, 210)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(154, 36)
         Me.PictureBox3.TabIndex = 2
@@ -633,7 +633,7 @@ Partial Class ThemeEditor
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox2.Location = New System.Drawing.Point(44, 61)
+        Me.PictureBox2.Location = New System.Drawing.Point(44, 75)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(98, 96)
         Me.PictureBox2.TabIndex = 1
@@ -644,7 +644,7 @@ Partial Class ThemeEditor
         Me.PictureBox1.BackColor = System.Drawing.Color.Orange
         Me.PictureBox1.Location = New System.Drawing.Point(11, 30)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(154, 134)
+        Me.PictureBox1.Size = New System.Drawing.Size(154, 174)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -660,14 +660,14 @@ Partial Class ThemeEditor
         Me.GroupBox4.Controls.Add(Me.Label5)
         Me.GroupBox4.Location = New System.Drawing.Point(1117, 80)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(347, 250)
+        Me.GroupBox4.Size = New System.Drawing.Size(347, 295)
         Me.GroupBox4.TabIndex = 51
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "程序设置"
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(264, 108)
+        Me.Button4.Location = New System.Drawing.Point(264, 130)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(60, 39)
         Me.Button4.TabIndex = 41
@@ -685,7 +685,7 @@ Partial Class ThemeEditor
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(10, 158)
+        Me.Button2.Location = New System.Drawing.Point(9, 209)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(185, 64)
         Me.Button2.TabIndex = 39
@@ -694,7 +694,7 @@ Partial Class ThemeEditor
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(201, 158)
+        Me.Button1.Location = New System.Drawing.Point(200, 209)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(138, 64)
         Me.Button1.TabIndex = 36
@@ -704,7 +704,7 @@ Partial Class ThemeEditor
         '桌面空间所在路径
         '
         Me.桌面空间所在路径.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.桌面空间所在路径.Location = New System.Drawing.Point(10, 113)
+        Me.桌面空间所在路径.Location = New System.Drawing.Point(10, 135)
         Me.桌面空间所在路径.Name = "桌面空间所在路径"
         Me.桌面空间所在路径.Size = New System.Drawing.Size(247, 34)
         Me.桌面空间所在路径.TabIndex = 38
@@ -713,7 +713,7 @@ Partial Class ThemeEditor
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("宋体", 12.0!)
-        Me.Label6.Location = New System.Drawing.Point(6, 90)
+        Me.Label6.Location = New System.Drawing.Point(6, 112)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(169, 20)
         Me.Label6.TabIndex = 37
@@ -748,16 +748,16 @@ Partial Class ThemeEditor
         Me.GroupBox5.Controls.Add(Me.ThemeList)
         Me.GroupBox5.Controls.Add(Me.Button7)
         Me.GroupBox5.Controls.Add(Me.Button5)
-        Me.GroupBox5.Location = New System.Drawing.Point(1117, 336)
+        Me.GroupBox5.Location = New System.Drawing.Point(1120, 390)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(532, 275)
+        Me.GroupBox5.Size = New System.Drawing.Size(518, 329)
         Me.GroupBox5.TabIndex = 52
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "主题选项"
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(434, 19)
+        Me.Button11.Location = New System.Drawing.Point(429, 19)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(87, 29)
         Me.Button11.TabIndex = 49
@@ -766,7 +766,7 @@ Partial Class ThemeEditor
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(170, 227)
+        Me.Button6.Location = New System.Drawing.Point(170, 272)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(87, 41)
         Me.Button6.TabIndex = 48
@@ -795,9 +795,9 @@ Partial Class ThemeEditor
         '
         '预览
         '
-        Me.预览.Location = New System.Drawing.Point(170, 54)
+        Me.预览.Location = New System.Drawing.Point(168, 54)
         Me.预览.Name = "预览"
-        Me.预览.Size = New System.Drawing.Size(348, 150)
+        Me.预览.Size = New System.Drawing.Size(348, 212)
         Me.预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.预览.TabIndex = 45
         Me.预览.TabStop = False
@@ -808,12 +808,12 @@ Partial Class ThemeEditor
         Me.ThemeList.ItemHeight = 15
         Me.ThemeList.Location = New System.Drawing.Point(6, 54)
         Me.ThemeList.Name = "ThemeList"
-        Me.ThemeList.Size = New System.Drawing.Size(155, 214)
+        Me.ThemeList.Size = New System.Drawing.Size(155, 259)
         Me.ThemeList.TabIndex = 44
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(334, 228)
+        Me.Button7.Location = New System.Drawing.Point(326, 272)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(89, 41)
         Me.Button7.TabIndex = 43
@@ -822,7 +822,7 @@ Partial Class ThemeEditor
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(429, 227)
+        Me.Button5.Location = New System.Drawing.Point(421, 272)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(89, 41)
         Me.Button5.TabIndex = 42
@@ -845,6 +845,15 @@ Partial Class ThemeEditor
         Me.GroupBox3.TabIndex = 59
         Me.GroupBox3.TabStop = False
         '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(1576, 13)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(49, 50)
+        Me.Button8.TabIndex = 28
+        Me.Button8.Text = "关于"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         '当前加载主题
         '
         Me.当前加载主题.Font = New System.Drawing.Font("宋体", 16.0!)
@@ -866,7 +875,7 @@ Partial Class ThemeEditor
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(1112, 9)
+        Me.Button10.Location = New System.Drawing.Point(1112, 13)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(89, 51)
         Me.Button10.TabIndex = 25
@@ -875,22 +884,12 @@ Partial Class ThemeEditor
         '
         'Timer1
         '
-        Me.Timer1.Interval = 1
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(1581, 12)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(49, 50)
-        Me.Button8.TabIndex = 28
-        Me.Button8.Text = "关于"
-        Me.Button8.UseVisualStyleBackColor = True
         '
         'ThemeEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1642, 625)
+        Me.ClientSize = New System.Drawing.Size(1642, 733)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.BoxInfo)
         Me.Controls.Add(Me.GroupBox5)

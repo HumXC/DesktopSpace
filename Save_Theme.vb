@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Public Class Save_Theme
-
+    Private Box_Index As Integer = Main.Box_Num - 1
     Public Sub New(ThemeName As String)
         Dim M_Color As String
         Dim Box_Size As String
@@ -14,35 +14,48 @@ Public Class Save_Theme
         Dim Line_Color As String
         Dim Line_Select_Color As String
         '生成预览截图
+        '    Try
+        '        Directory.Delete("temp",true)
+        '    Catch ex As System.IO.DirectoryNotFoundException
+        '        'System.IO.DirectoryNotFoundException:“未能找到路径“D:\Desktop-Space\Code\Debug\temp”的一部分。”
+        '    End Try
+
 
         Dim Img = New Bitmap(Main.Width, Main.Height) '创建一个图像文件
         Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
         Gra.CopyFromScreen(Main.Location.X, Main.Location.Y, 0, 0, Img.Size)  '把要保存的文件画到画板上，再保存
+        Directory.CreateDirectory("Theme\" & ThemeName)
+        Directory.CreateDirectory("temp")
+        Img.Save("temp\" & ThemeName & ".png")
 
-        Img.Save("temp/gfd.png")
 
-        Directory.CreateDirectory(Application.StartupPath & "\Theme\" & ThemeName)
-        For i = 0 To Main.Box_Num - 1
+
+
+
+
+        File.Copy("temp\" & ThemeName & ".png", "Theme\" & ThemeName & "\" & ThemeName & ".png", True)
+
+
+
+            '保存图标
+            For i = 0 To Box_Index
+            Dim s = "Theme\" & ThemeName & "\icon" & i
+            Main.Box(i).Icon.Image.Save("temp\icon" & i)
             Main.Box(i).Icon.Image.Dispose()
-            Dim s = Application.StartupPath & "\Theme\" & ThemeName & "\icon" & i
-            If Main.Box(i).Icon_Name <> "UnknowPath" Then
-                File.Copy(Application.StartupPath & "\temp\icon" & i, s, True)
-            End If
+            Main.Box(i).Icon.Dispose()
+            Main.Box(i).Dispose()
+            File.Copy("temp\icon" & i, "Theme\" & ThemeName & "\icon" & i, True)
         Next
-        Main.BackgroundImage.Dispose()
         Dim Rgb_Value() As String = Main.M_Color.Split(",")
         If Rgb_Value.Length < 3 Or Rgb_Value.Length > 3 Then
-
-            File.Copy(Application.StartupPath & "\temp\Background", Application.StartupPath & "\Theme\" & ThemeName & "\Background", True)
-            'Application.StartupPath & "\Theme\" & ThemeName & "\Background"
-
-            'System.IO.IOException:“文件“D:\Desktop-Space\Code\Debug\Theme\Default\Background”正由另一进程使用，因此该进程无法访问该文件。”
-
-
+            Main.BackgroundImage.Save("temp\Background")
+            Main.BackgroundImage.Dispose()
+            File.Copy("temp\Background", "Theme\" & ThemeName & "\Background", True)
             M_Color = "Background"
         Else
             M_Color = Main.M_Color
         End If
+        Directory.Delete("temp", True)
         Box_Size = Main.Box_Size
         L_Padding = Main.L_Padding
         U_Padding = Main.U_Padding
@@ -55,7 +68,7 @@ Public Class Save_Theme
         Line_Select_Color = Main.Line_Select_Color_S
 
 
-        Using Writer As New StreamWriter(Application.StartupPath & "\Theme\" & ThemeName & "\" & ThemeName)
+        Using Writer As New StreamWriter("Theme\" & ThemeName & "\" & ThemeName)
             Writer.WriteLine("Theme_Start")
             Writer.WriteLine(M_Color)
             Writer.WriteLine(Box_Size)
@@ -69,9 +82,10 @@ Public Class Save_Theme
             Writer.WriteLine(Line_Color)
             Writer.WriteLine(Line_Select_Color)
 
-            For i = 0 To Main.Box_Num - 1
+            For i = 0 To Box_Index
                 Writer.WriteLine(Main.Box(i).Titel_Text)
                 If Main.Box(i).Icon_Name <> "UnknowPath" Then
+
                     Writer.WriteLine(Main.Box(i).Box_Index)
                 Else
                     Writer.WriteLine("UnknowPath")
@@ -100,11 +114,7 @@ Public Class Save_Theme
             Writer.WriteLine("Theme_End")
 
         End Using
-
-        ' Main.MdiParent = ThemeEditor
         Main.Dispose()
         Main.Show()
-
-
     End Sub
 End Class

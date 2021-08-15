@@ -60,7 +60,7 @@ Public Class Guider
 
                 ThemeEditor.Visible = True
                 Main.Default_Path = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                Using writer As New StreamWriter(Application.StartupPath & "\DesktopSpace.conf")
+                Using writer As New StreamWriter("DesktopSpace.conf")
                     writer.WriteLine(Main.change_Desktop_Path)
                     writer.WriteLine("Default")
                     writer.WriteLine(Main.Default_Path)
