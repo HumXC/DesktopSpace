@@ -408,13 +408,13 @@ Public Class ThemeEditor
             Dim l1 As String
             Dim l2 As String
             Dim l3 As String
-            Using reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
+            Using reader As New StreamReader("DesktopSpace.conf")
                 l1 = reader.ReadLine
                 l2 = reader.ReadLine
                 l3 = reader.ReadLine
             End Using
 
-            Using Writer As New StreamWriter(Application.StartupPath & "\DesktopSpace.conf")
+            Using Writer As New StreamWriter("DesktopSpace.conf")
                 Writer.WriteLine(l1)
                 Writer.WriteLine(当前加载主题.Text)
                 Writer.WriteLine(l3)

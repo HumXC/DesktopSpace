@@ -1,8 +1,28 @@
 ﻿Imports System.IO
 Public Class FirstRun
     Public Sub New()
+        Using Writer As New StreamWriter("DesktopSpace.conf")
+
+        End Using
+        Dim l1 As String
+        Dim l2 As String
+        Dim l3 As String
+        Using reader As New StreamReader("DesktopSpace.conf")
+            l1 = reader.ReadLine
+            l2 = reader.ReadLine
+            l3 = reader.ReadLine
+        End Using
+
+        Using Writer As New StreamWriter("DesktopSpace.conf")
+            Writer.WriteLine(l1)
+            Writer.WriteLine("Default")
+            Writer.WriteLine(l3)
+        End Using
         Directory.CreateDirectory("Theme\Default")
+
+
         Using writer As New StreamWriter("Theme\Default\Default")
+
             writer.WriteLine("这是DesktopSpace的默认主题")
             writer.WriteLine("主题内容从""Theme_Start""开始,由""Theme_End""结束。从""Theme_Start""开始,前9行为")
             writer.WriteLine("主窗口颜色或者主窗口图片")
