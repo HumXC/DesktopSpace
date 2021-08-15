@@ -116,7 +116,7 @@ Public Class Main
         Me.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Me.Size.Width) / 2, Screen.PrimaryScreen.Bounds.Height / 2 - Me.Size.Height + 10)
 
         '正则表达式读取并检查桌面路径
-        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z]+$")
+        Dim mc As MatchCollection = Regex.Matches(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "[a-zA-Z\d\u4e00-\u9fa5]+$")
         Dim m As Match
         For Each m In mc
             Me.Now_Path = m.ToString
