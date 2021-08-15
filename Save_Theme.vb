@@ -19,7 +19,7 @@ Public Class Save_Theme
         Dim Gra As Graphics = Graphics.FromImage(Img) '用上面的图像文件创建一个画板
         Gra.CopyFromScreen(Main.Location.X, Main.Location.Y, 0, 0, Img.Size)  '把要保存的文件画到画板上，再保存
 
-        Img.Save(Application.StartupPath & "\Theme\" & ThemeName & "\" & ThemeName & ".png")
+        Img.Save("temp/gfd.png")
 
         Directory.CreateDirectory(Application.StartupPath & "\Theme\" & ThemeName)
         For i = 0 To Main.Box_Num - 1
