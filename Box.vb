@@ -17,6 +17,9 @@ Public Class Box
     '用户看不见的单选按钮，用于键盘控制
     Public WithEvents Ctrl As New RadioButton
 
+    '控制动画的timer
+    Private WithEvents Anima As New Timer
+
     Public Sub New()
         '设置可透明
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
@@ -50,7 +53,17 @@ Public Class Box
         Icon.Icon_Load(Me)
         Line.Line_Load(Me)
 
+        Anima.Interval = 1
 
+    End Sub
+    '动画
+    Dim y As Double = 0.8
+    Dim I_Lo As Point = Icon.Location
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Anima.Tick
+        If y < 15 Then
+            Icon.Location = New Point(Icon.Location.X, Icon.Location.Y - y)
+            y += y + 0.2
+        End If
     End Sub
 
 
@@ -60,7 +73,7 @@ Public Class Box
             Me.Line.BackColor = Main.Line_Select_Color
         End If
 
-        'BackColor = Color.Transparent
+        Anima.Enabled = True
     End Sub
 
     '鼠标移开
@@ -68,7 +81,12 @@ Public Class Box
         If Me.Ctrl.Checked = False Then
             Me.Line.BackColor = Color.Transparent
         End If
-
+        Anima.Enabled = False
+        Icon.Location = New Point(Icon.Location.X, Icon.Location.Y + 10)
+        Icon.Location = I_Lo
+        y = 0.8
+        Icon.Location = New Point(Icon.Location.X, Icon.Location.Y - 5)
+        Icon.Location = I_Lo
         'BackColor = Color.Transparent
     End Sub
 
@@ -76,8 +94,16 @@ Public Class Box
     Private Sub Box_KeyChange(sender As Object, e As EventArgs) Handles Ctrl.CheckedChanged
         If Ctrl.Checked = False Then
             Me.Line.BackColor = Color.Transparent
+            Anima.Enabled = False
+            Icon.Location = New Point(Icon.Location.X, Icon.Location.Y + 10)
+            Icon.Location = I_Lo
+            y = 0.8
+            Icon.Location = New Point(Icon.Location.X, Icon.Location.Y - 5)
+            Icon.Location = I_Lo
         ElseIf Ctrl.Checked = True Then
             Me.Line.BackColor = Main.Line_Color
+
+            Anima.Enabled = True
         End If
     End Sub
 
