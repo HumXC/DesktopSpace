@@ -4,11 +4,17 @@ Public Class SelectFont
     Public My_Font As String
 
     Private Sub Set_Font_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         For Each FontFamily In Families
 
             ListBox1.Items.Add(FontFamily.Name)
+            If FontFamily.Name = Main.Titel_Font Then
+                ListBox1.SelectedItem = FontFamily.Name
+            End If
+
 
         Next
+
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.MouseDown

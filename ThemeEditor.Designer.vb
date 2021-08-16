@@ -103,6 +103,9 @@ Partial Class ThemeEditor
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.标线厚度 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Button9 = New System.Windows.Forms.Button()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,7 +269,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Text
         '
-        Me.Change_Titel_Text.Location = New System.Drawing.Point(191, 130)
+        Me.Change_Titel_Text.Location = New System.Drawing.Point(191, 161)
         Me.Change_Titel_Text.Name = "Change_Titel_Text"
         Me.Change_Titel_Text.Size = New System.Drawing.Size(77, 64)
         Me.Change_Titel_Text.TabIndex = 27
@@ -284,7 +287,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Color
         '
-        Me.Change_Titel_Color.Location = New System.Drawing.Point(13, 130)
+        Me.Change_Titel_Color.Location = New System.Drawing.Point(13, 161)
         Me.Change_Titel_Color.Name = "Change_Titel_Color"
         Me.Change_Titel_Color.Size = New System.Drawing.Size(81, 64)
         Me.Change_Titel_Color.TabIndex = 30
@@ -293,7 +296,7 @@ Partial Class ThemeEditor
         '
         'Change_Line_Color
         '
-        Me.Change_Line_Color.Location = New System.Drawing.Point(10, 54)
+        Me.Change_Line_Color.Location = New System.Drawing.Point(10, 103)
         Me.Change_Line_Color.Name = "Change_Line_Color"
         Me.Change_Line_Color.Size = New System.Drawing.Size(171, 55)
         Me.Change_Line_Color.TabIndex = 32
@@ -302,7 +305,7 @@ Partial Class ThemeEditor
         '
         'Change_Line_2Color
         '
-        Me.Change_Line_2Color.Location = New System.Drawing.Point(7, 133)
+        Me.Change_Line_2Color.Location = New System.Drawing.Point(6, 164)
         Me.Change_Line_2Color.Name = "Change_Line_2Color"
         Me.Change_Line_2Color.Size = New System.Drawing.Size(171, 58)
         Me.Change_Line_2Color.TabIndex = 33
@@ -311,7 +314,7 @@ Partial Class ThemeEditor
         '
         'Change_Titel_Font
         '
-        Me.Change_Titel_Font.Location = New System.Drawing.Point(100, 130)
+        Me.Change_Titel_Font.Location = New System.Drawing.Point(100, 161)
         Me.Change_Titel_Font.Name = "Change_Titel_Font"
         Me.Change_Titel_Font.Size = New System.Drawing.Size(85, 64)
         Me.Change_Titel_Font.TabIndex = 35
@@ -463,6 +466,9 @@ Partial Class ThemeEditor
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button9)
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.标线厚度)
         Me.GroupBox1.Controls.Add(Me.Change_Line_2Color)
         Me.GroupBox1.Controls.Add(Me.Change_Line_Color)
         Me.GroupBox1.Location = New System.Drawing.Point(296, 478)
@@ -490,7 +496,7 @@ Partial Class ThemeEditor
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("宋体", 14.0!)
-        Me.Label12.Location = New System.Drawing.Point(13, 30)
+        Me.Label12.Location = New System.Drawing.Point(9, 30)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(106, 24)
         Me.Label12.TabIndex = 45
@@ -884,6 +890,36 @@ Partial Class ThemeEditor
         Me.Button10.Text = "应用主题"
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        '
+        '标线厚度
+        '
+        Me.标线厚度.Font = New System.Drawing.Font("宋体", 16.0!)
+        Me.标线厚度.Location = New System.Drawing.Point(10, 61)
+        Me.标线厚度.Name = "标线厚度"
+        Me.标线厚度.Size = New System.Drawing.Size(86, 38)
+        Me.标线厚度.TabIndex = 46
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("宋体", 14.0!)
+        Me.Label17.Location = New System.Drawing.Point(6, 30)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(106, 24)
+        Me.Label17.TabIndex = 46
+        Me.Label17.Text = "标线厚度"
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(102, 61)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(75, 38)
+        Me.Button9.TabIndex = 47
+        Me.Button9.Text = "应用"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
         'ThemeEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -913,6 +949,7 @@ Partial Class ThemeEditor
         Me.图标编辑.ResumeLayout(False)
         Me.图标编辑.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBoxY.ResumeLayout(False)
@@ -1013,4 +1050,7 @@ Partial Class ThemeEditor
     Friend WithEvents Button11 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button8 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents Label17 As Label
+    Friend WithEvents 标线厚度 As TextBox
 End Class

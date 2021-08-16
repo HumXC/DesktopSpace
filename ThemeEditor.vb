@@ -18,7 +18,7 @@ Public Class ThemeEditor
         当前主界面大小.Text = Main.Size.ToString
         桌面空间所在路径.Text = Main.change_Desktop_Path
 
-
+        标线厚度.Text = Main.Line_Height
 
         Timer1.Enabled = True
         '  Icon_Set()
@@ -33,22 +33,6 @@ Public Class ThemeEditor
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Add_aBox.Click
         Main.Add_Box()
     End Sub
-
-    '设置图片框控件为合适的图片大小
-    '  Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
-
-    '       Dim Size_Value() As String = Main.Box_Size.Split(",")
-    ' Dim Img = Image.FromFile("D:\test.gif")
-    '       If Img.Width > Size_Value(0) Or Img.Height > Size_Value(1) Then
-    '           If Img.Width > Img.Height Then
-    '               PictureBox1.Size = New Size(Size_Value(0), Img.Size.Height \ (Img.Width \ Size_Value(0)))
-    '           Else
-    '               PictureBox1.Size = New Size(Img.Size.Width \ (Img.Height \ Size_Value(1)), Size_Value(1))
-    '           End If
-    '       End If
-    '    Icon_E.Image = Img
-    ' End Sub
-
 
     Private Sub Icon_X_ValueChanged(sender As Object, e As EventArgs) Handles Icon_X.ValueChanged
         Icon_E.Size = New Size(Icon_X.Value, Icon_Y.Maximum - Icon_Y.Value)
@@ -167,22 +151,29 @@ Public Class ThemeEditor
     End Sub
 
     Private Sub Change_Main_Color_Click(sender As Object, e As EventArgs) Handles Change_Main_Color.Click
-
+        Dim RGB_Value() As String = Main.M_Color.Split(",")
+        SelectColor.F_Color(RGB_Value(0), RGB_Value(1), RGB_Value(2))
         SelectColor.Show()
         SelectColor.Set_Key_Code(1)
     End Sub
 
     Private Sub Change_Titel_Color_Click(sender As Object, e As EventArgs) Handles Change_Titel_Color.Click
+        Dim RGB_Value() As String = Main.Titel_Color_S.Split(",")
+        SelectColor.F_Color(RGB_Value(0), RGB_Value(1), RGB_Value(2))
         SelectColor.Show()
         SelectColor.Set_Key_Code(2)
     End Sub
 
     Private Sub Change_Line_Color_Click(sender As Object, e As EventArgs) Handles Change_Line_Color.Click
+        Dim RGB_Value() As String = Main.Line_Color_S.Split(",")
+        SelectColor.F_Color(RGB_Value(0), RGB_Value(1), RGB_Value(2))
         SelectColor.Show()
         SelectColor.Set_Key_Code(3)
     End Sub
 
     Private Sub Change_Line_2Color_Click(sender As Object, e As EventArgs) Handles Change_Line_2Color.Click
+        Dim RGB_Value() As String = Main.Line_Select_Color_S.Split(",")
+        SelectColor.F_Color(RGB_Value(0), RGB_Value(1), RGB_Value(2))
         SelectColor.Show()
         SelectColor.Set_Key_Code(4)
     End Sub
@@ -372,6 +363,9 @@ Public Class ThemeEditor
             ' Main.Set_Main()
             Main.ReadTheme()
             当前加载主题.Text = ThemeList.SelectedItem
+            标线厚度.Text = Main.Line_Height
+
+
         End If
 
 
@@ -433,7 +427,7 @@ Public Class ThemeEditor
         MsgBox(Main.Theme_Info, 0)
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) ' Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 10)
     End Sub
 
@@ -441,6 +435,16 @@ Public Class ThemeEditor
         Process.Start("https://gitee.com/humxc/DesktopSpace")
         Process.Start("https://github.com/HumXC/DesktopSpace")
         ' MsgBox("Github主页：" & vbCr & "https://github.com/HumXC/DesktopSpace" & vbCr & "Gitee主页：" & vbCr & "https://gitee.com/humxc/DesktopSpace", 0)
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        If Val(标线厚度.Text) > 0 And Val(标线厚度.Text) < 500 Then
+            Main.Line_Height = Val(标线厚度.Text)
+            For i = 0 To Main.Box_Num - 1
+                Main.Box(i).Line.Line_Set(Main.Box(i))
+            Next
+            Main.Set_Main()
+        End If
     End Sub
 
 End Class

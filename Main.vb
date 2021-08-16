@@ -248,7 +248,7 @@ Public Class Main
         '绘制主窗体右边界、下边界
         '    获取box宽度
         Dim Size_Value() As String = Box_Size.Split(",")
-        Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + 30)
+        Me.Size = New Size(Box_Num * Size_Value(0) + (Box_Num - 1) * B_Spacing + 2 * L_Padding, Box(0).Line.Location.Y + Box(0).Line.Size.Height + 10)
 
     End Sub
 

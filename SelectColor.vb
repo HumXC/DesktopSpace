@@ -4,7 +4,12 @@
     Public Sub Set_Key_Code(Key_Code As Integer)
         Me.Key_Code = Key_Code
     End Sub
-
+    '设置初始值
+    Public Sub F_Color(Rgb1 As String, RGB2 As String, RGB3 As String)
+        RedValue.Text = Rgb1
+        GreenValue.Text = RGB2
+        BlueValue.Text = RGB3
+    End Sub
     'RGB颜色滑块
     Private Sub ColorBar_Scroll(sender As Object, e As EventArgs) Handles RedBar.ValueChanged, GreenBar.ValueChanged, BlueBar.ValueChanged
         RedValue.Text = RedBar.Value
