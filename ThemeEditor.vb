@@ -246,7 +246,7 @@ Public Class ThemeEditor
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         FolderBrowserDialog1.ShowDialog()
-        If MsgBox("此操作将会把桌面路径设置为：" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 4) = 6 Then
+        If MsgBox("此操作将会把桌面路径设置为：" & FolderBrowserDialog1.SelectedPath & "DesktopSpace\", 4) = 6 Then
             MsgBox("已将桌面路径从" & Main.change_Desktop_Path & "修改为" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 0)
             Main.change_Desktop_Path = FolderBrowserDialog1.SelectedPath & "DesktopSpace\"
             桌面空间所在路径.Text = Main.change_Desktop_Path
