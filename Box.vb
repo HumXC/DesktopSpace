@@ -19,13 +19,14 @@ Public Class Box
 
     '控制动画的timer
     Private WithEvents Anima As New Timer
+    Private I_Lo As Point
 
     Public Sub New()
         '设置可透明
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
         BackColor = Color.Transparent
         Cursor = Cursors.Hand
-
+        Anima.Enabled = False
 
     End Sub
 
@@ -54,11 +55,11 @@ Public Class Box
         Line.Line_Load(Me)
 
         Anima.Interval = 1
-
+        I_Lo = Icon.Location
     End Sub
     '动画
     Dim y As Double = 0.8
-    Dim I_Lo As Point = Icon.Location
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Anima.Tick
         If y < 15 Then
             Icon.Location = New Point(Icon.Location.X, Icon.Location.Y - y)
