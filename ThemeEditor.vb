@@ -282,13 +282,14 @@ Public Class ThemeEditor
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         BackColor_Offf()
         Timer1.Enabled = False
-        Icon_E.Image.Dispose()
         预览.Image.Dispose()
         Main.Location = New Point((Screen.PrimaryScreen.Bounds.Width - Main.Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Main.Size.Height) / 2)
 
         Dim ThemeeName As String = InputBox("输入主题的名称：", "保存主题", Main.Theme_Name)
 
         If ThemeeName <> "" Then
+            '    Icon_E.Image.Dispose()   会导致bug
+
             Main.TopMost = True
 
             Dim Theme = New Save_Theme(ThemeeName)
@@ -432,7 +433,7 @@ Public Class ThemeEditor
         MsgBox(Main.Theme_Info, 0)
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) ' Handles Timer1.Tick
         Main.Location = New Point(Me.Location.X + （Me.Size.Width - Main.Size.Width） / 2, Me.Location.Y - Main.Size.Height - 10)
     End Sub
 
@@ -443,4 +444,11 @@ Public Class ThemeEditor
     End Sub
 
 
+    Private Sub Pic_Click(sender As Object, e As EventArgs) Handles Pic.Click
+        Pic.Image = Main.Box(2).Icon.Image
+    End Sub
+
+    Private Sub Icon_E_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
+        Icon_E.Image = Main.Box(2).Icon.Image
+    End Sub
 End Class
