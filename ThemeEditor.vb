@@ -248,12 +248,12 @@ Public Class ThemeEditor
         FolderBrowserDialog1.ShowDialog()
         If MsgBox("此操作将会把桌面路径设置为：" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 4) = 6 Then
             MsgBox("已将桌面路径从" & Main.change_Desktop_Path & "修改为" & FolderBrowserDialog1.SelectedPath & "\DesktopSpace", 0)
-            Main.change_Desktop_Path = FolderBrowserDialog1.SelectedPath & "\DesktopSpace"
+            Main.change_Desktop_Path = FolderBrowserDialog1.SelectedPath & "DesktopSpace\"
             桌面空间所在路径.Text = Main.change_Desktop_Path
             Dim l1 As String
             Dim l2 As String
             Dim l3 As String
-            Using reader As New StreamReader(Application.StartupPath & "\DesktopSpace.conf")
+            Using reader As New StreamReader("DesktopSpace.conf")
                 l1 = reader.ReadLine
                 l2 = reader.ReadLine
                 l3 = reader.ReadLine
