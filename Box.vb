@@ -147,10 +147,10 @@ Public Class Box
         End Try
 
         If Icon_Name <> "UnknowPath" Then
-            ThemeEditor.Icon_E.Image = Me.Icon.Image
+            '   ThemeEditor.Icon_E.Image = Me.Icon.Image
             ThemeEditor.Box_Index = Box_Index
         Else
-            ThemeEditor.Icon_E.Image = My.Resources._Default
+            '   ThemeEditor.Icon_E.Image = My.Resources._Default
             ThemeEditor.Box_Index = Box_Index
         End If
 

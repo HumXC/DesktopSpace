@@ -131,7 +131,7 @@ Public Class ThemeEditor
             Dim Path As String = Img_Path.Text
             Main.Box(Box_Index).Set_Icon_Img(Path)
             OpenFileDialog1.Dispose()
-            ' Icon_E.Image = Main.Box(Box_Index).Icon.Image   会导致bug
+            Icon_E.Image = Main.Box(Box_Index).Icon.Image
         Catch ex As System.IndexOutOfRangeException
             '什么也不做
         End Try
@@ -443,12 +443,4 @@ Public Class ThemeEditor
         ' MsgBox("Github主页：" & vbCr & "https://github.com/HumXC/DesktopSpace" & vbCr & "Gitee主页：" & vbCr & "https://gitee.com/humxc/DesktopSpace", 0)
     End Sub
 
-
-    Private Sub Pic_Click(sender As Object, e As EventArgs) Handles Pic.Click
-        Pic.Image = Main.Box(2).Icon.Image
-    End Sub
-
-    Private Sub Icon_E_Click(sender As Object, e As EventArgs) Handles Icon_E.Click
-        Icon_E.Image = Main.Box(2).Icon.Image
-    End Sub
 End Class

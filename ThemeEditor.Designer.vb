@@ -103,7 +103,6 @@ Partial Class ThemeEditor
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Pic = New System.Windows.Forms.PictureBox()
         CType(Me.Icon_E, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Icon_Y, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -123,7 +122,6 @@ Partial Class ThemeEditor
         Me.GroupBox5.SuspendLayout()
         CType(Me.预览, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.Pic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Delete_aBox
@@ -385,7 +383,6 @@ Partial Class ThemeEditor
         '
         '图标编辑
         '
-        Me.图标编辑.Controls.Add(Me.Pic)
         Me.图标编辑.Controls.Add(Me.Label14)
         Me.图标编辑.Controls.Add(Me.Label13)
         Me.图标编辑.Controls.Add(Me.Apply2)
@@ -887,17 +884,6 @@ Partial Class ThemeEditor
         Me.Button10.Text = "应用主题"
         Me.Button10.UseVisualStyleBackColor = True
         '
-        'Pic
-        '
-        Me.Pic.BackColor = System.Drawing.Color.FromArgb(CType(CType(195, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Pic.Image = Global.ThemeEditor.My.Resources.Resources.笑脸
-        Me.Pic.Location = New System.Drawing.Point(399, 225)
-        Me.Pic.Name = "Pic"
-        Me.Pic.Size = New System.Drawing.Size(91, 86)
-        Me.Pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Pic.TabIndex = 50
-        Me.Pic.TabStop = False
-        '
         'ThemeEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -944,7 +930,6 @@ Partial Class ThemeEditor
         CType(Me.预览, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.Pic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1028,5 +1013,4 @@ Partial Class ThemeEditor
     Friend WithEvents Button11 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button8 As Button
-    Friend WithEvents Pic As PictureBox
 End Class
